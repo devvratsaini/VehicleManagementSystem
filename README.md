@@ -1,6 +1,6 @@
 # VehicleManagementSystem
 
-<u>__IMPORTANT DATES__</u>  <br>
+<u>__IMPORTANT DATES__  <br>
 ~~DBMS (phase 1) -   6/2/24~~  <br>
 DBMS (phase 2) - 20/4/24  <br>
 Java - 20/4/24  <br>
