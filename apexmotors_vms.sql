@@ -50,7 +50,7 @@ create table vehicle(
 
 create table car_model(
 	modelid int primary key,
-	companyid int, foreign key(companyid) references company(companyid),
+	companyid int, foreign key(companyid) references car_company(companyid),
 	fuel_efficiency varchar(30),
 	safety_features boolean,
 	car_type varchar(20),
