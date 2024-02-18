@@ -21,14 +21,44 @@ create table dealer(
 	name varchar(50)
 );
 
-
-create table car_model(
-	modelid int primary key,
-    fuelefficiency int,
-    safetyfeatures boolean,
-    cartype varchar(50),
-    cost int
+create table manufacturer(
+	manufacturerid int primary key,
+    location varchar(50),
+    name varchar(50)
 );
+
+
+create table supplier(supplierid int primary key, 
+name varchar(30),
+location varchar(50));
+ 
+create table customer(
+customerid int primary key ,
+dealerid int , 
+annual_income double,
+gender varchar(10), 
+name varchar(30),
+address varchar(50),
+foreign key(dealerid) references dealer(dealerid));
+ 
+create table vehicle(vin varchar(30) primary key, 
+manufacturerid int , 
+customerid int,
+foreign key(customerid) references customer(customerid),
+foreign key(manufacturerid) references manufacturer(manufacturerid));
+
+create table car_model(modelid int primary key ,
+companyid int ,
+fuel_efficiency varchar(30) ,
+safety_features boolean,
+car_type varchar(20),
+cost double,
+foreign key(customerid) references customer(customerid)); 
+
+
+--Atharv insert your code here
+
+
 CREATE TABLE in_table (
     inid INT PRIMARY KEY,
     inventoryid INT,
@@ -60,8 +90,4 @@ CREATE TABLE has (
 
 
 
-create table manufacturer(
-	manufacturerid int primary key,
-    location varchar(50),
-    name varchar(50)
-);
+
