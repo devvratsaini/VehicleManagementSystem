@@ -77,7 +77,7 @@ CREATE TABLE inventory(
 	location varchar(30)
 );
 
-CREATE TABLE in(
+CREATE TABLE in_table(
     inid INT PRIMARY KEY,
     inventoryid INT, FOREIGN KEY (inventoryid) REFERENCES inventory(inventoryid),
     VIN VARCHAR(50), FOREIGN KEY (VIN) REFERENCES vehicle(VIN)
@@ -86,9 +86,9 @@ CREATE TABLE in(
 CREATE TABLE supplies (
     suppliesid INT PRIMARY KEY,
     supplierid INT, FOREIGN KEY (supplierid) REFERENCES supplier(supplierid),
-    manufacturerid INT, FOREIGN KEY (manufacturerid) REFERENCES manufacturer(manufactureid)
+    manufacturerid INT, FOREIGN KEY (manufacturerid) REFERENCES manufacturer(manufacturerid),
     quantity INT,
-    date DATE,
+    date DATE
 );
 
 CREATE TABLE phone (
@@ -99,5 +99,5 @@ CREATE TABLE phone (
 CREATE TABLE has (
     hasid INT  PRIMARY KEY,
     VIN VARCHAR(50), FOREIGN KEY (VIN) REFERENCES vehicle(VIN),
-    modelid INT, FOREIGN KEY (modelid) REFERENCES model(modelid)
+    modelid INT, FOREIGN KEY (modelid) REFERENCES car_model(modelid)
 );
