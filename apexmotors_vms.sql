@@ -52,11 +52,9 @@ companyid int ,
 fuel_efficiency varchar(30) ,
 safety_features boolean,
 car_type varchar(20),
-cost double,
-foreign key(customerid) references customer(customerid)); 
+cost double); 
 
 
---Atharv insert your code here
 CREATE TABLE produces(
 	vin VARCHAR(30),
 	FOREIGN KEY (vin) REFERENCES vehicle(vin),
