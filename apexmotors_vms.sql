@@ -59,6 +59,7 @@ foreign key(customerid) references customer(customerid));
 --Atharv insert your code here
 
 
+
 CREATE TABLE in_table (
     inid INT PRIMARY KEY,
     inventoryid INT,
@@ -66,6 +67,7 @@ CREATE TABLE in_table (
     FOREIGN KEY (inventoryid) REFERENCES inventory(inventoryid),
     FOREIGN KEY (VIN) REFERENCES vehicle(VIN)
 );
+
 CREATE TABLE supplies (
     suppliesid INT PRIMARY KEY,
     supplierid INT,
@@ -75,11 +77,13 @@ CREATE TABLE supplies (
     FOREIGN KEY (supplierid) REFERENCES supplier(supplierid),
     FOREIGN KEY (manufacturerid) REFERENCES company(companyid)
 );
+
 CREATE TABLE phone (
     phoneid INT PRIMARY KEY,
     customerid INT,
     FOREIGN KEY (customerid) REFERENCES customer(customerid)
-);
+); 
+
 CREATE TABLE has (
     hasid INT  PRIMARY KEY,
     VIN VARCHAR(50),
