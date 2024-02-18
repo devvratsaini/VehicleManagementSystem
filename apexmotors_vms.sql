@@ -57,6 +57,30 @@ foreign key(customerid) references customer(customerid));
 
 
 --Atharv insert your code here
+CREATE TABLE produces(
+	vin VARCHAR(30),
+	FOREIGN KEY (vin) REFERENCES vehicle(vin),
+    manufacturerid INT,
+    foreign key(manufacturerid) references manufacturer(manufacturerid),
+    produce_date date
+    );
+    
+CREATE TABLE sales (
+	customerid int,
+    foreign key(customerid) references customer(customerid),
+    dealerid int,
+    foreign key(dealerid) references dealer(dealerid),
+    name VARCHAR(39),
+    price int
+);
+
+CREATE TABLE inventory(
+	inventoryid int primary key,
+    dealerid int,
+    foreign key(dealerid) references dealer(dealerid),
+    name varchar(30),
+    location varchar(30)
+);
 
 
 
