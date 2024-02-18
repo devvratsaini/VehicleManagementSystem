@@ -84,7 +84,7 @@ CREATE TABLE inventory(
 
 
 
-CREATE TABLE in_table (
+CREATE TABLE in (
     inid INT PRIMARY KEY,
     inventoryid INT,
     VIN VARCHAR(50),
@@ -99,7 +99,7 @@ CREATE TABLE supplies (
     quantity INT,
     date DATE,
     FOREIGN KEY (supplierid) REFERENCES supplier(supplierid),
-    FOREIGN KEY (manufacturerid) REFERENCES company(companyid)
+    FOREIGN KEY (manufacturerid) REFERENCES manufacturer(manufactureid)
 );
 
 CREATE TABLE phone (
