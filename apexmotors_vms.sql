@@ -2,53 +2,53 @@ create database apexmotors_vms;
 
 use apexmotors_vms;
 
-create table car_company(
+create table car_company (
 	companyid int primary key,
 	location varchar(50),
 	name varchar(50)
 );
 
-create table customisation(
+create table customisation (
 	customizationid int primary key,
 	color varchar(20),
 	rim varchar(50),
 	transmission varchar(20)
 );
 
-create table dealer(
+create table dealer (
 	dealerid int primary key,
 	location varchar(50),
 	name varchar(50)
 );
 
-create table manufacturer(
+create table manufacturer (
 	manufacturerid int primary key,
 	location varchar(50),
 	name varchar(50)
 );
 
-create table supplier(
+create table supplier (
 	supplierid int primary key, 
-	name varchar(30),
+	name varchar(50),
 	location varchar(50)
 );
  
-create table customer(
+create table customer (
 	customerid int primary key ,
 	dealerid int , foreign key(dealerid) references dealer(dealerid),
 	annual_income double,
 	gender char(1), 
-	name varchar(30),
-	address varchar(50)
+	name varchar(50),
+	address varchar(100)
 );
  
-create table vehicle(
+create table vehicle (
 	vin varchar(30) primary key, 
 	manufacturerid int , foreign key(manufacturerid) references manufacturer(manufacturerid),
 	customerid int, foreign key(customerid) references customer(customerid)
 );
 
-create table car_model(
+create table car_model (
 	modelid int primary key,
 	companyid int, foreign key(companyid) references car_company(companyid),
 	fuel_efficiency varchar(30),
@@ -57,47 +57,47 @@ create table car_model(
 	cost double
 ); 
 
-CREATE TABLE produces(
-	vin VARCHAR(30), FOREIGN KEY (vin) REFERENCES vehicle(vin),
-	manufacturerid INT, foreign key(manufacturerid) references manufacturer(manufacturerid),
+create table produces (
+	vin varchar(30), foreign key(vin) references vehicle(vin),
+	manufacturerid int, foreign key(manufacturerid) references manufacturer(manufacturerid),
 	date date
 );
 
-CREATE TABLE sales (
+create table sales (
 	customerid int, foreign key(customerid) references customer(customerid),
 	dealerid int, foreign key(dealerid) references dealer(dealerid),
 	date date,
 	price double
 );
 
-CREATE TABLE inventory(
+create table inventory (
 	inventoryid int primary key,
 	dealerid int, foreign key(dealerid) references dealer(dealerid),
-	name varchar(30),
-	location varchar(30)
+	name varchar(50),
+	location varchar(50)
 );
 
-CREATE TABLE in_table(
-    inid INT PRIMARY KEY,
-    inventoryid INT, FOREIGN KEY (inventoryid) REFERENCES inventory(inventoryid),
-    VIN VARCHAR(50), FOREIGN KEY (VIN) REFERENCES vehicle(VIN)
+create table in_table (
+    inid int primary key,
+    inventoryid int, foreign key(inventoryid) references inventory(inventoryid),
+    vin varchar(30), foreign key(vin) references vehicle(vin)
 );
 
-CREATE TABLE supplies (
-    suppliesid INT PRIMARY KEY,
-    supplierid INT, FOREIGN KEY (supplierid) REFERENCES supplier(supplierid),
-    manufacturerid INT, FOREIGN KEY (manufacturerid) REFERENCES manufacturer(manufacturerid),
-    quantity INT,
-    date DATE
+create table supplies (
+    suppliesid int primary key,
+    supplierid int, foreign key(supplierid) references supplier(supplierid),
+    manufacturerid int, foreign key(manufacturerid) references manufacturer(manufacturerid),
+    quantity int,
+    date date
 );
 
-CREATE TABLE phone (
-    phoneid INT PRIMARY KEY,
-    customerid INT, FOREIGN KEY (customerid) REFERENCES customer(customerid)
+create table phone (
+    phoneid int primary key,
+    customerid int, foreign key(customerid) references customer(customerid)
 ); 
 
-CREATE TABLE has (
-    hasid INT  PRIMARY KEY,
-    VIN VARCHAR(50), FOREIGN KEY (VIN) REFERENCES vehicle(VIN),
-    modelid INT, FOREIGN KEY (modelid) REFERENCES car_model(modelid)
+create table has (
+    hasid int primary key,
+    vin varchar(30), foreign key(VIN) references vehicle(VIN),
+    modelid int, foreign key(modelid) references car_model(modelid)
 );
