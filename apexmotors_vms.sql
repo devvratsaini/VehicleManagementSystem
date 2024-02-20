@@ -9,7 +9,7 @@ create table car_company (
 );
 
 create table customisation (
-	customizationid int primary key,
+	customisationid int primary key,
 	color varchar(20),
 	rim varchar(50),
 	transmission varchar(20)
