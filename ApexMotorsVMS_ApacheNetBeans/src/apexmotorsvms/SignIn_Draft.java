@@ -16,8 +16,8 @@ public class SignIn_Draft extends javax.swing.JFrame {
     private void initComponents() {
 
         signInTitleLabel = new javax.swing.JLabel();
-        passwordPasswordField = new javax.swing.JPasswordField();
-        usernameTextField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        usernameField = new javax.swing.JTextField();
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         accountTypeLabel = new javax.swing.JLabel();
@@ -63,55 +63,58 @@ public class SignIn_Draft extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGap(269, 269, 269)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(accountTypeLabel)
+                                            .addGap(66, 66, 66))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(usernameLabel)
+                                            .addGap(85, 85, 85)))
+                                    .addGap(107, 107, 107))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(passwordLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(accountTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(accountTypeLabel)
-                                        .addGap(66, 66, 66))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(usernameLabel)
-                                        .addGap(85, 85, 85)))
-                                .addComponent(signInTitleLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(passwordLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(usernameTextField)
-                                        .addComponent(accountTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(passwordPasswordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(2, 2, 2))))
+                                .addGap(77, 77, 77)
+                                .addComponent(logInButton))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(276, 276, 276)
-                        .addComponent(logInButton))
+                        .addGap(320, 320, 320)
+                        .addComponent(signInTitleLabel))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
+                        .addGap(282, 282, 282)
                         .addComponent(signUpLabel)))
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(signInTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addGap(102, 102, 102)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accountTypeLabel)
                     .addComponent(accountTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(usernameLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passwordLabel))
                 .addGap(33, 33, 33)
                 .addComponent(logInButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addComponent(signUpLabel)
-                .addGap(150, 150, 150))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,9 +127,10 @@ public class SignIn_Draft extends javax.swing.JFrame {
             DatabaseCredentials.getUname(), DatabaseCredentials.getPass());
             System.out.println("Connection successfully established");
             Statement stmt = conn.createStatement();
-            String username = usernameTextField.getText();
-            String userpass = String.valueOf(passwordPasswordField.getPassword());
-            String query = "select password from accounts where username = '" + username + "';";
+            String accountType = String.valueOf(accountTypeComboBox.getSelectedItem());
+            String username = usernameField.getText();
+            String userpass = String.valueOf(passwordField.getPassword());
+            String query = "select password from accounts where username = '" + username + "' and accounttype = '" + accountType + "';";
             ResultSet rs = stmt.executeQuery(query);
             boolean loggedIn = false;
             while(rs.next()) {
@@ -163,11 +167,11 @@ public class SignIn_Draft extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> accountTypeComboBox;
     private javax.swing.JLabel accountTypeLabel;
     private javax.swing.JButton logInButton;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JPasswordField passwordPasswordField;
     private javax.swing.JLabel signInTitleLabel;
     private javax.swing.JLabel signUpLabel;
+    private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
-    private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }

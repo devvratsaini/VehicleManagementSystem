@@ -37,7 +37,7 @@
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="reenterPasswordField" alignment="0" max="32767" attributes="0"/>
                           <Component id="enterPasswordField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="usernameTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="usernameField" alignment="0" max="32767" attributes="0"/>
                           <Component id="accountTypeComboBox" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -67,7 +67,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="usernameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="usernameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="usernameField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -129,12 +129,12 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="usernameTextField">
+    <Component class="javax.swing.JTextField" name="usernameField">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="Enter your username here"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameTextFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameFieldActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="enterPasswordField">

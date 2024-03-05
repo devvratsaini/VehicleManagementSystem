@@ -1,5 +1,10 @@
 package apexmotorsvms;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 public class SignUp_Draft extends javax.swing.JFrame {
 
     public SignUp_Draft() {
@@ -15,7 +20,7 @@ public class SignUp_Draft extends javax.swing.JFrame {
         usernameLabel = new javax.swing.JLabel();
         enterPasswordLabel = new javax.swing.JLabel();
         accountTypeComboBox = new javax.swing.JComboBox<>();
-        usernameTextField = new javax.swing.JTextField();
+        usernameField = new javax.swing.JTextField();
         enterPasswordField = new javax.swing.JPasswordField();
         reenterPasswordLabel = new javax.swing.JLabel();
         reenterPasswordField = new javax.swing.JPasswordField();
@@ -35,10 +40,10 @@ public class SignUp_Draft extends javax.swing.JFrame {
         accountTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin", "Dealer", "Manufacturer", "Supplier" }));
         accountTypeComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        usernameTextField.setToolTipText("Enter your username here");
-        usernameTextField.addActionListener(new java.awt.event.ActionListener() {
+        usernameField.setToolTipText("Enter your username here");
+        usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameTextFieldActionPerformed(evt);
+                usernameFieldActionPerformed(evt);
             }
         });
 
@@ -73,7 +78,7 @@ public class SignUp_Draft extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(reenterPasswordField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(enterPasswordField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(usernameField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(accountTypeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(315, 315, 315)
@@ -95,7 +100,7 @@ public class SignUp_Draft extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel)
-                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enterPasswordLabel)
@@ -113,12 +118,31 @@ public class SignUp_Draft extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
-        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(DatabaseCredentials.getUrl(),
+            DatabaseCredentials.getUname(), DatabaseCredentials.getPass());
+            System.out.println("Connection successfully established");
+            Statement stmt = conn.createStatement();
+            String accountType = String.valueOf(accountTypeComboBox.getSelectedItem());
+            String username = usernameField.getText();
+            String userpass1 = String.valueOf(enterPasswordField.getPassword());
+            String userpass2 = String.valueOf(reenterPasswordField.getPassword());
+            // TODO: verify userpass1 and userpass2 match, if not then handle it
+            
+            String query = "insert into accounts (accounttype, username, password) values ('" + accountType + "', '" + username + "', '" + userpass1 + "');";
+            // TODO: verify password is valid n strong
+            
+            stmt.executeUpdate(query);
+            System.out.println("Values inserted successfully");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_signUpButtonActionPerformed
 
-    private void usernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextFieldActionPerformed
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
         
-    }//GEN-LAST:event_usernameTextFieldActionPerformed
+    }//GEN-LAST:event_usernameFieldActionPerformed
 
     public static void main(String args[]) {
         
@@ -138,7 +162,7 @@ public class SignUp_Draft extends javax.swing.JFrame {
     private javax.swing.JLabel reenterPasswordLabel;
     private javax.swing.JButton signUpButton;
     private javax.swing.JLabel signUpHeading;
+    private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
-    private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 }

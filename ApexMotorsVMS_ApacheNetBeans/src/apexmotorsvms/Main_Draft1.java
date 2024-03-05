@@ -29,6 +29,7 @@ public class Main_Draft1 extends javax.swing.JFrame {
 
         signInClickableLabel.setForeground(new java.awt.Color(51, 102, 255));
         signInClickableLabel.setText("Sign In");
+        signInClickableLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signInClickableLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 signInClickableLabelMouseClicked(evt);
@@ -37,6 +38,7 @@ public class Main_Draft1 extends javax.swing.JFrame {
 
         signUpClickableLabel.setForeground(new java.awt.Color(51, 102, 255));
         signUpClickableLabel.setText("Sign Up");
+        signUpClickableLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signUpClickableLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 signUpClickableLabelMouseClicked(evt);
