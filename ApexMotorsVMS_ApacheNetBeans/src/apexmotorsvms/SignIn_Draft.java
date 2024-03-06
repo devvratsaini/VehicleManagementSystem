@@ -24,6 +24,7 @@ public class SignIn_Draft extends javax.swing.JFrame {
         accountTypeComboBox = new javax.swing.JComboBox<>();
         logInButton = new javax.swing.JButton();
         signUpLabel = new javax.swing.JLabel();
+        forgotPasswordClickableLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +54,15 @@ public class SignIn_Draft extends javax.swing.JFrame {
         signUpLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 signUpLabelMouseClicked(evt);
+            }
+        });
+
+        forgotPasswordClickableLabel.setForeground(new java.awt.Color(102, 153, 255));
+        forgotPasswordClickableLabel.setText("Forgot password");
+        forgotPasswordClickableLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        forgotPasswordClickableLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                forgotPasswordClickableLabelMouseClicked(evt);
             }
         });
 
@@ -91,7 +101,10 @@ public class SignIn_Draft extends javax.swing.JFrame {
                         .addComponent(signInTitleLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(282, 282, 282)
-                        .addComponent(signUpLabel)))
+                        .addComponent(signUpLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(338, 338, 338)
+                        .addComponent(forgotPasswordClickableLabel)))
                 .addContainerGap(286, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -114,7 +127,9 @@ public class SignIn_Draft extends javax.swing.JFrame {
                 .addComponent(logInButton)
                 .addGap(34, 34, 34)
                 .addComponent(signUpLabel)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(forgotPasswordClickableLabel)
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,13 +139,14 @@ public class SignIn_Draft extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(DatabaseCredentials.getUrl(),
-            DatabaseCredentials.getUname(), DatabaseCredentials.getPass());
+                    DatabaseCredentials.getUname(), DatabaseCredentials.getPass());
             System.out.println("Connection successfully established");
             Statement stmt = conn.createStatement();
             String accountType = String.valueOf(accountTypeComboBox.getSelectedItem());
             String username = usernameField.getText();
             String userpass = String.valueOf(passwordField.getPassword());
-            String query = "select password from accounts where username = '" + username + "' and accounttype = '" + accountType + "';";
+            String query = "select password from accounts where username = '" 
+                    + username + "' and accounttype = '" + accountType + "';";
             ResultSet rs = stmt.executeQuery(query);
             boolean loggedIn = false;
             while(rs.next()) {
@@ -143,6 +159,7 @@ public class SignIn_Draft extends javax.swing.JFrame {
             if(loggedIn == false) {
                 System.out.println("Login unsuccessful.");
             }
+            // TODO: switch to sign in
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -153,6 +170,11 @@ public class SignIn_Draft extends javax.swing.JFrame {
         signup.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_signUpLabelMouseClicked
+
+    private void forgotPasswordClickableLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordClickableLabelMouseClicked
+        new ForgotPassword_Draft().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_forgotPasswordClickableLabelMouseClicked
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -166,6 +188,7 @@ public class SignIn_Draft extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> accountTypeComboBox;
     private javax.swing.JLabel accountTypeLabel;
+    private javax.swing.JLabel forgotPasswordClickableLabel;
     private javax.swing.JButton logInButton;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;

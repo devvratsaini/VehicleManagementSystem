@@ -25,13 +25,24 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="315" max="-2" attributes="0"/>
+                      <Component id="signUpButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="316" max="-2" attributes="0"/>
+                      <Component id="signUpTitleLabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="accountTypeLabel" max="32767" attributes="0"/>
-                          <Component id="usernameLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="enterPasswordLabel" alignment="0" max="32767" attributes="0"/>
-                          <Component id="reenterPasswordLabel" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="accountTypeLabel" max="32767" attributes="0"/>
+                              <Component id="usernameLabel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="enterPasswordLabel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="reenterPasswordLabel" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="emailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -39,15 +50,8 @@
                           <Component id="enterPasswordField" alignment="0" max="32767" attributes="0"/>
                           <Component id="usernameField" alignment="0" max="32767" attributes="0"/>
                           <Component id="accountTypeComboBox" alignment="0" max="32767" attributes="0"/>
+                          <Component id="emailField" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="315" max="-2" attributes="0"/>
-                      <Component id="signUpButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="316" max="-2" attributes="0"/>
-                      <Component id="signUpHeading" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="310" max="32767" attributes="0"/>
@@ -58,7 +62,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="signUpHeading" min="-2" max="-2" attributes="0"/>
+              <Component id="signUpTitleLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="accountTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -79,15 +83,20 @@
                   <Component id="reenterPasswordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="reenterPasswordField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="emailField" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="signUpButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="141" max="32767" attributes="0"/>
+              <EmptySpace pref="103" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="signUpHeading">
+    <Component class="javax.swing.JLabel" name="signUpTitleLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="36" style="0"/>
@@ -102,7 +111,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="usernameLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="User Name"/>
+        <Property name="text" type="java.lang.String" value="Username"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="enterPasswordLabel">
@@ -133,9 +142,6 @@
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="Enter your username here"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="enterPasswordField">
       <Properties>
@@ -162,6 +168,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signUpButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="emailLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="E-Mail"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="emailField">
     </Component>
   </SubComponents>
 </Form>
