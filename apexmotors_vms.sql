@@ -104,17 +104,17 @@ create table has (
 
 
 INSERT INTO car_company (companyid, location, name) VALUES
-        (1, 'India', 'Maruti'),
-         (2, 'Germany', 'Volkswagen'),
-         (3, 'Japan', 'Toyota'),
-         (4, 'South Korea', 'Hyundai'),
-         (5, 'Italy', 'ferarri');
+        (1, 'Chennai', 'Maruti'),
+         (2, 'Pune', 'Volkswagen'),
+         (3, 'Bangalore', 'Toyota'),
+         (4, 'Chennai', 'Hyundai'),
+         (5, 'Mumbai', 'Ferarri');
 
 
  INSERT INTO car_model (modelid, companyid, fuel_efficiency, safety_features, car_type, cost)
     -> VALUES
-    ->     (11, 1, '15', TRUE, 'Sedan', 25000.00),
-    ->     (12, 2, '12', TRUE, 'SUV', 35000.00),
-    ->     (13, 3, '11', TRUE, 'Hatchback', 30000.00),
-    ->     (14, 4, '9', TRUE, 'Sedan', 22000.00),
-    ->     (15, 5, '6', FALSE, 'Sports Car', 200000.00);
+    ->     (11, 1, '15', TRUE, 'Swift', 700000.00),
+    ->     (12, 2, '12', TRUE, 'Polo', 1000000.00),
+    ->     (13, 3, '11', TRUE, 'Fortuner', 3000000.00),
+    ->     (14, 4, '9', TRUE, 'Verna', 1200000.00),
+    ->     (15, 5, '6', FALSE, '488 GTB', 40000000.00);
