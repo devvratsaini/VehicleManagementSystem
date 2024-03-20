@@ -18,6 +18,7 @@ public class Main_Draft extends javax.swing.JFrame {
         apexMotorsVmsTitleLabel = new javax.swing.JLabel();
         signInClickableLabel = new javax.swing.JLabel();
         signUpClickableLabel = new javax.swing.JLabel();
+        deleteAccountLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -45,6 +46,13 @@ public class Main_Draft extends javax.swing.JFrame {
             }
         });
 
+        deleteAccountLabel.setText("Delete Account");
+        deleteAccountLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteAccountLabelMouseClicked(evt);
+            }
+        });
+
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
@@ -57,13 +65,16 @@ public class Main_Draft extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(303, Short.MAX_VALUE)
                 .addComponent(apexMotorsVmsTitleLabel)
                 .addGap(243, 243, 243)
-                .addComponent(signInClickableLabel)
-                .addGap(18, 18, 18)
-                .addComponent(signUpClickableLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deleteAccountLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(signInClickableLabel)
+                        .addGap(18, 18, 18)
+                        .addComponent(signUpClickableLabel)))
                 .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
@@ -74,7 +85,9 @@ public class Main_Draft extends javax.swing.JFrame {
                     .addComponent(apexMotorsVmsTitleLabel)
                     .addComponent(signInClickableLabel)
                     .addComponent(signUpClickableLabel))
-                .addContainerGap(446, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(deleteAccountLabel)
+                .addContainerGap(424, Short.MAX_VALUE))
         );
 
         pack();
@@ -91,6 +104,10 @@ public class Main_Draft extends javax.swing.JFrame {
         signup.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_signUpClickableLabelMouseClicked
+
+    private void deleteAccountLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteAccountLabelMouseClicked
+        
+    }//GEN-LAST:event_deleteAccountLabelMouseClicked
 
     public static void main(String args[]) {
         
@@ -120,6 +137,7 @@ public class Main_Draft extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apexMotorsVmsTitleLabel;
+    private javax.swing.JLabel deleteAccountLabel;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
