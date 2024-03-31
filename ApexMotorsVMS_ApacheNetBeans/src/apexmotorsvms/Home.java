@@ -113,7 +113,7 @@ public class Home extends javax.swing.JFrame {
 
     private void profileIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileIconMouseClicked
         if (apexmotorsvms.utils.Session.isUserSignedIn()) {
-            EditProfile editProfile = new EditProfile();
+            EditProfile editProfile = new EditProfile(this);
             editProfile.setVisible(true);
             this.setVisible(false);
         } else {
@@ -123,7 +123,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_profileIconMouseClicked
 
     private void signUpClickableLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpClickableLabelMouseClicked
-        SignUp signup = new SignUp();
+        SignUp signup = new SignUp(this);
         signup.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_signUpClickableLabelMouseClicked

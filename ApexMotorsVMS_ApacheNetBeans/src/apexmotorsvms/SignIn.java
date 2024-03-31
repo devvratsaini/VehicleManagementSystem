@@ -1,14 +1,15 @@
 package apexmotorsvms;
 
-import apexmotorsvms.utils.DatabaseConnectivity;
+import apexmotorsvms.utils.*;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class SignIn extends javax.swing.JFrame {
 
-    Home home;
+    private Home home;
     
     public SignIn() {
         initComponents();
@@ -45,7 +46,7 @@ public class SignIn extends javax.swing.JFrame {
 
         accountTypeLabel.setText("Account Type");
 
-        accountTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin", "Dealer", "Manufacturer", "Supplier" }));
+        accountTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin" }));
         accountTypeComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         logInButton.setText("Log In");
@@ -96,11 +97,10 @@ public class SignIn extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(passwordLabel)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(accountTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(usernameField)
+                                        .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(accountTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(77, 77, 77)
                                 .addComponent(logInButton))))
@@ -156,12 +156,13 @@ public class SignIn extends javax.swing.JFrame {
                 ResultSet rs = stmt.executeQuery(query);
                 while(rs.next()) {
                     if(userpass.equals(rs.getString(1))) {
-                        System.out.println("Login successful.");
+                        JOptionPane.showMessageDialog(rootPane, "Logged in successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                         
                         // updating session details
-                        apexmotorsvms.utils.Session.setUserSignedIn(true);
-                        apexmotorsvms.utils.Session.setAccountType(accountType);
-                        apexmotorsvms.utils.Session.setUsername(username);
+                        Session.setUserSignedIn(true);
+                        Session.setAccountType(accountType);
+                        Session.setUsername(username);
+                        Session.setPassword(userpass);
                         
                         // traversing to home page and disposing this page
                         home.setVisible(true);
@@ -169,6 +170,7 @@ public class SignIn extends javax.swing.JFrame {
                     }
                 }
                 if(!apexmotorsvms.utils.Session.isUserSignedIn()) {
+                    JOptionPane.showMessageDialog(rootPane, "Failed to Login. Please check your username and/or password.", "Error", JOptionPane.ERROR_MESSAGE);
                     System.out.println("Login unsuccessful.");
                 }
             } catch (Exception e) {
@@ -178,13 +180,13 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_logInButtonActionPerformed
 
     private void signUpLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpLabelMouseClicked
-        SignUp signup = new SignUp();
+        SignUp signup = new SignUp(home);
         signup.setVisible(true);
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_signUpLabelMouseClicked
 
     private void forgotPasswordClickableLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordClickableLabelMouseClicked
-        new ForgotPassword().setVisible(true);
+        new ForgotPassword(home).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_forgotPasswordClickableLabelMouseClicked
 

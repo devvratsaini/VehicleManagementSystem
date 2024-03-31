@@ -1,11 +1,23 @@
 package apexmotorsvms;
 
 import javax.swing.JOptionPane;
+import apexmotorsvms.utils.*;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class EditProfile extends javax.swing.JFrame {
 
+    private Home home;
+    
     public EditProfile() {
         initComponents();
+    }
+    
+    public EditProfile(Home home) {
+        initComponents();
+        this.home = home;
     }
 
     @SuppressWarnings("unchecked")
@@ -135,11 +147,6 @@ public class EditProfile extends javax.swing.JFrame {
         customerIdField.setFocusable(false);
         customerIdField.setRequestFocusEnabled(false);
         customerIdField.setVerifyInputWhenFocusTarget(false);
-        customerIdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerIdFieldActionPerformed(evt);
-            }
-        });
 
         changePasswordButton.setText("Change");
         changePasswordButton.setFocusPainted(false);
@@ -343,12 +350,33 @@ public class EditProfile extends javax.swing.JFrame {
         accountTypeComboBox.setEnabled(true);
     }//GEN-LAST:event_changeAccountTypeButtonActionPerformed
 
-    private void customerIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerIdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_customerIdFieldActionPerformed
-
     private void deleteAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountButtonActionPerformed
-        DeleteAccount deleteAccount = new DeleteAccount();
+        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to delete your account?", "Confirm Account Deletion", JOptionPane.YES_NO_OPTION);
+        if (choice == 0) {
+            String confirmPassword = JOptionPane.showInputDialog(rootPane, "Enter your password", "Password Confirmation", JOptionPane.OK_CANCEL_OPTION);
+            if (confirmPassword.equals(Session.getPassword())) {
+                Connection conn =DatabaseConnectivity.connectDatabase();
+                if (conn != null) {
+                    try {
+                        Statement stmt = conn.createStatement();
+                        String query = "delete from accounts where username = '" + Session.getUsername() + "';";
+                        stmt.executeUpdate(query);
+                        
+                        // updating session details
+                        Session.setUserSignedIn(false);
+                        Session.setAccountType(null);
+                        Session.setPassword(null);
+                        Session.setUsername(null);
+                        
+                        // moving to home page and disposing this page
+                        home.setVisible(true);
+                        this.dispose();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_deleteAccountButtonActionPerformed
 
     public static void main(String args[]) {

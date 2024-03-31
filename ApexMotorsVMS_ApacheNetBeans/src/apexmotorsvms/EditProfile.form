@@ -350,9 +350,6 @@
         <Property name="requestFocusEnabled" type="boolean" value="false"/>
         <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customerIdFieldActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="changePasswordButton">
       <Properties>

@@ -8,6 +8,7 @@ public class Session {
     // instance data members
     private static String accountType = null;
     private static String username = null;
+    private static String password = null;
 
     // getters and setters
     public static boolean isUserSignedIn() {
@@ -33,6 +34,12 @@ public class Session {
     public static void setUsername(String username) {
         Session.username = username;
     }
-    
-    
+
+    public static String getPassword() {
+        return password;
+    }
+
+    public static void setPassword(String password) {
+        Session.password = password;
+    }
 }
