@@ -157,9 +157,13 @@ public class SignIn extends javax.swing.JFrame {
                 while(rs.next()) {
                     if(userpass.equals(rs.getString(1))) {
                         System.out.println("Login successful.");
-                        apexmotorsvms.utils.Session.setUserSignedIn(true);  // sets boolean signedIn as true
                         
+                        // updating session details
+                        apexmotorsvms.utils.Session.setUserSignedIn(true);
+                        apexmotorsvms.utils.Session.setAccountType(accountType);
+                        apexmotorsvms.utils.Session.setUsername(username);
                         
+                        // traversing to home page and disposing this page
                         home.setVisible(true);
                         this.dispose();
                     }

@@ -31,7 +31,7 @@
                       <Component id="usernameLabel" alignment="0" max="32767" attributes="0"/>
                       <Component id="genderLabel" alignment="0" max="32767" attributes="0"/>
                       <Component id="addressLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="accountTypeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="annualIncomeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="userProfilePicture" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -56,13 +56,13 @@
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Component id="verticalSeparator" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="warningIcon" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="customerIdLabel" max="32767" attributes="0"/>
-                                  <Component id="acountTypeLabel" alignment="0" pref="84" max="32767" attributes="0"/>
+                                  <Component id="acountTypeLabel" alignment="0" max="32767" attributes="0"/>
                                   <Component id="passwordLabel" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -98,7 +98,7 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="deleteAccountButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -118,7 +118,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="deleteAccountButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -132,7 +132,7 @@
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="warningLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="warningIcon" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -181,7 +181,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="annualIncomeField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="accountTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="annualIncomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="editAnnualIncomeButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -200,7 +200,7 @@
     <Component class="javax.swing.JLabel" name="userProfilePicture">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/apexmotorsvms/resources/profilePicture.png"/>
+          <Image iconType="3" name="/Resources/profilePicture.png"/>
         </Property>
       </Properties>
     </Component>
@@ -262,7 +262,7 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="accountTypeLabel">
+    <Component class="javax.swing.JLabel" name="annualIncomeLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Annual Income"/>
       </Properties>
@@ -397,22 +397,22 @@
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="deleteAccountButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/apexmotorsvms/resources/caution.png"/>
+          <Image iconType="3" name="/Resources/caution.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Delete Account"/>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteAccountButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="warningIcon">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/apexmotorsvms/resources/caution.png"/>
+          <Image iconType="3" name="/Resources/caution.png"/>
         </Property>
       </Properties>
     </Component>
