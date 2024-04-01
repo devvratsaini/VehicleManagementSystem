@@ -1,6 +1,6 @@
 package apexmotorsvms;
 
-import apexmotorsvms.utils.DatabaseConnectivity;
+import apexmotorsvms.utils.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,11 +8,18 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class SignUp extends javax.swing.JFrame {
-
+    
+    private Home home;
+    
     public SignUp() {
         initComponents();
     }
 
+    public SignUp(Home home) {
+        initComponents();
+        this.home = home;
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,6 +36,7 @@ public class SignUp extends javax.swing.JFrame {
         signUpButton = new javax.swing.JButton();
         emailLabel = new javax.swing.JLabel();
         emailField = new javax.swing.JTextField();
+        signInLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,7 +49,7 @@ public class SignUp extends javax.swing.JFrame {
 
         enterPasswordLabel.setText("Enter Password");
 
-        accountTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin", "Dealer", "Manufacturer", "Supplier" }));
+        accountTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin" }));
         accountTypeComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         usernameField.setToolTipText("Enter your username here");
@@ -62,6 +70,15 @@ public class SignUp extends javax.swing.JFrame {
 
         emailLabel.setText("E-Mail");
 
+        signInLabel.setForeground(new java.awt.Color(102, 153, 255));
+        signInLabel.setText("Already have an account? Sign In Here");
+        signInLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signInLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signInLabelMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,16 +98,20 @@ public class SignUp extends javax.swing.JFrame {
                                 .addComponent(reenterPasswordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(emailLabel))
                         .addGap(66, 66, 66)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(reenterPasswordField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(enterPasswordField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(accountTypeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(emailField)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(reenterPasswordField)
+                            .addComponent(emailField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(accountTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usernameField)
+                            .addComponent(enterPasswordField)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(290, 290, 290)
                         .addComponent(signUpTitleLabel)))
-                .addContainerGap(310, Short.MAX_VALUE))
+                .addGap(310, 310, 310))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(253, 253, 253)
+                .addComponent(signInLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +140,9 @@ public class SignUp extends javax.swing.JFrame {
                     .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(signUpButton)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(signInLabel)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         pack();
@@ -142,13 +165,19 @@ public class SignUp extends javax.swing.JFrame {
                 stmt.executeUpdate(query);
 
                 JOptionPane.showMessageDialog(rootPane, "Account created successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                new SignIn().setVisible(true);
+                new SignIn(home).setVisible(true);
                 this.dispose();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }//GEN-LAST:event_signUpButtonActionPerformed
+
+    private void signInLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInLabelMouseClicked
+        SignIn signin = new SignIn(home);
+        signin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_signInLabelMouseClicked
 
     public static void main(String args[]) {
         
@@ -168,6 +197,7 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel enterPasswordLabel;
     private javax.swing.JPasswordField reenterPasswordField;
     private javax.swing.JLabel reenterPasswordLabel;
+    private javax.swing.JLabel signInLabel;
     private javax.swing.JButton signUpButton;
     private javax.swing.JLabel signUpTitleLabel;
     private javax.swing.JTextField usernameField;

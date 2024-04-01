@@ -23,29 +23,35 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="profileIcon" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="191" max="32767" attributes="0"/>
-              <Component id="apexMotorsVmsTitleLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
-              <Component id="signInClickableLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-              <Component id="signUpClickableLabel" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="profileIcon" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="191" max="32767" attributes="0"/>
+                      <Component id="apexMotorsVmsTitleLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
+                      <Component id="signInClickableLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="signUpClickableLabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="carPreviewPanel3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="carPreviewPanel4" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="carPreviewPanel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="carPreviewPanel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="269" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="carPreviewPanel5" alignment="1" min="-2" pref="254" max="-2" attributes="0"/>
-                  <Component id="carPreviewPanel8" alignment="1" min="-2" pref="254" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="carPreviewPanel6" min="-2" pref="254" max="-2" attributes="0"/>
-                  <Component id="carPreviewPanel7" min="-2" pref="254" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,17 +69,17 @@
                       <Component id="signInClickableLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="91" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="carPreviewPanel5" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="carPreviewPanel6" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="carPreviewPanel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="carPreviewPanel2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="carPreviewPanel7" min="-2" max="-2" attributes="0"/>
-                  <Component id="carPreviewPanel8" min="-2" max="-2" attributes="0"/>
+                  <Component id="carPreviewPanel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carPreviewPanel4" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -118,7 +124,7 @@
     <Component class="javax.swing.JLabel" name="profileIcon">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/apexmotorsvms/resources/profileIcon.png"/>
+          <Image iconType="3" name="/Resources/profileIcon.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="username here"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -128,14 +134,17 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="profileIconMouseClicked"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="profileIcon.setVisible(false);"/>
+      </AuxValues>
     </Component>
-    <Component class="apexmotorsvms.panels.CarPreviewPanel" name="carPreviewPanel5">
+    <Component class="apexmotorsvms.panels.CarPreviewPanel" name="carPreviewPanel1">
     </Component>
-    <Component class="apexmotorsvms.panels.CarPreviewPanel" name="carPreviewPanel6">
+    <Component class="apexmotorsvms.panels.CarPreviewPanel" name="carPreviewPanel2">
     </Component>
-    <Component class="apexmotorsvms.panels.CarPreviewPanel" name="carPreviewPanel7">
+    <Component class="apexmotorsvms.panels.CarPreviewPanel" name="carPreviewPanel3">
     </Component>
-    <Component class="apexmotorsvms.panels.CarPreviewPanel" name="carPreviewPanel8">
+    <Component class="apexmotorsvms.panels.CarPreviewPanel" name="carPreviewPanel4">
     </Component>
   </SubComponents>
 </Form>

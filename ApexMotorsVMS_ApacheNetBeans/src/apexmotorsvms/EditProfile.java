@@ -1,11 +1,23 @@
 package apexmotorsvms;
 
 import javax.swing.JOptionPane;
+import apexmotorsvms.utils.*;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class EditProfile extends javax.swing.JFrame {
 
+    private Home home;
+    
     public EditProfile() {
         initComponents();
+    }
+    
+    public EditProfile(Home home) {
+        initComponents();
+        this.home = home;
     }
 
     @SuppressWarnings("unchecked")
@@ -24,7 +36,7 @@ public class EditProfile extends javax.swing.JFrame {
         genderField = new javax.swing.JTextField();
         addressField = new javax.swing.JTextField();
         annualIncomeField = new javax.swing.JTextField();
-        accountTypeLabel = new javax.swing.JLabel();
+        annualIncomeLabel = new javax.swing.JLabel();
         editNameButton = new javax.swing.JButton();
         editUsernameButton = new javax.swing.JButton();
         editGenderButton = new javax.swing.JButton();
@@ -41,12 +53,13 @@ public class EditProfile extends javax.swing.JFrame {
         accountTypeComboBox = new javax.swing.JComboBox<>();
         saveButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        deleteAccountButton = new javax.swing.JButton();
+        warningIcon = new javax.swing.JLabel();
+        signOutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        userProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apexmotorsvms/resources/profilePicture.png"))); // NOI18N
+        userProfilePicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/profilePicture.png"))); // NOI18N
 
         editProfileHeading.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         editProfileHeading.setText("Edit Profile");
@@ -71,7 +84,7 @@ public class EditProfile extends javax.swing.JFrame {
 
         annualIncomeField.setEnabled(false);
 
-        accountTypeLabel.setText("Annual Income");
+        annualIncomeLabel.setText("Annual Income");
 
         editNameButton.setText("Edit");
         editNameButton.setFocusPainted(false);
@@ -135,11 +148,6 @@ public class EditProfile extends javax.swing.JFrame {
         customerIdField.setFocusable(false);
         customerIdField.setRequestFocusEnabled(false);
         customerIdField.setVerifyInputWhenFocusTarget(false);
-        customerIdField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerIdFieldActionPerformed(evt);
-            }
-        });
 
         changePasswordButton.setText("Change");
         changePasswordButton.setFocusPainted(false);
@@ -160,16 +168,23 @@ public class EditProfile extends javax.swing.JFrame {
         resetButton.setText("Reset");
         resetButton.setFocusPainted(false);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apexmotorsvms/resources/caution.png"))); // NOI18N
-        jButton1.setText("Delete Account");
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        deleteAccountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/caution.png"))); // NOI18N
+        deleteAccountButton.setText("Delete Account");
+        deleteAccountButton.setFocusPainted(false);
+        deleteAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                deleteAccountButtonActionPerformed(evt);
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apexmotorsvms/resources/caution.png"))); // NOI18N
+        warningIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/caution.png"))); // NOI18N
+
+        signOutButton.setText("Sign Out");
+        signOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signOutButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -183,18 +198,19 @@ public class EditProfile extends javax.swing.JFrame {
                         .addComponent(usernameLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(genderLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addressLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(accountTypeLabel))
+                        .addComponent(annualIncomeLabel))
                     .addComponent(userProfilePicture))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nameField)
+                    .addComponent(usernameField)
+                    .addComponent(genderField)
+                    .addComponent(addressField)
+                    .addComponent(annualIncomeField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(signOutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nameField)
-                            .addComponent(usernameField)
-                            .addComponent(genderField)
-                            .addComponent(addressField)
-                            .addComponent(annualIncomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(editNameButton)
                             .addComponent(editAddressButton)
@@ -204,13 +220,13 @@ public class EditProfile extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addComponent(verticalSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
-                        .addComponent(jLabel2)
+                        .addComponent(warningIcon)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(customerIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(acountTypeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                                    .addComponent(acountTypeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(passwordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +250,7 @@ public class EditProfile extends javax.swing.JFrame {
                                 .addComponent(warningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(deleteAccountButton)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -248,19 +264,20 @@ public class EditProfile extends javax.swing.JFrame {
                 .addComponent(editProfileHeading)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jButton1)
-                        .addGap(49, 49, 49))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(userProfilePicture)
-                        .addGap(30, 30, 30)))
+                        .addGap(18, 18, 18)
+                        .addComponent(userProfilePicture))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deleteAccountButton)
+                            .addComponent(signOutButton))))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(warningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(warningIcon))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,7 +317,7 @@ public class EditProfile extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(annualIncomeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(accountTypeLabel)
+                            .addComponent(annualIncomeLabel)
                             .addComponent(editAnnualIncomeButton))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -343,22 +360,47 @@ public class EditProfile extends javax.swing.JFrame {
         accountTypeComboBox.setEnabled(true);
     }//GEN-LAST:event_changeAccountTypeButtonActionPerformed
 
-    private void customerIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerIdFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_customerIdFieldActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to delete your account? This cannot be undone.", "Confirm Account Deletion", JOptionPane.YES_NO_OPTION);
+    private void deleteAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountButtonActionPerformed
+        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to delete your account?", "Confirm Account Deletion", JOptionPane.YES_NO_OPTION);
         if (choice == 0) {
-            // ask for username and password again to verify and confirm
-            apexmotorsvms.utils.DatabaseConnectivity.connectDatabase();
-            try {
-                
-            } catch (Exception e) {
-                e.printStackTrace();
+            String confirmPassword = JOptionPane.showInputDialog(rootPane, "Enter your password", "Password Confirmation", JOptionPane.OK_CANCEL_OPTION);
+            if (confirmPassword.equals(Session.getPassword())) {
+                Connection conn =DatabaseConnectivity.connectDatabase();
+                if (conn != null) {
+                    try {
+                        Statement stmt = conn.createStatement();
+                        String query = "delete from accounts where username = '" + Session.getUsername() + "';";
+                        stmt.executeUpdate(query);
+                        
+                        // updating session details
+                        Session.setUserSignedIn(false);
+                        Session.setAccountType(null);
+                        Session.setPassword(null);
+                        Session.setUsername(null);
+                        
+                        // moving to home page and disposing this page
+                        home.setVisible(true);
+                        this.dispose();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_deleteAccountButtonActionPerformed
+
+    private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
+        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to Sign Out?", "Confirm Sign Out", JOptionPane.YES_NO_OPTION);
+        if (choice == 0) {
+            Session.setUserSignedIn(false);
+            Session.setAccountType(null);
+            Session.setPassword(null);
+            Session.setUsername(null);
+            home.changeToSignedOutLayout();
+            home.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_signOutButtonActionPerformed
 
     public static void main(String args[]) {
         
@@ -371,15 +413,16 @@ public class EditProfile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> accountTypeComboBox;
-    private javax.swing.JLabel accountTypeLabel;
     private javax.swing.JLabel acountTypeLabel;
     private javax.swing.JTextField addressField;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField annualIncomeField;
+    private javax.swing.JLabel annualIncomeLabel;
     private javax.swing.JButton changeAccountTypeButton;
     private javax.swing.JButton changePasswordButton;
     private javax.swing.JTextField customerIdField;
     private javax.swing.JLabel customerIdLabel;
+    private javax.swing.JButton deleteAccountButton;
     private javax.swing.JButton editAddressButton;
     private javax.swing.JButton editAnnualIncomeButton;
     private javax.swing.JButton editGenderButton;
@@ -388,18 +431,18 @@ public class EditProfile extends javax.swing.JFrame {
     private javax.swing.JButton editUsernameButton;
     private javax.swing.JTextField genderField;
     private javax.swing.JLabel genderLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton saveButton;
+    private javax.swing.JButton signOutButton;
     private javax.swing.JLabel userProfilePicture;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JSeparator verticalSeparator;
+    private javax.swing.JLabel warningIcon;
     private javax.swing.JLabel warningLabel;
     // End of variables declaration//GEN-END:variables
 }
