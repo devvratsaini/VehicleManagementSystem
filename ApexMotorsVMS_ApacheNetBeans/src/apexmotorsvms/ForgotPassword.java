@@ -1,6 +1,7 @@
 package apexmotorsvms;
 
 import apexmotorsvms.utils.DatabaseConnectivity;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -28,6 +29,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         // Check if "@" is present, occurs only once, and is not at first or last index
         return atIndex != -1 && atIndex == lastIndex && atIndex != 0 && atIndex != email.length() - 1;
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
