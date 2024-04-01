@@ -55,6 +55,7 @@ public class EditProfile extends javax.swing.JFrame {
         resetButton = new javax.swing.JButton();
         deleteAccountButton = new javax.swing.JButton();
         warningIcon = new javax.swing.JLabel();
+        signOutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -178,6 +179,13 @@ public class EditProfile extends javax.swing.JFrame {
 
         warningIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/caution.png"))); // NOI18N
 
+        signOutButton.setText("Sign Out");
+        signOutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signOutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,15 +201,16 @@ public class EditProfile extends javax.swing.JFrame {
                         .addComponent(annualIncomeLabel))
                     .addComponent(userProfilePicture))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nameField)
+                    .addComponent(usernameField)
+                    .addComponent(genderField)
+                    .addComponent(addressField)
+                    .addComponent(annualIncomeField, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(signOutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nameField)
-                            .addComponent(usernameField)
-                            .addComponent(genderField)
-                            .addComponent(addressField)
-                            .addComponent(annualIncomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(editNameButton)
                             .addComponent(editAddressButton)
@@ -255,13 +264,14 @@ public class EditProfile extends javax.swing.JFrame {
                 .addComponent(editProfileHeading)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(deleteAccountButton)
-                        .addGap(49, 49, 49))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(userProfilePicture)
-                        .addGap(30, 30, 30)))
+                        .addGap(18, 18, 18)
+                        .addComponent(userProfilePicture))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deleteAccountButton)
+                            .addComponent(signOutButton))))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -379,6 +389,19 @@ public class EditProfile extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteAccountButtonActionPerformed
 
+    private void signOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOutButtonActionPerformed
+        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to Sign Out?", "Confirm Sign Out", JOptionPane.YES_NO_OPTION);
+        if (choice == 0) {
+            Session.setUserSignedIn(false);
+            Session.setAccountType(null);
+            Session.setPassword(null);
+            Session.setUsername(null);
+            home.changeToSignedOutLayout();
+            home.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_signOutButtonActionPerformed
+
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -414,6 +437,7 @@ public class EditProfile extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton saveButton;
+    private javax.swing.JButton signOutButton;
     private javax.swing.JLabel userProfilePicture;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;

@@ -134,6 +134,9 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="profileIconMouseClicked"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="profileIcon.setVisible(false);"/>
+      </AuxValues>
     </Component>
     <Component class="apexmotorsvms.panels.CarPreviewPanel" name="carPreviewPanel1">
     </Component>

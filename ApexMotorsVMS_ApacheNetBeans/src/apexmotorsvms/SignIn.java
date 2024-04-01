@@ -165,6 +165,7 @@ public class SignIn extends javax.swing.JFrame {
                         Session.setPassword(userpass);
                         
                         // traversing to home page and disposing this page
+                        home.changeToSignedInLayout();
                         home.setVisible(true);
                         this.dispose();
                     }

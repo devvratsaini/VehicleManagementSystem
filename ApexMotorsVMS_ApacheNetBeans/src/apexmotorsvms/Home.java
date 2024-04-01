@@ -108,6 +108,8 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
+        profileIcon.setVisible(false);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -134,6 +136,19 @@ public class Home extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_signInClickableLabelMouseClicked
 
+    // methods to change visibility of some elements
+    public void changeToSignedInLayout() {
+        profileIcon.setVisible(true);
+        signInClickableLabel.setVisible(false);
+        signUpClickableLabel.setVisible(false);
+    }
+    
+    public void changeToSignedOutLayout() {
+        profileIcon.setVisible(false);
+        signInClickableLabel.setVisible(true);
+        signUpClickableLabel.setVisible(true);
+    }
+    
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
