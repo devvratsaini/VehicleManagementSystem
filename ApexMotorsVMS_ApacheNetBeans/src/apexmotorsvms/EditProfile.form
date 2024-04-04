@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -24,29 +24,34 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="271" max="-2" attributes="0"/>
+              <Component id="editProfileHeading" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="nameLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="usernameLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="genderLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="addressLabel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="annualIncomeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="userProfilePicture" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="nameField" alignment="0" max="32767" attributes="0"/>
-                  <Component id="usernameField" alignment="0" max="32767" attributes="0"/>
-                  <Component id="genderField" alignment="0" max="32767" attributes="0"/>
-                  <Component id="addressField" alignment="0" max="32767" attributes="0"/>
-                  <Component id="annualIncomeField" alignment="0" pref="120" max="32767" attributes="0"/>
-                  <Component id="signOutButton" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <Component id="userProfilePicture" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="nameLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="usernameLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="genderLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="addressLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="accountTypeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="nameField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="usernameField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="genderField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="addressField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="annualIncomeField" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="editNameButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="editAddressButton" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -54,89 +59,51 @@
                           <Component id="editUsernameButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="editGenderButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="verticalSeparator" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="warningIcon" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="warningLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="customerIdLabel" max="32767" attributes="0"/>
-                                  <Component id="acountTypeLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="passwordLabel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="acountTypeLabel" min="-2" pref="79" max="-2" attributes="0"/>
+                                  <Component id="passwordLabel" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
+                                  <Component id="customerIdLabel" pref="105" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="customerIdField" max="32767" attributes="0"/>
+                                  <Component id="passwordField" max="32767" attributes="0"/>
+                                  <Component id="accountTypeComboBox" alignment="0" pref="120" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="customerIdField" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="passwordField" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
-                                                  <Component id="accountTypeComboBox" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="saveButton" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="changePasswordButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="changeAccountTypeButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="resetButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="changePasswordButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="changeAccountTypeButton" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="warningLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="deleteAccountButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
               </Group>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="editProfileHeading" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="editProfileHeading" min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="userProfilePicture" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="deleteAccountButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="signOutButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="userProfilePicture" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="warningLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="warningIcon" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="warningLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="passwordField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -155,7 +122,7 @@
                           <Component id="customerIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="verticalSeparator" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
+                  <Component id="jSeparator1" alignment="0" min="-2" pref="228" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -184,17 +151,12 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="annualIncomeField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="annualIncomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="accountTypeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="editAnnualIncomeButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="saveButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="resetButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace pref="109" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -203,7 +165,7 @@
     <Component class="javax.swing.JLabel" name="userProfilePicture">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Resources/profilePicture.png"/>
+          <Image iconType="3" name="/apexmotorsvms/resources/profilePicture.png"/>
         </Property>
       </Properties>
     </Component>
@@ -265,7 +227,7 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="annualIncomeLabel">
+    <Component class="javax.swing.JLabel" name="accountTypeLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Annual Income"/>
       </Properties>
@@ -273,7 +235,6 @@
     <Component class="javax.swing.JButton" name="editNameButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editNameButtonActionPerformed"/>
@@ -282,7 +243,6 @@
     <Component class="javax.swing.JButton" name="editUsernameButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editUsernameButtonActionPerformed"/>
@@ -291,7 +251,6 @@
     <Component class="javax.swing.JButton" name="editGenderButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editGenderButtonActionPerformed"/>
@@ -300,7 +259,6 @@
     <Component class="javax.swing.JButton" name="editAddressButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editAddressButtonActionPerformed"/>
@@ -309,7 +267,6 @@
     <Component class="javax.swing.JButton" name="changeAccountTypeButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Change"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeAccountTypeButtonActionPerformed"/>
@@ -318,13 +275,12 @@
     <Component class="javax.swing.JButton" name="editAnnualIncomeButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editAnnualIncomeButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JSeparator" name="verticalSeparator">
+    <Component class="javax.swing.JSeparator" name="jSeparator1">
       <Properties>
         <Property name="orientation" type="int" value="1"/>
       </Properties>
@@ -357,7 +313,6 @@
     <Component class="javax.swing.JButton" name="changePasswordButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Change"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changePasswordButtonActionPerformed"/>
@@ -384,45 +339,6 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
-    </Component>
-    <Component class="javax.swing.JButton" name="saveButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Save"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="resetButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Reset"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="deleteAccountButton">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Resources/caution.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Delete Account"/>
-        <Property name="focusPainted" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteAccountButtonActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="warningIcon">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Resources/caution.png"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="signOutButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Sign Out"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signOutButtonActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

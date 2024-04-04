@@ -1,4 +1,4 @@
-package apexmotorsvms;
+package apexmotorsvms.utils;
 
 public class DatabaseCredentials {
     private static String uname = "root";

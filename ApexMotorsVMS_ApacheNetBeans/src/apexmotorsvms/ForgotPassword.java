@@ -1,33 +1,16 @@
 package apexmotorsvms;
 
-import apexmotorsvms.utils.DatabaseConnectivity;
-
+import apexmotorsvms.utils.DatabaseCredentials;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class ForgotPassword extends javax.swing.JFrame {
-    private String foundUsername;
-    private Home home;
-    
+
     public ForgotPassword() {
         initComponents();
-    }
-    
-    public ForgotPassword(Home home) {
-        initComponents();
-        this.home = home;
-    }
-    
-    public static boolean checkEmailFormat(String email) {
-        int atIndex = email.indexOf('@');
-        int lastIndex = email.lastIndexOf('@');
-
-        // Check if "@" is present, occurs only once, and is not at first or last index
-        return atIndex != -1 && atIndex == lastIndex && atIndex != 0 && atIndex != email.length() - 1;
     }
 
     @SuppressWarnings("unchecked")
@@ -41,14 +24,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         emailField = new javax.swing.JTextField();
         accountTypeLabel = new javax.swing.JLabel();
         accountTypeComboBox = new javax.swing.JComboBox<>();
-        verifyButton = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        newPasswordLabel = new javax.swing.JLabel();
-        reenterNewPasswordLabel = new javax.swing.JLabel();
-        newPasswordjPasswordField = new javax.swing.JPasswordField();
-        reenterNewPasswordjPasswordField = new javax.swing.JPasswordField();
-        ResetButton = new javax.swing.JButton();
-        showPasswordCheckBox = new javax.swing.JCheckBox();
+        submitButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,11 +35,6 @@ public class ForgotPassword extends javax.swing.JFrame {
 
         emailLabel.setText("E-Mail");
 
-        emailField.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                emailFieldCaretUpdate(evt);
-            }
-        });
         emailField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailFieldActionPerformed(evt);
@@ -74,30 +45,10 @@ public class ForgotPassword extends javax.swing.JFrame {
 
         accountTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Customer", "Admin", "Dealer", "Manufacturer", "Supplier" }));
 
-        verifyButton.setText("Verify");
-        verifyButton.addActionListener(new java.awt.event.ActionListener() {
+        submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verifyButtonActionPerformed(evt);
-            }
-        });
-
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        newPasswordLabel.setText("Enter New Password:");
-
-        reenterNewPasswordLabel.setText("Re-enter new password:");
-
-        ResetButton.setText("Reset");
-        ResetButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ResetButtonActionPerformed(evt);
-            }
-        });
-
-        showPasswordCheckBox.setText("Show Password");
-        showPasswordCheckBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showPasswordCheckBoxActionPerformed(evt);
+                submitButtonActionPerformed(evt);
             }
         });
 
@@ -106,176 +57,84 @@ public class ForgotPassword extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(accountTypeLabel)
-                    .addComponent(usernameLabel)
-                    .addComponent(emailLabel))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(forgotPasswordTitleLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(74, 74, 74)
-                                    .addComponent(accountTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(usernameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(emailField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(verifyButton)))
-                        .addGap(79, 79, 79)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(265, 265, 265)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newPasswordLabel)
-                                    .addComponent(reenterNewPasswordLabel))
-                                .addGap(43, 43, 43)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(newPasswordjPasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                                    .addComponent(reenterNewPasswordjPasswordField))
-                                .addGap(18, 18, 18)
-                                .addComponent(showPasswordCheckBox, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addComponent(ResetButton)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                    .addComponent(usernameLabel)
+                                    .addComponent(emailLabel)
+                                    .addComponent(accountTypeLabel))
+                                .addGap(71, 71, 71)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(accountTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(forgotPasswordTitleLabel)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(351, 351, 351)
+                        .addComponent(submitButton)))
+                .addContainerGap(269, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(forgotPasswordTitleLabel)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(accountTypeLabel)
-                            .addComponent(accountTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(usernameLabel)
-                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(emailLabel)
-                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addComponent(verifyButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(newPasswordLabel)
-                            .addComponent(newPasswordjPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(showPasswordCheckBox))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(reenterNewPasswordjPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(reenterNewPasswordLabel))
-                        .addGap(48, 48, 48)
-                        .addComponent(ResetButton)))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addGap(89, 89, 89)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(accountTypeLabel)
+                    .addComponent(accountTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(usernameLabel)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLabel)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(submitButton)
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void emailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailFieldActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_emailFieldActionPerformed
 
-    private void verifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyButtonActionPerformed
-        Connection conn = DatabaseConnectivity.connectDatabase();
-        if (conn != null) {
-            try {
-                String accountType = String.valueOf(accountTypeComboBox.getSelectedItem());
-                String username = usernameField.getText();
-                String email = emailField.getText();
-                String query = "SELECT username FROM accounts WHERE accounttype = ? AND username = ? AND email = ?";
-
-                try (PreparedStatement pstmt = conn.prepareStatement(query)) {
-                    pstmt.setString(1, accountType);
-                    pstmt.setString(2, username);
-                    pstmt.setString(3, email);
-
-                    ResultSet rs = pstmt.executeQuery();
-
-                    if (rs.next()) {
-                        foundUsername = rs.getString("username");
-                    } else {
-                        JOptionPane.showMessageDialog(rootPane, "Invalid username, email, and/or account type!");
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(DatabaseCredentials.getUrl(),
+                    DatabaseCredentials.getUname(), DatabaseCredentials.getPass());
+            System.out.println("Connection successfully established");
+            Statement stmt = conn.createStatement();
+            String accountType = String.valueOf(accountTypeComboBox.getSelectedItem());
+            String username = usernameField.getText();
+            String email = emailField.getText();
+            String query = "select accountid from accounts where accounttype = '" 
+                    + accountType + "' and username = '" + username + "' and email = '" + email + "';";
+            ResultSet rs = stmt.executeQuery(query);
+            if(rs.next()) {
+                new ResetPassword().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Invalid username and/or email!");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }//GEN-LAST:event_verifyButtonActionPerformed
+    }//GEN-LAST:event_submitButtonActionPerformed
 
-    private void ResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetButtonActionPerformed
-        Connection conn =DatabaseConnectivity.connectDatabase();
-        if (conn != null) {
-            try {
-                String userpass1 = String.valueOf(newPasswordjPasswordField.getPassword());
-                String userpass2 = String.valueOf(reenterNewPasswordjPasswordField.getPassword());
-                String username = String.valueOf(foundUsername);
-                if (userpass1.equals(userpass2)) {
-                    // SQL statement to update password
-                    String sql = "UPDATE accounts SET password = ? WHERE username = ?";
-                    try (PreparedStatement statement = conn.prepareStatement(sql)) {
-                        // Set parameters
-                        statement.setString(1, userpass1);
-                        statement.setString(2, username); // Using the passed username
-
-                        // Execute the statement
-                        int rowsUpdated = statement.executeUpdate();
-                        if (rowsUpdated > 0) {
-                            JOptionPane.showMessageDialog(null, "Password updated successfully!");
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Failed to update password!");
-                        }
-                    } catch (SQLException ex) {
-                        JOptionPane.showMessageDialog(null, "Error executing SQL statement!");
-                        ex.printStackTrace();
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Passwords do not match!");
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }//GEN-LAST:event_ResetButtonActionPerformed
-
-    private void showPasswordCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordCheckBoxActionPerformed
-        if(showPasswordCheckBox.isSelected()){
-            newPasswordjPasswordField.setEchoChar((char)0);
-        } else{
-            newPasswordjPasswordField.setEchoChar('*');
-        }
-    }//GEN-LAST:event_showPasswordCheckBoxActionPerformed
-
-    private void emailFieldCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_emailFieldCaretUpdate
-        String email = emailField.getText();
-        if (checkEmailFormat(email)) {
-            System.out.println("Email format is correct.");
-        } else {
-            System.out.println("Email format is incorrect.");
-        }
-    }//GEN-LAST:event_emailFieldCaretUpdate
-
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ForgotPassword().setVisible(true);
@@ -284,20 +143,13 @@ public class ForgotPassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ResetButton;
     private javax.swing.JComboBox<String> accountTypeComboBox;
     private javax.swing.JLabel accountTypeLabel;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel forgotPasswordTitleLabel;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel newPasswordLabel;
-    private javax.swing.JPasswordField newPasswordjPasswordField;
-    private javax.swing.JLabel reenterNewPasswordLabel;
-    private javax.swing.JPasswordField reenterNewPasswordjPasswordField;
-    private javax.swing.JCheckBox showPasswordCheckBox;
+    private javax.swing.JButton submitButton;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
-    private javax.swing.JButton verifyButton;
     // End of variables declaration//GEN-END:variables
 }
