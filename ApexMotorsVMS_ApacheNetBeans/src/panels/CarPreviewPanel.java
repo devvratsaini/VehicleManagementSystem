@@ -1,10 +1,11 @@
 package panels;
 
+import apexmotorsvms.CarDetails;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class CarPreviewPanel extends javax.swing.JPanel {
-
+    
     public CarPreviewPanel(){
         initComponents();
     }
@@ -52,6 +53,11 @@ public class CarPreviewPanel extends javax.swing.JPanel {
 
         chooseButton.setText("Choose");
         chooseButton.setFocusPainted(false);
+        chooseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,6 +79,10 @@ public class CarPreviewPanel extends javax.swing.JPanel {
 
         add(jPanel1);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void chooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseButtonActionPerformed
+        
+    }//GEN-LAST:event_chooseButtonActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

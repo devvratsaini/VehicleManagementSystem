@@ -18,8 +18,8 @@ public class Home extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        carPreviewPanel2 = new panels.CarPreviewPanel("/resources/cars/911gt3rs.png","Porsche 911 GT3 RS");
-        carPreviewPanel1 = new panels.CarPreviewPanel();
+        carPreviewPanel2 = new panels.CarPreviewPanel("/resources/cars/Ford Aspire.jpeg","Ford Aspire");
+        carPreviewPanel1 = new panels.CarPreviewPanel("/resources/cars/Ford EcoSport.jpeg", "Ford EcoSport");
         carPreviewPanel3 = new panels.CarPreviewPanel();
         carPreviewPanel4 = new panels.CarPreviewPanel();
         carPreviewPanel5 = new panels.CarPreviewPanel();
@@ -163,10 +163,12 @@ public class Home extends javax.swing.JFrame {
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(exitClickable)
-                        .addComponent(signInUpOut_Clickable, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(signInUpOut_Clickable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profileLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(titlePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(exitClickable, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(titlePanelLayout.createSequentialGroup()

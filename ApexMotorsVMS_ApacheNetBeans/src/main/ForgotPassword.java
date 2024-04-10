@@ -28,6 +28,8 @@ public class ForgotPassword extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
         forgotPasswordTitle = new javax.swing.JLabel();
+        exitClickable = new javax.swing.JLabel();
+        backClickable = new javax.swing.JLabel();
         verifyPanel = new javax.swing.JPanel();
         usernameLabel = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
@@ -51,20 +53,44 @@ public class ForgotPassword extends javax.swing.JFrame {
         forgotPasswordTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         forgotPasswordTitle.setText("FORGOT PASSWORD");
 
+        exitClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Close Window.png"))); // NOI18N
+        exitClickable.setToolTipText("");
+        exitClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exitClickable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitClickableMouseClicked(evt);
+            }
+        });
+
+        backClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/back.png"))); // NOI18N
+        backClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backClickable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backClickableMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
+                .addContainerGap()
+                .addComponent(backClickable)
+                .addGap(251, 251, 251)
                 .addComponent(forgotPasswordTitle)
-                .addContainerGap(281, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                .addComponent(exitClickable)
+                .addContainerGap())
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(forgotPasswordTitle)
+                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backClickable)
+                    .addComponent(exitClickable)
+                    .addComponent(forgotPasswordTitle))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
@@ -303,6 +329,15 @@ public class ForgotPassword extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
+    private void exitClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitClickableMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitClickableMouseClicked
+
+    private void backClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backClickableMouseClicked
+        signInUp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backClickableMouseClicked
+
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -313,12 +348,14 @@ public class ForgotPassword extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backClickable;
     private javax.swing.JPanel bg;
     private javax.swing.JPasswordField confPassField;
     private javax.swing.JLabel confPassLabel;
     private javax.swing.JLabel confPassShowIcon;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel exitClickable;
     private javax.swing.JLabel forgotPasswordTitle;
     private javax.swing.JPasswordField newPasswordField;
     private javax.swing.JLabel newPasswordLabel;

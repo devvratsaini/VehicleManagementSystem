@@ -29,6 +29,7 @@ public class SignInUp extends javax.swing.JFrame {
         signInPanel = new javax.swing.JPanel();
         signInTitlePanel = new javax.swing.JPanel();
         signInTitle = new javax.swing.JLabel();
+        backClickable = new javax.swing.JLabel();
         signInDetailsPanel = new javax.swing.JPanel();
         usernameSignInLabel = new javax.swing.JLabel();
         usernameSignInField = new javax.swing.JTextField();
@@ -38,6 +39,7 @@ public class SignInUp extends javax.swing.JFrame {
         forgotPasswordClickable = new javax.swing.JLabel();
         signUpTitlePanel = new javax.swing.JPanel();
         signUpTitle = new javax.swing.JLabel();
+        exitClickable = new javax.swing.JLabel();
         SignUpDetailsPanel = new javax.swing.JPanel();
         usernameSignUpLabel = new javax.swing.JLabel();
         emailSignUpField = new javax.swing.JTextField();
@@ -61,19 +63,33 @@ public class SignInUp extends javax.swing.JFrame {
         signInTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         signInTitle.setText("SIGN IN");
 
+        backClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/back.png"))); // NOI18N
+        backClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backClickable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backClickableMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout signInTitlePanelLayout = new javax.swing.GroupLayout(signInTitlePanel);
         signInTitlePanel.setLayout(signInTitlePanelLayout);
         signInTitlePanelLayout.setHorizontalGroup(
             signInTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signInTitlePanelLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(signInTitle)
+                .addGroup(signInTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(signInTitlePanelLayout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addComponent(signInTitle))
+                    .addGroup(signInTitlePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backClickable)))
                 .addContainerGap(155, Short.MAX_VALUE))
         );
         signInTitlePanelLayout.setVerticalGroup(
             signInTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signInTitlePanelLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(backClickable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(signInTitle)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
@@ -150,6 +166,15 @@ public class SignInUp extends javax.swing.JFrame {
         signUpTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         signUpTitle.setText("SIGN UP");
 
+        exitClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Close Window.png"))); // NOI18N
+        exitClickable.setToolTipText("");
+        exitClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exitClickable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitClickableMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout signUpTitlePanelLayout = new javax.swing.GroupLayout(signUpTitlePanel);
         signUpTitlePanel.setLayout(signUpTitlePanelLayout);
         signUpTitlePanelLayout.setHorizontalGroup(
@@ -158,11 +183,15 @@ public class SignInUp extends javax.swing.JFrame {
                 .addGap(154, 154, 154)
                 .addComponent(signUpTitle)
                 .addContainerGap(134, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signUpTitlePanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(exitClickable))
         );
         signUpTitlePanelLayout.setVerticalGroup(
             signUpTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signUpTitlePanelLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(exitClickable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(signUpTitle)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
@@ -351,6 +380,15 @@ public class SignInUp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_signUpButtonActionPerformed
 
+    private void backClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backClickableMouseClicked
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backClickableMouseClicked
+
+    private void exitClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitClickableMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitClickableMouseClicked
+
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -362,11 +400,13 @@ public class SignInUp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel SignUpDetailsPanel;
+    private javax.swing.JLabel backClickable;
     private javax.swing.JPanel bg;
     private javax.swing.JPasswordField confPassSignUpField;
     private javax.swing.JLabel confPassSignUpLabel;
     private javax.swing.JTextField emailSignUpField;
     private javax.swing.JLabel emailSignUpLabel;
+    private javax.swing.JLabel exitClickable;
     private javax.swing.JLabel forgotPasswordClickable;
     private javax.swing.JPasswordField passwordSignInField;
     private javax.swing.JLabel passwordSignInLabel;

@@ -126,10 +126,13 @@
               <SubComponents>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel2">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;/resources/cars/911gt3rs.png&quot;,&quot;Porsche 911 GT3 RS&quot;)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;/resources/cars/Ford Aspire.jpeg&quot;,&quot;Ford Aspire&quot;)"/>
                   </AuxValues>
                 </Component>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel1">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;/resources/cars/Ford EcoSport.jpeg&quot;, &quot;Ford EcoSport&quot;)"/>
+                  </AuxValues>
                 </Component>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel3">
                 </Component>
@@ -184,12 +187,14 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="exitClickable" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="signInUpOut_Clickable" min="-2" pref="25" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="signInUpOut_Clickable" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="profileLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="exitClickable" min="-2" pref="24" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">

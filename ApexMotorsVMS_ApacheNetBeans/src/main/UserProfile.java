@@ -32,7 +32,8 @@ public class UserProfile extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
         userProfileTitle = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        backClickable = new javax.swing.JLabel();
+        exitClickable = new javax.swing.JLabel();
         profileHeaderPanel = new javax.swing.JPanel();
         deleteAccountButton = new javax.swing.JButton();
         profileIcon = new javax.swing.JLabel();
@@ -72,11 +73,20 @@ public class UserProfile extends javax.swing.JFrame {
         userProfileTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         userProfileTitle.setText("USER PROFILE");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/back.png"))); // NOI18N
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        backClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/back.png"))); // NOI18N
+        backClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backClickable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                backClickableMouseClicked(evt);
+            }
+        });
+
+        exitClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Close Window.png"))); // NOI18N
+        exitClickable.setToolTipText("");
+        exitClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exitClickable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitClickableMouseClicked(evt);
             }
         });
 
@@ -86,18 +96,22 @@ public class UserProfile extends javax.swing.JFrame {
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(backClickable)
                 .addGap(290, 290, 290)
                 .addComponent(userProfileTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(exitClickable)
+                .addContainerGap())
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(userProfileTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(exitClickable)
+                    .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(backClickable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(userProfileTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -436,10 +450,14 @@ public class UserProfile extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editPasswordButtonActionPerformed
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void backClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backClickableMouseClicked
         home.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_backClickableMouseClicked
+
+    private void exitClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitClickableMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_exitClickableMouseClicked
 
     public static void main(String args[]) {
         
@@ -459,6 +477,7 @@ public class UserProfile extends javax.swing.JFrame {
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField annualIncomeField;
     private javax.swing.JLabel annualIncomeLabel;
+    private javax.swing.JLabel backClickable;
     private javax.swing.JPanel bg;
     private javax.swing.JTextField customerIdField;
     private javax.swing.JLabel customerIdLabel;
@@ -469,9 +488,9 @@ public class UserProfile extends javax.swing.JFrame {
     private javax.swing.JButton editNameButton;
     private javax.swing.JButton editPasswordButton;
     private javax.swing.JButton editUsernameButton;
+    private javax.swing.JLabel exitClickable;
     private javax.swing.JTextField genderField;
     private javax.swing.JLabel genderLabel;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
