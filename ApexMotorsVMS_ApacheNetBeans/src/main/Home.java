@@ -1,14 +1,21 @@
 package main;
 
 import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import utils.Session;
+import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Point;
 
 public class Home extends javax.swing.JFrame {
 
+    int posX, posY;
+    
     public Home() {
         initComponents();
+        addDragListeners();
     }
 
     @SuppressWarnings("unchecked")
@@ -18,15 +25,15 @@ public class Home extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        carPreviewPanel2 = new panels.CarPreviewPanel("/resources/cars/Ford Aspire.jpeg","Ford Aspire");
-        carPreviewPanel1 = new panels.CarPreviewPanel("/resources/cars/Ford EcoSport.jpeg", "Ford EcoSport");
-        carPreviewPanel3 = new panels.CarPreviewPanel();
-        carPreviewPanel4 = new panels.CarPreviewPanel();
-        carPreviewPanel5 = new panels.CarPreviewPanel();
-        carPreviewPanel6 = new panels.CarPreviewPanel();
-        carPreviewPanel7 = new panels.CarPreviewPanel();
-        carPreviewPanel8 = new panels.CarPreviewPanel();
-        carPreviewPanel9 = new panels.CarPreviewPanel();
+        carPreviewPanel2 = new panels.CarPreviewPanel("Ford Aspire");
+        carPreviewPanel1 = new panels.CarPreviewPanel("Ford EcoSport");
+        carPreviewPanel3 = new panels.CarPreviewPanel("Ford Figo");
+        carPreviewPanel4 = new panels.CarPreviewPanel("Ford Mustang");
+        carPreviewPanel5 = new panels.CarPreviewPanel("Maruti Suzuki Baleno");
+        carPreviewPanel6 = new panels.CarPreviewPanel("Maruti Suzuki Ciaz");
+        carPreviewPanel7 = new panels.CarPreviewPanel("Maruti Suzuki Swift Dzire");
+        carPreviewPanel8 = new panels.CarPreviewPanel("Maruti Suzuki Swift");
+        carPreviewPanel9 = new panels.CarPreviewPanel("Maruti Suzuki Vitara Brezza");
         titlePanel = new javax.swing.JPanel();
         profileLabel = new javax.swing.JLabel();
         signInUpOut_Clickable = new javax.swing.JLabel();
@@ -37,8 +44,10 @@ public class Home extends javax.swing.JFrame {
         setUndecorated(true);
 
         bg.setBackground(new java.awt.Color(204, 204, 204));
+        bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jScrollPane1.setBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane1.setBorder(null);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -67,7 +76,7 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(carPreviewPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(carPreviewPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,10 +109,12 @@ public class Home extends javax.swing.JFrame {
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
         );
 
         getContentPane().add(bg, java.awt.BorderLayout.CENTER);
+
+        titlePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 0, 1, new java.awt.Color(0, 0, 0)));
 
         profileLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/UserProfile.png"))); // NOI18N
         profileLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -127,7 +138,6 @@ public class Home extends javax.swing.JFrame {
         });
 
         exitClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Close Window.png"))); // NOI18N
-        exitClickable.setToolTipText("");
         exitClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitClickable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -213,6 +223,31 @@ public class Home extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitClickableMouseClicked
 
+    private void addDragListeners() {
+        
+        titlePanel.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
+                posX = evt.getX();
+                posY = evt.getY();
+            }
+        });
+
+        titlePanel.addMouseMotionListener(new MouseAdapter() {
+            public void mouseDragged(MouseEvent evt) {
+                // Get the current position of the mouse
+                int newX = evt.getXOnScreen();
+                int newY = evt.getYOnScreen();
+
+                // Set the frame's location to its current location plus the new position of the mouse minus the position of the mouse when it was pressed
+                setLocation(newX - posX, newY - posY);
+            }
+        });
+    }
+    
+    public Point getFrameLocation() {
+        return this.getLocation();
+    }
+    
     public void changeToSignedIn() {
         profileLabel.setText(Session.getUsername());
         signInUpOut_Clickable.setText("  SIGN OUT ");
@@ -237,11 +272,11 @@ public class Home extends javax.swing.JFrame {
     
     public static void main(String args[]) {
         
-        // setting cross-platform look and feel
+        // setting FlatLaf Light theme
         try {
-            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-        } catch (Exception e) {
-            e.printStackTrace();
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize FlatLaf");
         }
         
         // creating and showing the GUI

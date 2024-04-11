@@ -1,22 +1,31 @@
 package main;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import utils.*;
 import java.sql.Connection;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 public class UserProfile extends javax.swing.JFrame {
 
     private Home home;
+    int posX, posY;
     
     public UserProfile() {
         initComponents();
+        addDragListeners();
     }
     
     public UserProfile(Home home) {
         initComponents();
         this.home = home;
+        this.setLocation(home.getFrameLocation());
         initDetails();
+        addDragListeners();
     }
 
     private void initDetails() {
@@ -68,7 +77,14 @@ public class UserProfile extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
+
+        bg.setBackground(new java.awt.Color(232, 232, 232));
+        bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        titlePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         userProfileTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         userProfileTitle.setText("USER PROFILE");
@@ -82,7 +98,6 @@ public class UserProfile extends javax.swing.JFrame {
         });
 
         exitClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Close Window.png"))); // NOI18N
-        exitClickable.setToolTipText("");
         exitClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitClickable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -107,13 +122,15 @@ public class UserProfile extends javax.swing.JFrame {
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(exitClickable)
-                    .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(backClickable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(userProfileTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(backClickable)
+                    .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(userProfileTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(exitClickable, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
+
+        profileHeaderPanel.setBackground(new java.awt.Color(232, 232, 232));
 
         deleteAccountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Warning.png"))); // NOI18N
         deleteAccountButton.setText("Delete Account");
@@ -149,26 +166,32 @@ public class UserProfile extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        accountDetailsPanel1.setBackground(new java.awt.Color(232, 232, 232));
         accountDetailsPanel1.setPreferredSize(new java.awt.Dimension(395, 362));
 
         nameLabel.setText("Name");
 
+        nameField.setBackground(new java.awt.Color(232, 232, 232));
         nameField.setEnabled(false);
 
         usernameLabel.setText("Username");
 
+        usernameField.setBackground(new java.awt.Color(232, 232, 232));
         usernameField.setEnabled(false);
 
         genderLabel.setText("Gender");
 
+        genderField.setBackground(new java.awt.Color(232, 232, 232));
         genderField.setEnabled(false);
 
         addressLabel.setText("Address");
 
+        addressField.setBackground(new java.awt.Color(232, 232, 232));
         addressField.setEnabled(false);
 
         annualIncomeLabel.setText("Annual Income");
 
+        annualIncomeField.setBackground(new java.awt.Color(232, 232, 232));
         annualIncomeField.setEnabled(false);
 
         editNameButton.setText("Edit");
@@ -265,9 +288,10 @@ public class UserProfile extends javax.swing.JFrame {
                 .addGroup(accountDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(annualIncomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editAnnualIncomeButton))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
+        accountDetailsPanel2.setBackground(new java.awt.Color(232, 232, 232));
         accountDetailsPanel2.setPreferredSize(new java.awt.Dimension(395, 362));
 
         warningLabel.setText("<html><i>The below options need special attention before editing.<br>Unwanted changes may have undesirable outcomes.<br>Please contact support in case you need help.</i></html>");
@@ -276,6 +300,7 @@ public class UserProfile extends javax.swing.JFrame {
 
         passwordLabel.setText("Password");
 
+        passwordField.setBackground(new java.awt.Color(232, 232, 232));
         passwordField.setEnabled(false);
 
         editPasswordButton.setText("Change");
@@ -287,10 +312,12 @@ public class UserProfile extends javax.swing.JFrame {
 
         accountTypeLabel.setText("Account Type");
 
+        accountTypeField.setBackground(new java.awt.Color(232, 232, 232));
         accountTypeField.setEnabled(false);
 
         customerIdLabel.setText("Customer ID");
 
+        customerIdField.setBackground(new java.awt.Color(232, 232, 232));
         customerIdField.setEnabled(false);
 
         saveButton.setText("Save");
@@ -352,7 +379,7 @@ public class UserProfile extends javax.swing.JFrame {
                 .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
                     .addComponent(resetButton))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -362,6 +389,7 @@ public class UserProfile extends javax.swing.JFrame {
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(accountDetailsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -374,18 +402,17 @@ public class UserProfile extends javax.swing.JFrame {
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(profileHeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(accountDetailsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(accountDetailsPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                        .addComponent(accountDetailsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addComponent(accountDetailsPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))))
         );
 
         getContentPane().add(bg);
@@ -398,7 +425,7 @@ public class UserProfile extends javax.swing.JFrame {
         if (choice == 0) {
             String confirmPassword = JOptionPane.showInputDialog(rootPane, "Enter your password", "Confirm Password", JOptionPane.YES_NO_OPTION);
             if (confirmPassword.equals(Session.getPassword())) {
-                Connection conn =DatabaseConnectivity.connectDatabase();
+                Connection conn = DatabaseConnectivity.connectDatabase();
                 if (conn != null) {
                     try {
                         Statement stmt = conn.createStatement();
@@ -412,6 +439,7 @@ public class UserProfile extends javax.swing.JFrame {
                         
                         // moving to home page and disposing this page
                         home.changeToSignedOut();
+                        home.setLocation(this.getFrameLocation());
                         home.setVisible(true);
                         this.dispose();
                     } catch (Exception e) {
@@ -451,6 +479,7 @@ public class UserProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_editPasswordButtonActionPerformed
 
     private void backClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backClickableMouseClicked
+        home.setLocation(this.getFrameLocation());
         home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backClickableMouseClicked
@@ -459,7 +488,39 @@ public class UserProfile extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitClickableMouseClicked
 
+    private void addDragListeners() {
+        
+        titlePanel.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
+                posX = evt.getX();
+                posY = evt.getY();
+            }
+        });
+
+        titlePanel.addMouseMotionListener(new MouseAdapter() {
+            public void mouseDragged(MouseEvent evt) {
+                // Get the current position of the mouse
+                int newX = evt.getXOnScreen();
+                int newY = evt.getYOnScreen();
+
+                // Set the frame's location to its current location plus the new position of the mouse minus the position of the mouse when it was pressed
+                setLocation(newX - posX, newY - posY);
+            }
+        });
+    }
+    
+    public Point getFrameLocation() {
+        return this.getLocation();
+    }
+    
     public static void main(String args[]) {
+        
+        // setting FlatLaf Light theme
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize FlatLaf");
+        }
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

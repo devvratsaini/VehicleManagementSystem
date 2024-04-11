@@ -1,24 +1,33 @@
 package main;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import utils.DatabaseConnectivity;
 import utils.Session;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import utils.AccountValidationUtils;
 
 public class SignInUp extends javax.swing.JFrame {
 
     private Home home;
+    int posX, posY;
     
     public SignInUp() {
         initComponents();
+        addDragListeners();
     }
     
     public SignInUp(Home home) {
         initComponents();
         this.home = home;
+        this.setLocation(home.getFrameLocation());
+        addDragListeners();
     }
 
     @SuppressWarnings("unchecked")
@@ -29,7 +38,6 @@ public class SignInUp extends javax.swing.JFrame {
         signInPanel = new javax.swing.JPanel();
         signInTitlePanel = new javax.swing.JPanel();
         signInTitle = new javax.swing.JLabel();
-        backClickable = new javax.swing.JLabel();
         signInDetailsPanel = new javax.swing.JPanel();
         usernameSignInLabel = new javax.swing.JLabel();
         usernameSignInField = new javax.swing.JTextField();
@@ -39,7 +47,6 @@ public class SignInUp extends javax.swing.JFrame {
         forgotPasswordClickable = new javax.swing.JLabel();
         signUpTitlePanel = new javax.swing.JPanel();
         signUpTitle = new javax.swing.JLabel();
-        exitClickable = new javax.swing.JLabel();
         SignUpDetailsPanel = new javax.swing.JPanel();
         usernameSignUpLabel = new javax.swing.JLabel();
         emailSignUpField = new javax.swing.JTextField();
@@ -50,11 +57,17 @@ public class SignInUp extends javax.swing.JFrame {
         confPassSignUpLabel = new javax.swing.JLabel();
         emailSignUpLabel = new javax.swing.JLabel();
         usernameSignUpField = new javax.swing.JTextField();
+        titlePanel = new javax.swing.JPanel();
+        exitClickable = new javax.swing.JLabel();
+        apexMotorsTitle = new javax.swing.JLabel();
+        backClickable = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         bg.setBackground(new java.awt.Color(232, 232, 232));
+        bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         signInPanel.setPreferredSize(new java.awt.Dimension(400, 500));
 
@@ -63,35 +76,21 @@ public class SignInUp extends javax.swing.JFrame {
         signInTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         signInTitle.setText("SIGN IN");
 
-        backClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/back.png"))); // NOI18N
-        backClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        backClickable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backClickableMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout signInTitlePanelLayout = new javax.swing.GroupLayout(signInTitlePanel);
         signInTitlePanel.setLayout(signInTitlePanelLayout);
         signInTitlePanelLayout.setHorizontalGroup(
             signInTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signInTitlePanelLayout.createSequentialGroup()
-                .addGroup(signInTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(signInTitlePanelLayout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(signInTitle))
-                    .addGroup(signInTitlePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backClickable)))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addGap(155, 155, 155)
+                .addComponent(signInTitle)
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         signInTitlePanelLayout.setVerticalGroup(
             signInTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signInTitlePanelLayout.createSequentialGroup()
-                .addComponent(backClickable)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+            .addGroup(signInTitlePanelLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addComponent(signInTitle)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         signInPanel.add(signInTitlePanel);
@@ -166,34 +165,21 @@ public class SignInUp extends javax.swing.JFrame {
         signUpTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         signUpTitle.setText("SIGN UP");
 
-        exitClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Close Window.png"))); // NOI18N
-        exitClickable.setToolTipText("");
-        exitClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        exitClickable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                exitClickableMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout signUpTitlePanelLayout = new javax.swing.GroupLayout(signUpTitlePanel);
         signUpTitlePanel.setLayout(signUpTitlePanelLayout);
         signUpTitlePanelLayout.setHorizontalGroup(
             signUpTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signUpTitlePanelLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
+                .addGap(149, 149, 149)
                 .addComponent(signUpTitle)
-                .addContainerGap(134, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signUpTitlePanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exitClickable))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         signUpTitlePanelLayout.setVerticalGroup(
             signUpTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signUpTitlePanelLayout.createSequentialGroup()
-                .addComponent(exitClickable)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+            .addGroup(signUpTitlePanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addComponent(signUpTitle)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         SignUpDetailsPanel.setBackground(new java.awt.Color(232, 232, 232));
@@ -261,6 +247,59 @@ public class SignInUp extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
+        titlePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+
+        exitClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Close Window.png"))); // NOI18N
+        exitClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        exitClickable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exitClickableMouseClicked(evt);
+            }
+        });
+
+        apexMotorsTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        apexMotorsTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Car.png"))); // NOI18N
+        apexMotorsTitle.setText("APEX MOTORS");
+        apexMotorsTitle.setToolTipText("");
+
+        backClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/back.png"))); // NOI18N
+        backClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backClickable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backClickableMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
+        titlePanel.setLayout(titlePanelLayout);
+        titlePanelLayout.setHorizontalGroup(
+            titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titlePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(backClickable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
+                .addComponent(apexMotorsTitle)
+                .addGap(288, 288, 288)
+                .addComponent(exitClickable)
+                .addGap(11, 11, 11))
+        );
+        titlePanelLayout.setVerticalGroup(
+            titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titlePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(titlePanelLayout.createSequentialGroup()
+                        .addComponent(backClickable)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(titlePanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(apexMotorsTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(titlePanelLayout.createSequentialGroup()
+                        .addComponent(exitClickable, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
@@ -269,23 +308,22 @@ public class SignInUp extends javax.swing.JFrame {
                 .addComponent(signInPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(signUpTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 4, Short.MAX_VALUE))
-                    .addComponent(SignUpDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(SignUpDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+                    .addComponent(signUpTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)))
+            .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
-                .addComponent(signInPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(bgLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(signUpTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SignUpDetailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addComponent(signUpTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SignUpDetailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(54, Short.MAX_VALUE))
+                    .addComponent(signInPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
 
         getContentPane().add(bg);
@@ -314,8 +352,9 @@ public class SignInUp extends javax.swing.JFrame {
                         Session.setPassword(userpass);
                         
                         // traversing to home page and disposing this page
-                        home.setVisible(true);
+                        home.setLocation(this.getFrameLocation());
                         home.changeToSignedIn();
+                        home.setVisible(true);
                         this.dispose();
                     }
                 }
@@ -380,16 +419,49 @@ public class SignInUp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_signUpButtonActionPerformed
 
-    private void backClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backClickableMouseClicked
-        home.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_backClickableMouseClicked
-
     private void exitClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitClickableMouseClicked
         System.exit(0);
     }//GEN-LAST:event_exitClickableMouseClicked
 
+    private void backClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backClickableMouseClicked
+        home.setLocation(this.getFrameLocation());
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backClickableMouseClicked
+
+    private void addDragListeners() {
+        
+        titlePanel.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent evt) {
+                posX = evt.getX();
+                posY = evt.getY();
+            }
+        });
+
+        titlePanel.addMouseMotionListener(new MouseAdapter() {
+            public void mouseDragged(MouseEvent evt) {
+                // Get the current position of the mouse
+                int newX = evt.getXOnScreen();
+                int newY = evt.getYOnScreen();
+
+                // Set the frame's location to its current location plus the new position of the mouse minus the position of the mouse when it was pressed
+                setLocation(newX - posX, newY - posY);
+            }
+        });
+    }
+    
+    public Point getFrameLocation() {
+        return this.getLocation();
+    }
+    
     public static void main(String args[]) {
+        
+        // setting FlatLaf Light theme
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize FlatLaf");
+        }
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -400,6 +472,7 @@ public class SignInUp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel SignUpDetailsPanel;
+    private javax.swing.JLabel apexMotorsTitle;
     private javax.swing.JLabel backClickable;
     private javax.swing.JPanel bg;
     private javax.swing.JPasswordField confPassSignUpField;
@@ -420,6 +493,7 @@ public class SignInUp extends javax.swing.JFrame {
     private javax.swing.JButton signUpButton;
     private javax.swing.JLabel signUpTitle;
     private javax.swing.JPanel signUpTitlePanel;
+    private javax.swing.JPanel titlePanel;
     private javax.swing.JTextField usernameSignInField;
     private javax.swing.JLabel usernameSignInLabel;
     private javax.swing.JTextField usernameSignUpField;

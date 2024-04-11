@@ -1,5 +1,8 @@
 package main;
 
+import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.UIManager;
+
 public class CarDetails extends javax.swing.JFrame {
 
     private Home home;
@@ -135,7 +138,6 @@ public class CarDetails extends javax.swing.JFrame {
         );
 
         exitClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Close Window.png"))); // NOI18N
-        exitClickable.setToolTipText("");
         exitClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         exitClickable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -193,6 +195,13 @@ public class CarDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_exitClickableMouseClicked
 
     public static void main(String args[]) {
+        
+        // setting FlatLaf Light theme
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize FlatLaf");
+        }
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
