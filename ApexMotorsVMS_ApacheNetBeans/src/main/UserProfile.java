@@ -1,6 +1,7 @@
 package main;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -66,14 +67,14 @@ public class UserProfile extends javax.swing.JFrame {
         warningLabel = new javax.swing.JLabel();
         warningIcon = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
-        passwordField = new javax.swing.JTextField();
-        editPasswordButton = new javax.swing.JButton();
+        changePasswordButton = new javax.swing.JButton();
         accountTypeLabel = new javax.swing.JLabel();
         accountTypeField = new javax.swing.JTextField();
         customerIdLabel = new javax.swing.JLabel();
         customerIdField = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
+        passwordField = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,7 +82,6 @@ public class UserProfile extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        bg.setBackground(new java.awt.Color(232, 232, 232));
         bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         titlePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -130,8 +130,6 @@ public class UserProfile extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        profileHeaderPanel.setBackground(new java.awt.Color(232, 232, 232));
-
         deleteAccountButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Warning.png"))); // NOI18N
         deleteAccountButton.setText("Delete Account");
         deleteAccountButton.setFocusPainted(false);
@@ -166,32 +164,31 @@ public class UserProfile extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        accountDetailsPanel1.setBackground(new java.awt.Color(232, 232, 232));
         accountDetailsPanel1.setPreferredSize(new java.awt.Dimension(395, 362));
 
         nameLabel.setText("Name");
 
-        nameField.setBackground(new java.awt.Color(232, 232, 232));
+        nameField.setBackground(new java.awt.Color(242, 242, 242));
         nameField.setEnabled(false);
 
         usernameLabel.setText("Username");
 
-        usernameField.setBackground(new java.awt.Color(232, 232, 232));
+        usernameField.setBackground(new java.awt.Color(242, 242, 242));
         usernameField.setEnabled(false);
 
         genderLabel.setText("Gender");
 
-        genderField.setBackground(new java.awt.Color(232, 232, 232));
+        genderField.setBackground(new java.awt.Color(242, 242, 242));
         genderField.setEnabled(false);
 
         addressLabel.setText("Address");
 
-        addressField.setBackground(new java.awt.Color(232, 232, 232));
+        addressField.setBackground(new java.awt.Color(242, 242, 242));
         addressField.setEnabled(false);
 
         annualIncomeLabel.setText("Annual Income");
 
-        annualIncomeField.setBackground(new java.awt.Color(232, 232, 232));
+        annualIncomeField.setBackground(new java.awt.Color(242, 242, 242));
         annualIncomeField.setEnabled(false);
 
         editNameButton.setText("Edit");
@@ -291,7 +288,6 @@ public class UserProfile extends javax.swing.JFrame {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        accountDetailsPanel2.setBackground(new java.awt.Color(232, 232, 232));
         accountDetailsPanel2.setPreferredSize(new java.awt.Dimension(395, 362));
 
         warningLabel.setText("<html><i>The below options need special attention before editing.<br>Unwanted changes may have undesirable outcomes.<br>Please contact support in case you need help.</i></html>");
@@ -300,24 +296,21 @@ public class UserProfile extends javax.swing.JFrame {
 
         passwordLabel.setText("Password");
 
-        passwordField.setBackground(new java.awt.Color(232, 232, 232));
-        passwordField.setEnabled(false);
-
-        editPasswordButton.setText("Change");
-        editPasswordButton.addActionListener(new java.awt.event.ActionListener() {
+        changePasswordButton.setText("Change");
+        changePasswordButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editPasswordButtonActionPerformed(evt);
+                changePasswordButtonActionPerformed(evt);
             }
         });
 
         accountTypeLabel.setText("Account Type");
 
-        accountTypeField.setBackground(new java.awt.Color(232, 232, 232));
+        accountTypeField.setBackground(new java.awt.Color(242, 242, 242));
         accountTypeField.setEnabled(false);
 
         customerIdLabel.setText("Customer ID");
 
-        customerIdField.setBackground(new java.awt.Color(232, 232, 232));
+        customerIdField.setBackground(new java.awt.Color(242, 242, 242));
         customerIdField.setEnabled(false);
 
         saveButton.setText("Save");
@@ -325,6 +318,9 @@ public class UserProfile extends javax.swing.JFrame {
 
         resetButton.setText("Reset");
         resetButton.setFocusPainted(false);
+
+        passwordField.setBackground(new java.awt.Color(242, 242, 242));
+        passwordField.setEnabled(false);
 
         javax.swing.GroupLayout accountDetailsPanel2Layout = new javax.swing.GroupLayout(accountDetailsPanel2);
         accountDetailsPanel2.setLayout(accountDetailsPanel2Layout);
@@ -343,11 +339,14 @@ public class UserProfile extends javax.swing.JFrame {
                         .addComponent(customerIdLabel)
                         .addComponent(customerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
-                            .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(passwordLabel)
-                                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addComponent(editPasswordButton)))
+                            .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                                    .addComponent(passwordLabel)
+                                    .addGap(168, 168, 168))
+                                .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                                    .addComponent(passwordField)
+                                    .addGap(18, 18, 18)))
+                            .addComponent(changePasswordButton)))
                     .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
                         .addComponent(saveButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -364,10 +363,10 @@ public class UserProfile extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(passwordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editPasswordButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(changePasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
                 .addComponent(accountTypeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(accountTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -452,31 +451,37 @@ public class UserProfile extends javax.swing.JFrame {
 
     private void editNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editNameButtonActionPerformed
         nameField.setEnabled(true);
+        nameField.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_editNameButtonActionPerformed
 
     private void editUsernameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editUsernameButtonActionPerformed
         usernameField.setEnabled(true);
+        usernameField.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_editUsernameButtonActionPerformed
 
     private void editGenderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editGenderButtonActionPerformed
         genderField.setEnabled(true);
+        genderField.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_editGenderButtonActionPerformed
 
     private void editAddressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAddressButtonActionPerformed
         addressField.setEnabled(true);
+        addressField.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_editAddressButtonActionPerformed
 
     private void editAnnualIncomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAnnualIncomeButtonActionPerformed
-        addressField.setEnabled(true);
+        annualIncomeField.setEnabled(true);
+        annualIncomeField.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_editAnnualIncomeButtonActionPerformed
 
-    private void editPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPasswordButtonActionPerformed
+    private void changePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordButtonActionPerformed
         int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to change your password?", 
                 "Confirm Choice", JOptionPane.YES_NO_OPTION);
         if (choice == 0) {
             passwordField.setEnabled(true);
+            passwordField.setBackground(new Color(255,255,255));
         }
-    }//GEN-LAST:event_editPasswordButtonActionPerformed
+    }//GEN-LAST:event_changePasswordButtonActionPerformed
 
     private void backClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backClickableMouseClicked
         home.setLocation(this.getFrameLocation());
@@ -540,6 +545,7 @@ public class UserProfile extends javax.swing.JFrame {
     private javax.swing.JLabel annualIncomeLabel;
     private javax.swing.JLabel backClickable;
     private javax.swing.JPanel bg;
+    private javax.swing.JButton changePasswordButton;
     private javax.swing.JTextField customerIdField;
     private javax.swing.JLabel customerIdLabel;
     private javax.swing.JButton deleteAccountButton;
@@ -547,7 +553,6 @@ public class UserProfile extends javax.swing.JFrame {
     private javax.swing.JButton editAnnualIncomeButton;
     private javax.swing.JButton editGenderButton;
     private javax.swing.JButton editNameButton;
-    private javax.swing.JButton editPasswordButton;
     private javax.swing.JButton editUsernameButton;
     private javax.swing.JLabel exitClickable;
     private javax.swing.JTextField genderField;
@@ -555,7 +560,7 @@ public class UserProfile extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JTextField passwordField;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPanel profileHeaderPanel;
     private javax.swing.JLabel profileIcon;

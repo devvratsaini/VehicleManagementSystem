@@ -1,6 +1,5 @@
 package panels;
 
-import apexmotorsvms.CarDetails;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 

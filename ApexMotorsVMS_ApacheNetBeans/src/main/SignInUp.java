@@ -383,31 +383,37 @@ public class SignInUp extends javax.swing.JFrame {
                 ResultSet rs = stmt.executeQuery(query);
                 if (!rs.next()) {
                     String password = String.valueOf(passwordSignUpField.getPassword());
-                    String confPass = String.valueOf(confPassSignUpField.getPassword());
+                    if (utils.AccountValidationUtils.isPasswordValid(password)) {
+                        String confPass = String.valueOf(confPassSignUpField.getPassword());
 
-                    if (password.equals(confPass)) {
-                        String email = emailSignUpField.getText();
-                        if (AccountValidationUtils.isEmailValid(email)) {
-                            query = "insert into accounts (username, password, email) values ('" 
-                                + username + "', '" + password + "', '" + email + "');";
+                        if (password.equals(confPass)) {
+                            String email = emailSignUpField.getText();
+                            if (AccountValidationUtils.isEmailValid(email)) {
+                                query = "insert into accounts (accounttype, username, password, email) values ('Customer', '" 
+                                    + username + "', '" + password + "', '" + email + "');";
 
-                        stmt.executeUpdate(query);
+                            stmt.executeUpdate(query);
 
-                        JOptionPane.showMessageDialog(rootPane, "Account created successfully!", 
-                                "Success", JOptionPane.INFORMATION_MESSAGE);
-                        
-                        // clearing fields
-                        usernameSignUpField.setText(null);
-                        passwordSignUpField.setText(null);
-                        confPassSignUpField.setText(null);
-                        emailSignUpField.setText(null);
+                            JOptionPane.showMessageDialog(rootPane, "Account created successfully!", 
+                                    "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                            // clearing fields
+                            usernameSignUpField.setText(null);
+                            passwordSignUpField.setText(null);
+                            confPassSignUpField.setText(null);
+                            emailSignUpField.setText(null);
+                            } else {
+                                JOptionPane.showMessageDialog(rootPane, "Email is invalid.", 
+                                    "Invalid Email", JOptionPane.ERROR_MESSAGE);
+                            }
                         } else {
-                            JOptionPane.showMessageDialog(rootPane, "Email is invalid.", 
-                                "Invalid Email", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(rootPane, "Passwords are not equal.", 
+                                    "Password Mismatch", JOptionPane.ERROR_MESSAGE);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(rootPane, "Passwords are not equal.", 
-                                "Password Mismatch", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(rootPane, 
+                                "Password must contain\n- 1 capital letter\n- 1 small letter\n- 1 special character\n- 1 number.", 
+                                "Weak Password", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Username is already taken, try a different username.", 
