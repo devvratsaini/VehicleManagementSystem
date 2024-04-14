@@ -14,7 +14,7 @@ import javax.swing.UIManager;
 
 public class ForgotPassword extends javax.swing.JFrame {
 
-    int posX, posY;
+    private int posX, posY;
     String foundUsername;
     private SignInUp signInUp;
     

@@ -14,7 +14,7 @@ import javax.swing.UIManager;
 public class UserProfile extends javax.swing.JFrame {
 
     private Home home;
-    int posX, posY;
+    private int posX, posY;
     
     public UserProfile() {
         initComponents();
@@ -79,7 +79,6 @@ public class UserProfile extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));

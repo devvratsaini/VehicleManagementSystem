@@ -11,7 +11,7 @@ import java.awt.Point;
 
 public class Home extends javax.swing.JFrame {
 
-    int posX, posY;
+    private int posX, posY;
     
     public Home() {
         initComponents();
@@ -25,20 +25,21 @@ public class Home extends javax.swing.JFrame {
         bg = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        carPreviewPanel2 = new panels.CarPreviewPanel("Ford Aspire");
-        carPreviewPanel1 = new panels.CarPreviewPanel("Ford EcoSport");
-        carPreviewPanel3 = new panels.CarPreviewPanel("Ford Figo");
-        carPreviewPanel4 = new panels.CarPreviewPanel("Ford Mustang");
-        carPreviewPanel5 = new panels.CarPreviewPanel("Maruti Suzuki Baleno");
-        carPreviewPanel6 = new panels.CarPreviewPanel("Maruti Suzuki Ciaz");
-        carPreviewPanel7 = new panels.CarPreviewPanel("Maruti Suzuki Swift Dzire");
-        carPreviewPanel8 = new panels.CarPreviewPanel("Maruti Suzuki Swift");
-        carPreviewPanel9 = new panels.CarPreviewPanel("Maruti Suzuki Vitara Brezza");
+        carPreviewPanel2 = new panels.CarPreviewPanel(this, "Aspire");
+        carPreviewPanel1 = new panels.CarPreviewPanel(this, "EcoSport");
+        carPreviewPanel3 = new panels.CarPreviewPanel(this, "Figo");
+        carPreviewPanel4 = new panels.CarPreviewPanel(this, "Mustang");
+        carPreviewPanel5 = new panels.CarPreviewPanel(this, "Baleno");
+        carPreviewPanel6 = new panels.CarPreviewPanel(this, "Ciaz");
+        carPreviewPanel7 = new panels.CarPreviewPanel(this, "Swift Dzire");
+        carPreviewPanel8 = new panels.CarPreviewPanel(this, "Swift");
+        carPreviewPanel9 = new panels.CarPreviewPanel(this, "Vitara Brezza");
         titlePanel = new javax.swing.JPanel();
         profileLabel = new javax.swing.JLabel();
         signInUpOut_Clickable = new javax.swing.JLabel();
         exitClickable = new javax.swing.JLabel();
         apexMotorsTitle = new javax.swing.JLabel();
+        cartClickable = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -150,6 +151,14 @@ public class Home extends javax.swing.JFrame {
         apexMotorsTitle.setText("APEX MOTORS");
         apexMotorsTitle.setToolTipText("");
 
+        cartClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Cart.png"))); // NOI18N
+        cartClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cartClickable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cartClickableMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
         titlePanelLayout.setHorizontalGroup(
@@ -157,7 +166,9 @@ public class Home extends javax.swing.JFrame {
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(profileLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(530, 530, 530)
+                .addGap(494, 494, 494)
+                .addComponent(cartClickable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(signInUpOut_Clickable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(exitClickable)
@@ -173,7 +184,9 @@ public class Home extends javax.swing.JFrame {
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(signInUpOut_Clickable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cartClickable)
+                        .addComponent(signInUpOut_Clickable, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(profileLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(titlePanelLayout.createSequentialGroup()
@@ -222,6 +235,12 @@ public class Home extends javax.swing.JFrame {
     private void exitClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitClickableMouseClicked
         System.exit(0);
     }//GEN-LAST:event_exitClickableMouseClicked
+
+    private void cartClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cartClickableMouseClicked
+        Cart cart = new Cart(this);
+        cart.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_cartClickableMouseClicked
 
     private void addDragListeners() {
         
@@ -299,6 +318,7 @@ public class Home extends javax.swing.JFrame {
     private panels.CarPreviewPanel carPreviewPanel7;
     private panels.CarPreviewPanel carPreviewPanel8;
     private panels.CarPreviewPanel carPreviewPanel9;
+    private javax.swing.JLabel cartClickable;
     private javax.swing.JLabel exitClickable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

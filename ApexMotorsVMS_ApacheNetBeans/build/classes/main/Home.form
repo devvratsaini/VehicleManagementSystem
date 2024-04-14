@@ -134,47 +134,47 @@
               <SubComponents>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel2">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;Ford Aspire&quot;)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(this, &quot;Aspire&quot;)"/>
                   </AuxValues>
                 </Component>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel1">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;Ford EcoSport&quot;)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(this, &quot;EcoSport&quot;)"/>
                   </AuxValues>
                 </Component>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel3">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;Ford Figo&quot;)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(this, &quot;Figo&quot;)"/>
                   </AuxValues>
                 </Component>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel4">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;Ford Mustang&quot;)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(this, &quot;Mustang&quot;)"/>
                   </AuxValues>
                 </Component>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel5">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;Maruti Suzuki Baleno&quot;)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(this, &quot;Baleno&quot;)"/>
                   </AuxValues>
                 </Component>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel6">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;Maruti Suzuki Ciaz&quot;)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(this, &quot;Ciaz&quot;)"/>
                   </AuxValues>
                 </Component>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel7">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;Maruti Suzuki Swift Dzire&quot;)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(this, &quot;Swift Dzire&quot;)"/>
                   </AuxValues>
                 </Component>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel8">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;Maruti Suzuki Swift&quot;)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(this, &quot;Swift&quot;)"/>
                   </AuxValues>
                 </Component>
                 <Component class="panels.CarPreviewPanel" name="carPreviewPanel9">
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(&quot;Maruti Suzuki Vitara Brezza&quot;)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new panels.CarPreviewPanel(this, &quot;Vitara Brezza&quot;)"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -203,7 +203,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="profileLabel" min="-2" pref="150" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="530" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="494" max="-2" attributes="0"/>
+                  <Component id="cartClickable" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="signInUpOut_Clickable" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="exitClickable" min="-2" max="-2" attributes="0"/>
@@ -223,7 +225,10 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="signInUpOut_Clickable" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="cartClickable" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="signInUpOut_Clickable" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="profileLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -311,6 +316,19 @@
             <Property name="text" type="java.lang.String" value="APEX MOTORS"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="cartClickable">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/resources/icons/Cart.png"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cartClickableMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
