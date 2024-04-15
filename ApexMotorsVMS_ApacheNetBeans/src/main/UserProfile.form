@@ -209,10 +209,9 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="51" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="annualIncomeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="addressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="genderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="usernameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -220,8 +219,7 @@
                           <Component id="addressField" alignment="0" max="32767" attributes="0"/>
                           <Component id="genderField" alignment="0" max="32767" attributes="0"/>
                           <Component id="usernameField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="nameField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="annualIncomeField" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="nameField" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -229,16 +227,15 @@
                           <Component id="editNameButton" min="-2" max="-2" attributes="0"/>
                           <Component id="editGenderButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="editAddressButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="editAnnualIncomeButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <EmptySpace pref="50" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -266,14 +263,7 @@
                           <Component id="addressField" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="editAddressButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="annualIncomeLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="annualIncomeField" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="editAnnualIncomeButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                      <EmptySpace pref="81" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -331,19 +321,6 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="annualIncomeLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Annual Income"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="annualIncomeField">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f2" green="f2" red="f2" type="rgb"/>
-                </Property>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="editNameButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Edit"/>
@@ -376,14 +353,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editAddressButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="editAnnualIncomeButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Edit"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editAnnualIncomeButtonActionPerformed"/>
-              </Events>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="accountDetailsPanel2">
@@ -405,8 +374,12 @@
                               <Component id="warningLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="accountTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="accountTypeField" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="emailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="emailField" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="changeEmailButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="customerIdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="customerIdField" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -449,9 +422,12 @@
                           <Component id="passwordField" pref="25" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="accountTypeLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="accountTypeField" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="emailField" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="changeEmailButton" alignment="3" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="customerIdLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -469,7 +445,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="warningLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;i&gt;The below options need special attention before editing.&lt;br&gt;Unwanted changes may have undesirable outcomes.&lt;br&gt;Please contact support in case you need help.&lt;/i&gt;&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;i&gt;The below options need special attention before editing.&lt;br&gt;Unwanted changes may have undesirable effects.&lt;br&gt;Please contact support in case you need help.&lt;/i&gt;&lt;/html&gt;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="warningIcon">
@@ -492,12 +468,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changePasswordButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="accountTypeLabel">
+            <Component class="javax.swing.JLabel" name="emailLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Account Type"/>
+                <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="accountTypeField">
+            <Component class="javax.swing.JTextField" name="emailField">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f2" green="f2" red="f2" type="rgb"/>
@@ -526,9 +502,12 @@
             </Component>
             <Component class="javax.swing.JButton" name="resetButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Reset"/>
+                <Property name="text" type="java.lang.String" value="Cancel"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JPasswordField" name="passwordField">
               <Properties>
@@ -537,6 +516,14 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="changeEmailButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Change"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeEmailButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

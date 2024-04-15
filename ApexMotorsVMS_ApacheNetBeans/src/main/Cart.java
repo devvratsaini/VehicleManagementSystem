@@ -27,14 +27,10 @@ public class Cart extends javax.swing.JFrame {
         this.home = home;
         this.setLocation(home.getFrameLocation());
         addDragListeners();
-        try {
-            initCart();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        initCart();
     }
     
-    private void initCart() throws Exception{
+    private void initCart(){
         
         Connection conn = DatabaseConnectivity.connectDatabase();
         if (conn != null) {
@@ -77,8 +73,6 @@ public class Cart extends javax.swing.JFrame {
                             total += Integer.parseInt(rs.getString(1));
                         }
                         break;
-                    default:
-                        throw new Exception("Some error occurred.");        
                 }
                 
                 totalPriceValue.setText(String.valueOf(total));

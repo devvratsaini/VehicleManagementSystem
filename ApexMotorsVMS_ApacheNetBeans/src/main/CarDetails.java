@@ -151,7 +151,7 @@ public class CarDetails extends javax.swing.JFrame {
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        modelLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        modelLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         modelLabel.setText("Model");
 
         modelField.setEditable(false);
@@ -159,13 +159,13 @@ public class CarDetails extends javax.swing.JFrame {
         modelField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         modelField.setFocusable(false);
 
-        manufacturerLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        manufacturerLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         manufacturerLabel.setText("Manufacturer");
 
-        carTypeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        carTypeLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         carTypeLabel.setText("Car Type");
 
-        transmissionLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        transmissionLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         transmissionLabel.setText("Transmission");
 
         manufacturerField.setEditable(false);
@@ -203,7 +203,7 @@ public class CarDetails extends javax.swing.JFrame {
                     .addGroup(carDetailsPanelLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(manufacturerLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         carDetailsPanelLayout.setVerticalGroup(
             carDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +226,7 @@ public class CarDetails extends javax.swing.JFrame {
                 .addComponent(transmissionLabel)
                 .addGap(0, 0, 0)
                 .addComponent(transmissionField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         manufacturerLogo.setSize(200, 90);
@@ -243,7 +243,7 @@ public class CarDetails extends javax.swing.JFrame {
 
         carPreview.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        priceLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        priceLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         priceLabel.setText("Price");
 
         priceField.setEditable(false);
@@ -283,8 +283,9 @@ public class CarDetails extends javax.swing.JFrame {
                         .addComponent(carDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(carPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 29, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
+                        .addComponent(carPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addToCartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(priceLabel)
@@ -292,7 +293,7 @@ public class CarDetails extends javax.swing.JFrame {
                         .addGap(25, 25, 25))))
         );
 
-        carPreview.setSize(500, 350);
+        carPreview.setSize(500, 330);
 
         getContentPane().add(bg);
 
@@ -312,8 +313,8 @@ public class CarDetails extends javax.swing.JFrame {
             home.setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Cart item limit reached! You may only order upto 4 cars in an order.", 
-                                "Error", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Cart item limit reached! You may only order upto 4 cars in a session.", 
+                                "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_addToCartButtonActionPerformed
 
@@ -338,7 +339,8 @@ public class CarDetails extends javax.swing.JFrame {
                 int newX = evt.getXOnScreen();
                 int newY = evt.getYOnScreen();
 
-                // Set the frame's location to its current location plus the new position of the mouse minus the position of the mouse when it was pressed
+                // Set the frame's location to its current location plus the new
+                // position of the mouse minus the position of the mouse when it was pressed
                 setLocation(newX - posX, newY - posY);
             }
         });

@@ -32,7 +32,7 @@ public class UserProfile extends javax.swing.JFrame {
     private void initDetails() {
         usernameField.setText(Session.getUsername());
         passwordField.setText(Session.getPassword());
-        accountTypeField.setText(Session.getAccountType());
+        emailField.setText(Session.getAccountType());
     }
     
     @SuppressWarnings("unchecked")
@@ -56,25 +56,23 @@ public class UserProfile extends javax.swing.JFrame {
         genderField = new javax.swing.JTextField();
         addressLabel = new javax.swing.JLabel();
         addressField = new javax.swing.JTextField();
-        annualIncomeLabel = new javax.swing.JLabel();
-        annualIncomeField = new javax.swing.JTextField();
         editNameButton = new javax.swing.JButton();
         editUsernameButton = new javax.swing.JButton();
         editGenderButton = new javax.swing.JButton();
         editAddressButton = new javax.swing.JButton();
-        editAnnualIncomeButton = new javax.swing.JButton();
         accountDetailsPanel2 = new javax.swing.JPanel();
         warningLabel = new javax.swing.JLabel();
         warningIcon = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         changePasswordButton = new javax.swing.JButton();
-        accountTypeLabel = new javax.swing.JLabel();
-        accountTypeField = new javax.swing.JTextField();
+        emailLabel = new javax.swing.JLabel();
+        emailField = new javax.swing.JTextField();
         customerIdLabel = new javax.swing.JLabel();
         customerIdField = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
         passwordField = new javax.swing.JPasswordField();
+        changeEmailButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -185,11 +183,6 @@ public class UserProfile extends javax.swing.JFrame {
         addressField.setBackground(new java.awt.Color(242, 242, 242));
         addressField.setEnabled(false);
 
-        annualIncomeLabel.setText("Annual Income");
-
-        annualIncomeField.setBackground(new java.awt.Color(242, 242, 242));
-        annualIncomeField.setEnabled(false);
-
         editNameButton.setText("Edit");
         editNameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,21 +211,13 @@ public class UserProfile extends javax.swing.JFrame {
             }
         });
 
-        editAnnualIncomeButton.setText("Edit");
-        editAnnualIncomeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editAnnualIncomeButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout accountDetailsPanel1Layout = new javax.swing.GroupLayout(accountDetailsPanel1);
         accountDetailsPanel1.setLayout(accountDetailsPanel1Layout);
         accountDetailsPanel1Layout.setHorizontalGroup(
             accountDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountDetailsPanel1Layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+            .addGroup(accountDetailsPanel1Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
                 .addGroup(accountDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(annualIncomeLabel)
                     .addComponent(addressLabel)
                     .addComponent(genderLabel)
                     .addComponent(usernameLabel)
@@ -240,21 +225,19 @@ public class UserProfile extends javax.swing.JFrame {
                     .addComponent(addressField)
                     .addComponent(genderField)
                     .addComponent(usernameField)
-                    .addComponent(nameField)
-                    .addComponent(annualIncomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(accountDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(editUsernameButton)
                     .addComponent(editNameButton)
                     .addComponent(editGenderButton)
-                    .addComponent(editAddressButton)
-                    .addComponent(editAnnualIncomeButton))
-                .addGap(48, 48, 48))
+                    .addComponent(editAddressButton))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         accountDetailsPanel1Layout.setVerticalGroup(
             accountDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(accountDetailsPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(45, 45, 45)
                 .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(accountDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -278,18 +261,12 @@ public class UserProfile extends javax.swing.JFrame {
                 .addGroup(accountDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editAddressButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(annualIncomeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(accountDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(annualIncomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editAnnualIncomeButton))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         accountDetailsPanel2.setPreferredSize(new java.awt.Dimension(395, 362));
 
-        warningLabel.setText("<html><i>The below options need special attention before editing.<br>Unwanted changes may have undesirable outcomes.<br>Please contact support in case you need help.</i></html>");
+        warningLabel.setText("<html><i>The below options need special attention before editing.<br>Unwanted changes may have undesirable effects.<br>Please contact support in case you need help.</i></html>");
 
         warningIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Warning.png"))); // NOI18N
 
@@ -302,10 +279,10 @@ public class UserProfile extends javax.swing.JFrame {
             }
         });
 
-        accountTypeLabel.setText("Account Type");
+        emailLabel.setText("Email");
 
-        accountTypeField.setBackground(new java.awt.Color(242, 242, 242));
-        accountTypeField.setEnabled(false);
+        emailField.setBackground(new java.awt.Color(242, 242, 242));
+        emailField.setEnabled(false);
 
         customerIdLabel.setText("Customer ID");
 
@@ -315,11 +292,23 @@ public class UserProfile extends javax.swing.JFrame {
         saveButton.setText("Save");
         saveButton.setFocusPainted(false);
 
-        resetButton.setText("Reset");
+        resetButton.setText("Cancel");
         resetButton.setFocusPainted(false);
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
 
         passwordField.setBackground(new java.awt.Color(242, 242, 242));
         passwordField.setEnabled(false);
+
+        changeEmailButton.setText("Change");
+        changeEmailButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeEmailButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout accountDetailsPanel2Layout = new javax.swing.GroupLayout(accountDetailsPanel2);
         accountDetailsPanel2.setLayout(accountDetailsPanel2Layout);
@@ -333,8 +322,11 @@ public class UserProfile extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(warningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(accountTypeLabel)
-                        .addComponent(accountTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(emailLabel)
+                        .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(changeEmailButton))
                         .addComponent(customerIdLabel)
                         .addComponent(customerIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
@@ -366,9 +358,11 @@ public class UserProfile extends javax.swing.JFrame {
                     .addComponent(changePasswordButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
                 .addGap(12, 12, 12)
-                .addComponent(accountTypeLabel)
+                .addComponent(emailLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(accountTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(changeEmailButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(customerIdLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -468,11 +462,6 @@ public class UserProfile extends javax.swing.JFrame {
         addressField.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_editAddressButtonActionPerformed
 
-    private void editAnnualIncomeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editAnnualIncomeButtonActionPerformed
-        annualIncomeField.setEnabled(true);
-        annualIncomeField.setBackground(new Color(255,255,255));
-    }//GEN-LAST:event_editAnnualIncomeButtonActionPerformed
-
     private void changePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordButtonActionPerformed
         int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to change your password?", 
                 "Confirm Choice", JOptionPane.YES_NO_OPTION);
@@ -491,6 +480,21 @@ public class UserProfile extends javax.swing.JFrame {
     private void exitClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitClickableMouseClicked
         System.exit(0);
     }//GEN-LAST:event_exitClickableMouseClicked
+
+    private void changeEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeEmailButtonActionPerformed
+        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to change your Email address?", 
+                "Confirm Choice", JOptionPane.YES_NO_OPTION);
+        if (choice == 0) {
+            passwordField.setEnabled(true);
+            passwordField.setBackground(new Color(255,255,255));
+        }
+    }//GEN-LAST:event_changeEmailButtonActionPerformed
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        home.setLocation(this.getFrameLocation());
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_resetButtonActionPerformed
 
     private void addDragListeners() {
         
@@ -536,23 +540,21 @@ public class UserProfile extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel accountDetailsPanel1;
     private javax.swing.JPanel accountDetailsPanel2;
-    private javax.swing.JTextField accountTypeField;
-    private javax.swing.JLabel accountTypeLabel;
     private javax.swing.JTextField addressField;
     private javax.swing.JLabel addressLabel;
-    private javax.swing.JTextField annualIncomeField;
-    private javax.swing.JLabel annualIncomeLabel;
     private javax.swing.JLabel backClickable;
     private javax.swing.JPanel bg;
+    private javax.swing.JButton changeEmailButton;
     private javax.swing.JButton changePasswordButton;
     private javax.swing.JTextField customerIdField;
     private javax.swing.JLabel customerIdLabel;
     private javax.swing.JButton deleteAccountButton;
     private javax.swing.JButton editAddressButton;
-    private javax.swing.JButton editAnnualIncomeButton;
     private javax.swing.JButton editGenderButton;
     private javax.swing.JButton editNameButton;
     private javax.swing.JButton editUsernameButton;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel exitClickable;
     private javax.swing.JTextField genderField;
     private javax.swing.JLabel genderLabel;

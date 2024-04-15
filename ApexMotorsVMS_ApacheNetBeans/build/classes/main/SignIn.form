@@ -40,9 +40,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="titlePanel" max="32767" attributes="0"/>
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="signInPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="signUpPanel" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -51,7 +51,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="titlePanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="signUpPanel" max="32767" attributes="0"/>
+                  <Component id="signInPanel" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -72,9 +72,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="backClickable" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="322" max="-2" attributes="0"/>
-                      <Component id="signUpTitle" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="320" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="324" max="-2" attributes="0"/>
+                      <Component id="signInTitle" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="323" max="32767" attributes="0"/>
                       <Component id="exitClickable" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -85,9 +85,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="backClickable" min="-2" max="-2" attributes="0"/>
                           <Component id="exitClickable" min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="signUpTitle" min="-2" pref="22" max="-2" attributes="0"/>
+                          <Component id="backClickable" min="-2" max="-2" attributes="0"/>
+                          <Component id="signInTitle" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="8" max="32767" attributes="0"/>
                   </Group>
@@ -95,26 +95,13 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="signUpTitle">
+            <Component class="javax.swing.JLabel" name="signInTitle">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="24" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="SIGN UP"/>
+                <Property name="text" type="java.lang.String" value="SIGN IN"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="exitClickable">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/resources/icons/Close Window.png"/>
-                </Property>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exitClickableMouseClicked"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="backClickable">
               <Properties>
@@ -129,149 +116,117 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="backClickableMouseClicked"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JLabel" name="exitClickable">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/Close Window.png"/>
+                </Property>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exitClickableMouseClicked"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="signUpPanel">
+        <Container class="javax.swing.JPanel" name="signInPanel">
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="74" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="emailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="confPassLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="passwordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="usernameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="addressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="genderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="nameField" max="32767" attributes="0"/>
-                          <Component id="genderComboBox" alignment="0" pref="250" max="32767" attributes="0"/>
-                          <Component id="addressField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="usernameField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="emailField" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                              <Component id="signUpButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                              <Component id="signInButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="signInClickable" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                              <Component id="forgotPasswordClickable" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="passwordField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="confPassField" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="usernameLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="usernameField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="passwordField" alignment="0" pref="250" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Component id="signUpClickable" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="76" max="32767" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="nameField" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="genderComboBox" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="addressLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="addressField" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
                       <Component id="usernameLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="usernameField" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="passwordField" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="confPassLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="confPassField" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="emailLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="emailField" min="-2" pref="25" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="signUpButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="signInClickable" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                      <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="passwordField" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="signInButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="forgotPasswordClickable" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="signUpClickable" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="127" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="nameLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Name"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="nameField">
-            </Component>
-            <Component class="javax.swing.JLabel" name="genderLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Gender"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="genderComboBox">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Male"/>
-                    <StringItem index="1" value="Female"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="addressLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Address"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="addressField">
-            </Component>
             <Component class="javax.swing.JLabel" name="usernameLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Username"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="usernameField">
             </Component>
             <Component class="javax.swing.JLabel" name="passwordLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Password"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="confPassLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Confirm Password"/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="usernameField">
             </Component>
-            <Component class="javax.swing.JLabel" name="emailLabel">
+            <Component class="javax.swing.JButton" name="signInButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Email"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="emailField">
-            </Component>
-            <Component class="javax.swing.JButton" name="signUpButton">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Sign Up"/>
+                <Property name="text" type="java.lang.String" value="Sign In"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signUpButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="signInButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="signInClickable">
+            <Component class="javax.swing.JLabel" name="forgotPasswordClickable">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="99" red="33" type="rgb"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/icons/Question Mark.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Forgot Password"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="forgotPasswordClickableMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JPasswordField" name="passwordField">
+            </Component>
+            <Component class="javax.swing.JLabel" name="signUpClickable">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="99" red="33" type="rgb"/>
@@ -279,18 +234,14 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/icons/New Account.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Already have an account? Sign In Here"/>
+                <Property name="text" type="java.lang.String" value="Don&apos;t have an account? Sign Up Here"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="signInClickableMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="signUpClickableMouseClicked"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JPasswordField" name="passwordField">
-            </Component>
-            <Component class="javax.swing.JPasswordField" name="confPassField">
             </Component>
           </SubComponents>
         </Container>

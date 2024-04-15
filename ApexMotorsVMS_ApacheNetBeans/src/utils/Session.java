@@ -72,7 +72,6 @@ public class Session {
     }
     
     public static int getCarCount() {
-        System.out.println(carList.size());
         return carList.size();
     }
     
