@@ -2,15 +2,22 @@ package panels;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import main.CarDetails;
+import main.Home;
 
 public class CarPreviewPanel extends javax.swing.JPanel {
+    
+    private String carName;
+    private Home home;
     
     public CarPreviewPanel(){
         initComponents();
     }
     
-    public CarPreviewPanel(String carName) {
+    public CarPreviewPanel(Home home, String carName) {
         initComponents();
+        this.carName = carName;
+        this.home = home;
         initDetails(carName);
     }
     
@@ -18,8 +25,8 @@ public class CarPreviewPanel extends javax.swing.JPanel {
             carNameLabel.setText(carName);
             ImageIcon icon = new ImageIcon(getClass().getResource("/resources/cars/" + carName + ".jpeg"));
             Image image = icon.getImage();
-            Image scaledimage = image.getScaledInstance(carImage.getWidth(), carImage.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon scaledIcon = new ImageIcon(scaledimage);
+            Image scaledImage = image.getScaledInstance(carImage.getWidth(), carImage.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(scaledImage);
             carImage.setIcon(scaledIcon);
     }
     @SuppressWarnings("unchecked")
@@ -77,7 +84,11 @@ public class CarPreviewPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void chooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseButtonActionPerformed
+        String carModel = carNameLabel.getText();
         
+        CarDetails carDetails = new CarDetails(home, carName);
+        carDetails.setVisible(true);
+        home.setVisible(false);
     }//GEN-LAST:event_chooseButtonActionPerformed
     
 

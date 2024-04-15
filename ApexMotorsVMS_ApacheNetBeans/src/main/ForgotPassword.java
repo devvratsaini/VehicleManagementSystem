@@ -14,19 +14,19 @@ import javax.swing.UIManager;
 
 public class ForgotPassword extends javax.swing.JFrame {
 
-    int posX, posY;
+    private int posX, posY;
     String foundUsername;
-    private SignInUp signInUp;
+    private SignIn signIn;
     
     public ForgotPassword() {
         initComponents();
         addDragListeners();
     }
     
-    public ForgotPassword(SignInUp signInUp) {
+    public ForgotPassword(SignIn signIn) {
         initComponents();
-        this.signInUp = signInUp;
-        this.setLocation(signInUp.getFrameLocation());
+        this.signIn = signIn;
+        this.setLocation(signIn.getFrameLocation());
         addDragListeners();
     }
 
@@ -316,7 +316,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                         if (rowsUpdated > 0) {
                             JOptionPane.showMessageDialog(rootPane, "Password updated successfully.", 
                                     "Success", JOptionPane.INFORMATION_MESSAGE);
-                            signInUp.setVisible(true);
+                            signIn.setVisible(true);
                             this.dispose();
                         } else {
                             JOptionPane.showMessageDialog(rootPane, 
@@ -340,8 +340,8 @@ public class ForgotPassword extends javax.swing.JFrame {
     }//GEN-LAST:event_exitClickableMouseClicked
 
     private void backClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backClickableMouseClicked
-        signInUp.setLocation(this.getFrameLocation());
-        signInUp.setVisible(true);
+        signIn.setLocation(this.getFrameLocation());
+        signIn.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backClickableMouseClicked
 

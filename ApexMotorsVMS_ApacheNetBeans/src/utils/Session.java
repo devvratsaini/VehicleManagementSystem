@@ -1,9 +1,13 @@
 package utils;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Session {
     
     // static data members
     private static boolean userSignedIn = false;
+    private static ArrayList<String> carList = new ArrayList<>();
     
     // instance data members
     private static String accountType = null;
@@ -56,5 +60,22 @@ public class Session {
         Session.accountType = null;
         Session.username = null;
         Session.password = null;
+    }
+    
+    public static boolean addCar(String carModel) {
+        if (carList.size() < 4) {
+            carList.add(carModel);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public static int getCarCount() {
+        return carList.size();
+    }
+    
+    public static String getModel(int index) {
+        return carList.get(index);
     }
 }
