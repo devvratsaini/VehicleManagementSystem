@@ -1,21 +1,15 @@
-drop database apexmotors_vms;
 create database apexmotors_vms;
 use apexmotors_vms;
 
 create table accounts (
 	accountid int primary key auto_increment,
-    accounttype varchar(15) not null,
+    name varchar(50) not null,
+    gender varchar(6) not null,
+    address varchar(100) not null,
     username varchar(50) not null,
     password varchar(50) not null,
     email varchar(50)
 );
-
-insert into accounts(accounttype, username, password, email) values ('Admin', 'devvratsaini', 'Admin1@Apex', 'devvratsaini@apex.com');
-insert into accounts(accounttype, username, password, email) values ('Admin', 'atharvraje', 'Admin2@Apex', 'atharvraje@apex.com');
-insert into accounts(accounttype, username, password, email) values ('Admin', 'rutubhanderi', 'Admin3@Apex', 'rutubhanderi@apex.com');
-insert into accounts(accounttype, username, password, email) values ('Admin', 'praneetmahendrakar', 'Admin4@Apex', 'praneetmahendrakar@apex.com');
-
-select * from accounts;
 
 create table cars (
 	model varchar(50) primary key,
@@ -26,19 +20,29 @@ create table cars (
     price int
 );
 
-insert into cars values ('Ford', 'Aspire', 'Sedan', 'Manual', 20, 750,000);
-insert into cars values ('Ford', 'EcoSport');
-insert into cars values ('Ford');
-insert into cars values ('Ford');
-insert into cars values ('Maruti Suzuki');
-insert into cars values ('Maruti Suzuki');
-insert into cars values ('Maruti Suzuki');
-insert into cars values ('Maruti Suzuki');
-insert into cars values ('Maruti Suzuki');
-
 create table orders (
 	orderid int primary key auto_increment,
 	customerid int,
-    isConfirmed boolean,
     model varchar(50), foreign key(model) references cars(model)
 );
+
+insert into accounts(name, gender, address, username, password, email) values ('Devvrat Saini', 'Male', '', 'devvratsaini', 'Admin1@Apex', 'devvratsaini@apex.com');
+insert into accounts(name, gender, address, username, password, email) values ('Atharv Raje', 'Male', '','atharvraje', 'Admin2@Apex', 'atharvraje@apex.com');
+insert into accounts(name, gender, address, username, password, email) values ('Rutu Bhanderi', 'Male', '','rutubhanderi', 'Admin3@Apex', 'rutubhanderi@apex.com');
+insert into accounts(name, gender, address, username, password, email) values ('Praneet Mahendrakar', 'Male', '','praneetmahendrakar', 'Admin4@Apex', 'praneetmahendrakar@apex.com');
+
+select * from accounts;
+
+insert into cars values ('Aspire', 'Ford', 'Sedan', 'Manual', 20, 750000);
+insert into cars values ('EcoSport', 'Ford', 'SUV', 'Manual', 15, 950000);
+insert into cars values ('Figo', 'Ford', 'Hatchback', 'Manual', 25, 700000);
+insert into cars values ('Mustang', 'Ford', 'Sport', 'Manual', 10, 7000000);
+insert into cars values ('Swift', 'Maruti Suzuki', 'Hatchback', 'Manual', 35, 600000);
+insert into cars values ('Baleno', 'Maruti Suzuki', 'Hatchback', 'Manual', 25, 650000);
+insert into cars values ('Swift Dzire', 'Maruti Suzuki', 'Sedan', 'Manual', 30, 675000);
+insert into cars values ('Vitara Brezza', 'Maruti Suzuki', 'SUV', 'Automatic', 20, 800000);
+insert into cars values ('Ciaz', 'Maruti Suzuki', 'Sedan', 'Manual', 20, 900000);
+
+select * from cars;
+
+select price from cars where model in ('Aspire', 'Mustang', 'Aspire');
