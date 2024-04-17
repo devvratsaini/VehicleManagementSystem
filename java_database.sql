@@ -44,5 +44,3 @@ insert into cars values ('Vitara Brezza', 'Maruti Suzuki', 'SUV', 'Automatic', 2
 insert into cars values ('Ciaz', 'Maruti Suzuki', 'Sedan', 'Manual', 20, 900000);
 
 select * from cars;
-
-select price from cars where model in ('Aspire', 'Mustang', 'Aspire');
