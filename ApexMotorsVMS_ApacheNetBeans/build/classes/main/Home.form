@@ -208,7 +208,7 @@
                   <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
                   <Component id="cartClickable" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="signInOut_Clickable" min="-2" max="-2" attributes="0"/>
+                  <Component id="signInOutClickable" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="exitClickable" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
@@ -228,7 +228,7 @@
                       <Component id="apexMotorsTitle" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Component id="cartClickable" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="signInOut_Clickable" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="signInOutClickable" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <Component id="profileLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -251,7 +251,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="profileLabelMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="signInOut_Clickable">
+        <Component class="javax.swing.JLabel" name="signInOutClickable">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="10" style="1"/>
@@ -278,7 +278,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="signInOut_ClickableMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="signInOutClickableMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="exitClickable">

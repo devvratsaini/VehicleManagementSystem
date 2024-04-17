@@ -37,7 +37,7 @@ public class Home extends javax.swing.JFrame {
         carPreviewPanel9 = new panels.CarPreviewPanel(this, "Vitara Brezza");
         titlePanel = new javax.swing.JPanel();
         profileLabel = new javax.swing.JLabel();
-        signInOut_Clickable = new javax.swing.JLabel();
+        signInOutClickable = new javax.swing.JLabel();
         exitClickable = new javax.swing.JLabel();
         apexMotorsTitle = new javax.swing.JLabel();
         cartClickable = new javax.swing.JLabel();
@@ -126,16 +126,16 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        signInOut_Clickable.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
-        signInOut_Clickable.setText(" SIGN IN/UP ");
-        signInOut_Clickable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        signInOut_Clickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        signInOut_Clickable.setMaximumSize(new java.awt.Dimension(68, 20));
-        signInOut_Clickable.setMinimumSize(new java.awt.Dimension(68, 20));
-        signInOut_Clickable.setPreferredSize(new java.awt.Dimension(68, 20));
-        signInOut_Clickable.addMouseListener(new java.awt.event.MouseAdapter() {
+        signInOutClickable.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
+        signInOutClickable.setText(" SIGN IN/UP ");
+        signInOutClickable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        signInOutClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signInOutClickable.setMaximumSize(new java.awt.Dimension(68, 20));
+        signInOutClickable.setMinimumSize(new java.awt.Dimension(68, 20));
+        signInOutClickable.setPreferredSize(new java.awt.Dimension(68, 20));
+        signInOutClickable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signInOut_ClickableMouseClicked(evt);
+                signInOutClickableMouseClicked(evt);
             }
         });
 
@@ -172,7 +172,7 @@ public class Home extends javax.swing.JFrame {
                 .addGap(177, 177, 177)
                 .addComponent(cartClickable)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(signInOut_Clickable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(signInOutClickable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(exitClickable)
                 .addGap(11, 11, 11))
@@ -189,7 +189,7 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(apexMotorsTitle)
                     .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(cartClickable)
-                        .addComponent(signInOut_Clickable, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(signInOutClickable, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(profileLabel))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -199,7 +199,7 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void signInOut_ClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInOut_ClickableMouseClicked
+    private void signInOutClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInOutClickableMouseClicked
         if (Session.isUserSignedIn()) {    
             // confirm sign out
             int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to Sign Out?", 
@@ -216,7 +216,7 @@ public class Home extends javax.swing.JFrame {
             signIn.setVisible(true);
             this.setVisible(false);
         }
-    }//GEN-LAST:event_signInOut_ClickableMouseClicked
+    }//GEN-LAST:event_signInOutClickableMouseClicked
 
     private void profileLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileLabelMouseClicked
         if (Session.isUserSignedIn()) {
@@ -264,7 +264,7 @@ public class Home extends javax.swing.JFrame {
     
     public void changeToSignedIn() {
         profileLabel.setText(Session.getUsername());
-        signInOut_Clickable.setText("  SIGN OUT ");
+        signInOutClickable.setText("  SIGN OUT ");
         
         try {
             profileLabel.setCursor(Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
@@ -275,7 +275,7 @@ public class Home extends javax.swing.JFrame {
     
     public void changeToSignedOut() {
         profileLabel.setText(null);
-        signInOut_Clickable.setText(" SIGN IN/UP ");
+        signInOutClickable.setText(" SIGN IN/UP ");
         
         try {
             profileLabel.setCursor(Cursor.getDefaultCursor());
@@ -318,7 +318,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel profileLabel;
-    private javax.swing.JLabel signInOut_Clickable;
+    private javax.swing.JLabel signInOutClickable;
     private javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
 }
