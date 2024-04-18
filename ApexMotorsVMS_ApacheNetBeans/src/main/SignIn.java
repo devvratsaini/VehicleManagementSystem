@@ -1,6 +1,7 @@
 package main;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -11,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class SignIn extends javax.swing.JFrame {
 
@@ -19,16 +22,26 @@ public class SignIn extends javax.swing.JFrame {
     
     public SignIn() {
         initComponents();
+        initImage();
         addDragListeners();
     }
     
     public SignIn(Home home) {
         initComponents();
+        initImage();
         addDragListeners();
         this.home = home;
         this.setLocation(home.getFrameLocation());
     }
-
+    
+    private void initImage() {
+        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/resources/bg_images/Sign In.png"));
+        Image logoImage = logoIcon.getImage();
+        Image logoScaledimage = logoImage.getScaledInstance(signInLogo.getWidth(), signInLogo.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon logoScaledIcon = new ImageIcon(logoScaledimage);
+        signInLogo.setIcon(logoScaledIcon);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -46,14 +59,16 @@ public class SignIn extends javax.swing.JFrame {
         forgotPasswordClickable = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
         signUpClickable = new javax.swing.JLabel();
+        signInLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        bg.setBackground(new java.awt.Color(232, 232, 232));
+        bg.setBackground(new java.awt.Color(31, 41, 80));
         bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        titlePanel.setBackground(new java.awt.Color(255, 255, 255));
         titlePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         signInTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -99,8 +114,12 @@ public class SignIn extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
+        signInPanel.setBackground(new java.awt.Color(44, 59, 115));
+
+        usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
         usernameLabel.setText("Username");
 
+        passwordLabel.setForeground(new java.awt.Color(255, 255, 255));
         passwordLabel.setText("Password");
 
         signInButton.setText("Sign In");
@@ -110,8 +129,7 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        forgotPasswordClickable.setForeground(new java.awt.Color(51, 153, 255));
-        forgotPasswordClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Question Mark.png"))); // NOI18N
+        forgotPasswordClickable.setForeground(new java.awt.Color(255, 223, 64));
         forgotPasswordClickable.setText("Forgot Password");
         forgotPasswordClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         forgotPasswordClickable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -120,8 +138,7 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        signUpClickable.setForeground(new java.awt.Color(51, 153, 255));
-        signUpClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/New Account.png"))); // NOI18N
+        signUpClickable.setForeground(new java.awt.Color(255, 223, 64));
         signUpClickable.setText("Don't have an account? Sign Up Here");
         signUpClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signUpClickable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,18 +157,18 @@ public class SignIn extends javax.swing.JFrame {
                         .addGap(158, 158, 158)
                         .addComponent(signInButton))
                     .addGroup(signInPanelLayout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(forgotPasswordClickable))
-                    .addGroup(signInPanelLayout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addGroup(signInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernameLabel)
                             .addComponent(passwordLabel)
                             .addComponent(usernameField)
-                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addGroup(signInPanelLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(signUpClickable)))))
+                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
+                    .addGroup(signInPanelLayout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addComponent(forgotPasswordClickable))
+                    .addGroup(signInPanelLayout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addComponent(signUpClickable)))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
         signInPanelLayout.setVerticalGroup(
@@ -181,15 +198,23 @@ public class SignIn extends javax.swing.JFrame {
             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(bgLayout.createSequentialGroup()
                 .addComponent(signInPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(signInLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(signInPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(signInPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(signInLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
+
+        signInLogo.setSize(260, 260);
 
         getContentPane().add(bg);
 
@@ -302,6 +327,7 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JButton signInButton;
+    private javax.swing.JLabel signInLogo;
     private javax.swing.JPanel signInPanel;
     private javax.swing.JLabel signInTitle;
     private javax.swing.JLabel signUpClickable;
