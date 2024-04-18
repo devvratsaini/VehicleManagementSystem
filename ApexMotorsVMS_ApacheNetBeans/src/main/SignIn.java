@@ -13,7 +13,6 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 public class SignIn extends javax.swing.JFrame {
 
@@ -65,7 +64,7 @@ public class SignIn extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        bg.setBackground(new java.awt.Color(31, 41, 80));
+        bg.setBackground(new java.awt.Color(165, 208, 211));
         bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         titlePanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -114,12 +113,10 @@ public class SignIn extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
-        signInPanel.setBackground(new java.awt.Color(44, 59, 115));
-
-        usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
+        usernameLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         usernameLabel.setText("Username");
 
-        passwordLabel.setForeground(new java.awt.Color(255, 255, 255));
+        passwordLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         passwordLabel.setText("Password");
 
         signInButton.setText("Sign In");
@@ -129,8 +126,9 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        forgotPasswordClickable.setForeground(new java.awt.Color(255, 223, 64));
-        forgotPasswordClickable.setText("Forgot Password");
+        forgotPasswordClickable.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        forgotPasswordClickable.setForeground(new java.awt.Color(168, 52, 47));
+        forgotPasswordClickable.setText("<html><u>Forgot Password</u></html>");
         forgotPasswordClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         forgotPasswordClickable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -138,8 +136,9 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        signUpClickable.setForeground(new java.awt.Color(255, 223, 64));
-        signUpClickable.setText("Don't have an account? Sign Up Here");
+        signUpClickable.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        signUpClickable.setForeground(new java.awt.Color(168, 52, 47));
+        signUpClickable.setText("<html><u>Don't have an Account? Sign Up Here</u></html>");
         signUpClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signUpClickable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -154,9 +153,6 @@ public class SignIn extends javax.swing.JFrame {
             .addGroup(signInPanelLayout.createSequentialGroup()
                 .addGroup(signInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(signInPanelLayout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(signInButton))
-                    .addGroup(signInPanelLayout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addGroup(signInPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernameLabel)
@@ -167,7 +163,10 @@ public class SignIn extends javax.swing.JFrame {
                         .addGap(150, 150, 150)
                         .addComponent(forgotPasswordClickable))
                     .addGroup(signInPanelLayout.createSequentialGroup()
-                        .addGap(99, 99, 99)
+                        .addGap(162, 162, 162)
+                        .addComponent(signInButton))
+                    .addGroup(signInPanelLayout.createSequentialGroup()
+                        .addGap(93, 93, 93)
                         .addComponent(signUpClickable)))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
@@ -188,7 +187,7 @@ public class SignIn extends javax.swing.JFrame {
                 .addComponent(forgotPasswordClickable)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(signUpClickable)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
@@ -198,9 +197,9 @@ public class SignIn extends javax.swing.JFrame {
             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(bgLayout.createSequentialGroup()
                 .addComponent(signInPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(signInLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(signInLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,13 +207,13 @@ public class SignIn extends javax.swing.JFrame {
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(signInPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(signInLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addComponent(signInLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
         );
 
-        signInLogo.setSize(260, 260);
+        signInLogo.setSize(368, 368);
 
         getContentPane().add(bg);
 
@@ -269,6 +268,7 @@ public class SignIn extends javax.swing.JFrame {
     private void forgotPasswordClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordClickableMouseClicked
         ForgotPassword forgotPassword = new ForgotPassword(this);
         forgotPassword.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_forgotPasswordClickableMouseClicked
 
     private void signUpClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpClickableMouseClicked

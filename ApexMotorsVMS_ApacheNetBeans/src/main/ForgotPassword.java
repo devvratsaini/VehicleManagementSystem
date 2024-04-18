@@ -1,6 +1,7 @@
 package main;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -9,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -20,14 +22,30 @@ public class ForgotPassword extends javax.swing.JFrame {
     
     public ForgotPassword() {
         initComponents();
+        initImages();
         addDragListeners();
     }
     
     public ForgotPassword(SignIn signIn) {
         initComponents();
+        initImages();
         this.signIn = signIn;
         this.setLocation(signIn.getFrameLocation());
         addDragListeners();
+    }
+    
+    private void initImages() {
+        ImageIcon logoIcon3 = new ImageIcon(getClass().getResource("/resources/bg_images/ForgotPassword1.png"));
+        Image logoImage3 = logoIcon3.getImage();
+        Image logoScaledimage3 = logoImage3.getScaledInstance(forgotPasswordLogo1.getWidth(), forgotPasswordLogo1.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon logoScaledIcon3 = new ImageIcon(logoScaledimage3);
+        forgotPasswordLogo1.setIcon(logoScaledIcon3);
+        
+        ImageIcon logoIcon2 = new ImageIcon(getClass().getResource("/resources/bg_images/ForgotPassword2.png"));
+        Image logoImage2 = logoIcon2.getImage();
+        Image logoScaledimage2 = logoImage2.getScaledInstance(forgotPasswordLogo2.getWidth(), forgotPasswordLogo2.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon logoScaledIcon2 = new ImageIcon(logoScaledimage2);
+        forgotPasswordLogo2.setIcon(logoScaledIcon2);
     }
 
     @SuppressWarnings("unchecked")
@@ -45,6 +63,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         emailLabel = new javax.swing.JLabel();
         verifyButton = new javax.swing.JButton();
         emailField = new javax.swing.JTextField();
+        forgotPasswordLogo1 = new javax.swing.JLabel();
         savePanel = new javax.swing.JPanel();
         newPasswordLabel = new javax.swing.JLabel();
         confPassLabel = new javax.swing.JLabel();
@@ -53,11 +72,13 @@ public class ForgotPassword extends javax.swing.JFrame {
         newPasswordShowIcon = new javax.swing.JLabel();
         confPassShowIcon = new javax.swing.JLabel();
         newPasswordField = new javax.swing.JPasswordField();
+        forgotPasswordLogo2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
+        bg.setBackground(new java.awt.Color(255, 225, 199));
         bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         titlePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -106,6 +127,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
+        verifyPanel.setBackground(new java.awt.Color(255, 225, 199));
         verifyPanel.setPreferredSize(new java.awt.Dimension(395, 450));
 
         usernameLabel.setText("Username");
@@ -124,21 +146,26 @@ public class ForgotPassword extends javax.swing.JFrame {
         verifyPanelLayout.setHorizontalGroup(
             verifyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(verifyPanelLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
                 .addGroup(verifyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(emailLabel)
-                    .addComponent(usernameLabel)
-                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(verifyPanelLayout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(verifyButton)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addGap(71, 71, 71)
+                        .addGroup(verifyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(emailLabel)
+                            .addComponent(usernameLabel)
+                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(verifyPanelLayout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(verifyButton))
+                    .addGroup(verifyPanelLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(forgotPasswordLogo1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         verifyPanelLayout.setVerticalGroup(
             verifyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(verifyPanelLayout.createSequentialGroup()
-                .addGap(133, 133, 133)
+                .addGap(66, 66, 66)
                 .addComponent(usernameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,10 +175,14 @@ public class ForgotPassword extends javax.swing.JFrame {
                 .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(verifyButton)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(forgotPasswordLogo1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
-        savePanel.setBackground(new java.awt.Color(232, 232, 232));
+        forgotPasswordLogo1.setSize(180, 126);
+
+        savePanel.setBackground(new java.awt.Color(255, 240, 227));
         savePanel.setPreferredSize(new java.awt.Dimension(395, 450));
 
         newPasswordLabel.setText("New Password");
@@ -184,8 +215,8 @@ public class ForgotPassword extends javax.swing.JFrame {
         savePanel.setLayout(savePanelLayout);
         savePanelLayout.setHorizontalGroup(
             savePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, savePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(savePanelLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
                 .addGroup(savePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(confPassLabel)
                     .addComponent(newPasswordLabel)
@@ -200,12 +231,16 @@ public class ForgotPassword extends javax.swing.JFrame {
                     .addGroup(savePanelLayout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addComponent(saveButton)))
-                .addGap(59, 59, 59))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, savePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(forgotPasswordLogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         savePanelLayout.setVerticalGroup(
             savePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(savePanelLayout.createSequentialGroup()
-                .addGap(133, 133, 133)
+                .addGap(65, 65, 65)
                 .addComponent(newPasswordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(savePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -219,8 +254,12 @@ public class ForgotPassword extends javax.swing.JFrame {
                     .addComponent(confPassShowIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(saveButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(forgotPasswordLogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
+
+        forgotPasswordLogo2.setSize(180, 126);
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -286,7 +325,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                         
                         // visual changes
                         verifyPanel.setBackground(savePanel.getBackground());
-                        savePanel.setBackground(titlePanel.getBackground());
+                        savePanel.setBackground(bg.getBackground());
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Invalid username and/or email!", "Error", JOptionPane.ERROR_MESSAGE);
                     }
@@ -395,6 +434,8 @@ public class ForgotPassword extends javax.swing.JFrame {
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel exitClickable;
+    private javax.swing.JLabel forgotPasswordLogo1;
+    private javax.swing.JLabel forgotPasswordLogo2;
     private javax.swing.JLabel forgotPasswordTitle;
     private javax.swing.JPasswordField newPasswordField;
     private javax.swing.JLabel newPasswordLabel;
