@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class DatabaseConnectivity {
     private static String username = "root";
-    private static String password = "password";
+    private static String password = "rutu2004";
     private static String url = "jdbc:mysql://127.0.0.1:3306/apexmotors_vms";
 
     // functions for database connectivity

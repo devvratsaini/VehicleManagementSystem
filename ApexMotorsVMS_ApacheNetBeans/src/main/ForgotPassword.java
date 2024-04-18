@@ -24,6 +24,9 @@ public class ForgotPassword extends javax.swing.JFrame {
         initComponents();
         initImages();
         addDragListeners();
+        this.hide1.setVisible(false);
+        this.hide2.setVisible(false);
+        
     }
     
     public ForgotPassword(SignIn signIn) {
@@ -69,10 +72,12 @@ public class ForgotPassword extends javax.swing.JFrame {
         confPassLabel = new javax.swing.JLabel();
         confPassField = new javax.swing.JPasswordField();
         saveButton = new javax.swing.JButton();
-        newPasswordShowIcon = new javax.swing.JLabel();
-        confPassShowIcon = new javax.swing.JLabel();
+        hide1 = new javax.swing.JLabel();
+        hide2 = new javax.swing.JLabel();
         newPasswordField = new javax.swing.JPasswordField();
         forgotPasswordLogo2 = new javax.swing.JLabel();
+        show2 = new javax.swing.JLabel();
+        show1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -112,7 +117,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                 .addComponent(backClickable)
                 .addGap(251, 251, 251)
                 .addComponent(forgotPasswordTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
                 .addComponent(exitClickable)
                 .addContainerGap())
         );
@@ -201,15 +206,41 @@ public class ForgotPassword extends javax.swing.JFrame {
             }
         });
 
-        newPasswordShowIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Hidden.png"))); // NOI18N
-        newPasswordShowIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        newPasswordShowIcon.setEnabled(false);
+        hide1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Hidden.png"))); // NOI18N
+        hide1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hide1.setEnabled(false);
+        hide1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hide1MousePressed(evt);
+            }
+        });
 
-        confPassShowIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Hidden.png"))); // NOI18N
-        confPassShowIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        confPassShowIcon.setEnabled(false);
+        hide2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Hidden.png"))); // NOI18N
+        hide2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        hide2.setEnabled(false);
+        hide2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                hide2MousePressed(evt);
+            }
+        });
 
         newPasswordField.setEnabled(false);
+
+        show2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Shown.png"))); // NOI18N
+        show2.setEnabled(false);
+        show2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                show2MousePressed(evt);
+            }
+        });
+
+        show1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Shown.png"))); // NOI18N
+        show1.setEnabled(false);
+        show1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                show1MousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout savePanelLayout = new javax.swing.GroupLayout(savePanel);
         savePanel.setLayout(savePanelLayout);
@@ -223,15 +254,19 @@ public class ForgotPassword extends javax.swing.JFrame {
                     .addGroup(savePanelLayout.createSequentialGroup()
                         .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newPasswordShowIcon))
+                        .addComponent(hide1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(show1))
                     .addGroup(savePanelLayout.createSequentialGroup()
                         .addComponent(confPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(confPassShowIcon))
+                        .addComponent(hide2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(show2))
                     .addGroup(savePanelLayout.createSequentialGroup()
                         .addGap(86, 86, 86)
                         .addComponent(saveButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, savePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(forgotPasswordLogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,20 +278,27 @@ public class ForgotPassword extends javax.swing.JFrame {
                 .addGap(65, 65, 65)
                 .addComponent(newPasswordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(savePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(newPasswordShowIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(savePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(savePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(newPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(show1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(hide1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(confPassLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(savePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(confPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confPassShowIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addComponent(saveButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(forgotPasswordLogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                    .addGroup(savePanelLayout.createSequentialGroup()
+                        .addGroup(savePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(confPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hide2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addComponent(saveButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addComponent(forgotPasswordLogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addGroup(savePanelLayout.createSequentialGroup()
+                        .addComponent(show2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         forgotPasswordLogo2.setSize(180, 126);
@@ -271,7 +313,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                     .addGroup(bgLayout.createSequentialGroup()
                         .addComponent(verifyPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(savePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)))
+                        .addComponent(savePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
@@ -310,10 +352,10 @@ public class ForgotPassword extends javax.swing.JFrame {
                         // enabling options to reset password
                         newPasswordLabel.setEnabled(true);
                         newPasswordField.setEnabled(true);
-                        newPasswordShowIcon.setEnabled(true);
+                        show1.setEnabled(true);
                         confPassLabel.setEnabled(true);
                         confPassField.setEnabled(true);
-                        confPassShowIcon.setEnabled(true);
+                        show2.setEnabled(true);
                         saveButton.setEnabled(true);
                         
                         // disabling verification details
@@ -384,6 +426,31 @@ public class ForgotPassword extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backClickableMouseClicked
 
+    private void hide1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MousePressed
+         show1.setVisible(true);
+        hide1.setVisible(false);
+        newPasswordField.setEchoChar('\u2022');
+    }//GEN-LAST:event_hide1MousePressed
+
+    private void show1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show1MousePressed
+        
+        show1.setVisible(false);
+        hide1.setVisible(true);
+        newPasswordField.setEchoChar((char)0);
+    }//GEN-LAST:event_show1MousePressed
+
+    private void hide2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide2MousePressed
+        show2.setVisible(true);
+        hide2.setVisible(false);
+        confPassField.setEchoChar('\u2022');
+    }//GEN-LAST:event_hide2MousePressed
+
+    private void show2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show2MousePressed
+        show2.setVisible(false);
+        hide2.setVisible(true);
+        confPassField.setEchoChar((char)0);
+    }//GEN-LAST:event_show2MousePressed
+
     private void addDragListeners() {
         
         titlePanel.addMouseListener(new MouseAdapter() {
@@ -430,18 +497,20 @@ public class ForgotPassword extends javax.swing.JFrame {
     private javax.swing.JPanel bg;
     private javax.swing.JPasswordField confPassField;
     private javax.swing.JLabel confPassLabel;
-    private javax.swing.JLabel confPassShowIcon;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel exitClickable;
     private javax.swing.JLabel forgotPasswordLogo1;
     private javax.swing.JLabel forgotPasswordLogo2;
     private javax.swing.JLabel forgotPasswordTitle;
+    private javax.swing.JLabel hide1;
+    private javax.swing.JLabel hide2;
     private javax.swing.JPasswordField newPasswordField;
     private javax.swing.JLabel newPasswordLabel;
-    private javax.swing.JLabel newPasswordShowIcon;
     private javax.swing.JButton saveButton;
     private javax.swing.JPanel savePanel;
+    private javax.swing.JLabel show1;
+    private javax.swing.JLabel show2;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JTextField usernameField;
     private javax.swing.JLabel usernameLabel;
