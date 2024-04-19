@@ -258,7 +258,7 @@ public class SignUp extends javax.swing.JFrame {
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addComponent(signUpLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(19, 157, Short.MAX_VALUE))))
         );
 
         signUpLogo.setSize(368, 153);
@@ -328,8 +328,12 @@ public class SignUp extends javax.swing.JFrame {
                                             "Password Mismatch", JOptionPane.ERROR_MESSAGE);
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(rootPane, 
-                                        "Password must contain\n- 1 capital letter\n- 1 small letter\n- 1 special character\n- 1 number.", 
+                                JOptionPane.showMessageDialog(rootPane, """
+                                                                        Password must be 8 characters long and must contain
+                                                                        - 1 capital letter
+                                                                        - 1 small letter
+                                                                        - 1 special character
+                                                                        - 1 number.""", 
                                         "Weak Password", JOptionPane.ERROR_MESSAGE);
                             }
                         } else {
@@ -340,7 +344,10 @@ public class SignUp extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(rootPane, "Address cannot be empty.", 
                                     "Invalid Address", JOptionPane.ERROR_MESSAGE);
                     }
-                }
+                } else {
+                        JOptionPane.showMessageDialog(rootPane, "Name cannot be empty.", 
+                                    "Invalid Name", JOptionPane.ERROR_MESSAGE);
+                    }
             } catch (Exception e) {
                 e.printStackTrace();
             }

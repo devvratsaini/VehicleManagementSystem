@@ -90,6 +90,7 @@ public class UserProfile extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         changeEmailButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        bgColorPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -97,6 +98,7 @@ public class UserProfile extends javax.swing.JFrame {
 
         bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        titlePanel.setBackground(new java.awt.Color(231, 215, 193));
         titlePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         userProfileTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -238,8 +240,8 @@ public class UserProfile extends javax.swing.JFrame {
         );
         accountDetailsPanel1Layout.setVerticalGroup(
             accountDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(accountDetailsPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountDetailsPanel1Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(accountDetailsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(accountDetailsPanel1Layout.createSequentialGroup()
                         .addComponent(nameLabel)
@@ -262,7 +264,7 @@ public class UserProfile extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(editAccountDetails)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         accountDetailsPanel2.setPreferredSize(new java.awt.Dimension(395, 362));
@@ -323,30 +325,31 @@ public class UserProfile extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(warningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(emailLabel)
-                        .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
-                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(changeEmailButton))
-                        .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
-                            .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
-                                    .addComponent(passwordLabel)
-                                    .addGap(168, 168, 168))
-                                .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
-                                    .addComponent(passwordField)
-                                    .addGap(18, 18, 18)))
-                            .addComponent(changePasswordButton)))
-                    .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
-                        .addComponent(saveButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(resetButton)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountDetailsPanel2Layout.createSequentialGroup()
+                            .addComponent(saveButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(resetButton))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(emailLabel)
+                            .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(changeEmailButton))
+                            .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                                .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                                        .addComponent(passwordLabel)
+                                        .addGap(168, 168, 168))
+                                    .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                                        .addComponent(passwordField)
+                                        .addGap(18, 18, 18)))
+                                .addComponent(changePasswordButton)))))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         accountDetailsPanel2Layout.setVerticalGroup(
             accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(20, 20, 20)
                 .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(warningIcon)
                     .addComponent(warningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -366,40 +369,55 @@ public class UserProfile extends javax.swing.JFrame {
                 .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
                     .addComponent(resetButton))
-                .addGap(33, 33, 33))
+                .addGap(37, 37, 37))
         );
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        bgColorPanel.setBackground(new java.awt.Color(231, 215, 193));
+        bgColorPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout bgColorPanelLayout = new javax.swing.GroupLayout(bgColorPanel);
+        bgColorPanel.setLayout(bgColorPanelLayout);
+        bgColorPanelLayout.setHorizontalGroup(
+            bgColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        bgColorPanelLayout.setVerticalGroup(
+            bgColorPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 31, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(accountDetailsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(accountDetailsPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(profileHeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bgColorPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
+                        .addComponent(accountDetailsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(accountDetailsPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE)
+                .addGap(9, 9, 9)
                 .addComponent(profileHeaderPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                        .addComponent(accountDetailsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addComponent(accountDetailsPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(accountDetailsPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(accountDetailsPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bgColorPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(bg);
@@ -449,11 +467,13 @@ public class UserProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_editAccountDetailsActionPerformed
 
     private void changePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordButtonActionPerformed
-        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to change your password?", 
-                "Confirm Choice", JOptionPane.YES_NO_OPTION);
+        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to change your password?", "Confirm Choice", JOptionPane.YES_NO_OPTION);
         if (choice == 0) {
-            passwordField.setEnabled(true);
-            passwordField.setBackground(new Color(255,255,255));
+            String confirmPassword = JOptionPane.showInputDialog(rootPane, "Enter your password", "Confirm Password", JOptionPane.YES_NO_OPTION);
+            if (confirmPassword.equals(Session.getPassword())) {
+                passwordField.setEnabled(true);
+                passwordField.setBackground(new Color(255,255,255));
+            }
         }
     }//GEN-LAST:event_changePasswordButtonActionPerformed
 
@@ -560,6 +580,7 @@ public class UserProfile extends javax.swing.JFrame {
     private javax.swing.JTextArea addressTextArea;
     private javax.swing.JLabel backClickable;
     private javax.swing.JPanel bg;
+    private javax.swing.JPanel bgColorPanel;
     private javax.swing.JButton changeEmailButton;
     private javax.swing.JButton changePasswordButton;
     private javax.swing.JButton deleteAccountButton;
