@@ -23,7 +23,7 @@ public class CarPreviewPanel extends javax.swing.JPanel {
     
     public void initDetails(String carName){
             carNameLabel.setText(carName);
-            ImageIcon icon = new ImageIcon(getClass().getResource("/resources/cars/" + carName + ".jpeg"));
+            ImageIcon icon = new ImageIcon(getClass().getResource("/resources/cars/" + carName + ".png"));
             Image image = icon.getImage();
             Image scaledImage = image.getScaledInstance(carImage.getWidth(), carImage.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
@@ -39,19 +39,23 @@ public class CarPreviewPanel extends javax.swing.JPanel {
         carNameLabel = new javax.swing.JLabel();
         chooseButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(232, 232, 232));
         setPreferredSize(new java.awt.Dimension(255, 182));
 
         carImage.setMaximumSize(new java.awt.Dimension(240, 130));
         carImage.setMinimumSize(new java.awt.Dimension(240, 130));
-        carImage.setPreferredSize(new java.awt.Dimension(240, 130));
+        carImage.setPreferredSize(new java.awt.Dimension(200, 130));
         add(carImage);
-        carImage.setSize(240, 130);
+        carImage.setSize(200, 130);
 
+        jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
         jSeparator1.setPreferredSize(new java.awt.Dimension(240, 5));
         add(jSeparator1);
 
+        carDetailsPanel.setBackground(new java.awt.Color(232, 232, 232));
         carDetailsPanel.setPreferredSize(new java.awt.Dimension(245, 25));
 
+        carNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         carNameLabel.setText("Car Name Here");
 
         chooseButton.setText("Choose");

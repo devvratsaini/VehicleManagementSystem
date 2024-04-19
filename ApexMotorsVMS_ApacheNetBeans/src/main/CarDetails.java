@@ -2,6 +2,7 @@ package main;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.UIManager;
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
@@ -37,14 +38,14 @@ public class CarDetails extends javax.swing.JFrame {
 
     private void initImage() {
         // setting the car preview image
-        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/resources/cars/" + carModel + ".jpeg"));
+        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/resources/cars/" + carModel + ".png"));
         Image logoImage = logoIcon.getImage();
         Image logoScaledimage = logoImage.getScaledInstance(carPreview.getWidth(), carPreview.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon logoScaledIcon = new ImageIcon(logoScaledimage);
         carPreview.setIcon(logoScaledIcon);
         
         // setting the manufacturer logo image
-        ImageIcon icon2 = new ImageIcon(getClass().getResource("/resources/logos/" + manufacturerField.getText() + ".jpg"));
+        ImageIcon icon2 = new ImageIcon(getClass().getResource("/resources/logos/" + manufacturerField.getText() + ".png"));
         Image image2 = icon2.getImage();
         Image scaledImage2 = image2.getScaledInstance(manufacturerLogo.getWidth(), manufacturerLogo.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon2 = new ImageIcon(scaledImage2);
@@ -96,14 +97,16 @@ public class CarDetails extends javax.swing.JFrame {
         carTypeField = new javax.swing.JTextField();
         transmissionField = new javax.swing.JTextField();
         addToCartButton = new javax.swing.JButton();
-        carPreview = new javax.swing.JLabel();
         priceLabel = new javax.swing.JLabel();
         priceField = new javax.swing.JTextField();
+        carPreviewPanel = new javax.swing.JPanel();
+        carPreview = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
+        bg.setBackground(new java.awt.Color(186, 168, 151));
         bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         titlePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
@@ -151,35 +154,37 @@ public class CarDetails extends javax.swing.JFrame {
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        modelLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        carDetailsPanel.setBackground(new java.awt.Color(186, 168, 151));
+
+        modelLabel.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        modelLabel.setForeground(new java.awt.Color(255, 255, 255));
         modelLabel.setText("Model");
 
         modelField.setEditable(false);
-        modelField.setBackground(new java.awt.Color(255, 255, 255));
         modelField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         modelField.setFocusable(false);
 
-        manufacturerLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        manufacturerLabel.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        manufacturerLabel.setForeground(new java.awt.Color(255, 255, 255));
         manufacturerLabel.setText("Manufacturer");
 
-        carTypeLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        carTypeLabel.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        carTypeLabel.setForeground(new java.awt.Color(255, 255, 255));
         carTypeLabel.setText("Car Type");
 
-        transmissionLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        transmissionLabel.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        transmissionLabel.setForeground(new java.awt.Color(255, 255, 255));
         transmissionLabel.setText("Transmission");
 
         manufacturerField.setEditable(false);
-        manufacturerField.setBackground(new java.awt.Color(255, 255, 255));
         manufacturerField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         manufacturerField.setFocusable(false);
 
         carTypeField.setEditable(false);
-        carTypeField.setBackground(new java.awt.Color(255, 255, 255));
         carTypeField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         carTypeField.setFocusable(false);
 
         transmissionField.setEditable(false);
-        transmissionField.setBackground(new java.awt.Color(255, 255, 255));
         transmissionField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         transmissionField.setFocusable(false);
 
@@ -188,9 +193,9 @@ public class CarDetails extends javax.swing.JFrame {
         carDetailsPanelLayout.setHorizontalGroup(
             carDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(carDetailsPanelLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(carDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(carDetailsPanelLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, carDetailsPanelLayout.createSequentialGroup()
                         .addGroup(carDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(modelLabel)
                             .addComponent(modelField, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,34 +204,34 @@ public class CarDetails extends javax.swing.JFrame {
                             .addComponent(transmissionLabel)
                             .addComponent(manufacturerField, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(carTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(transmissionField, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(carDetailsPanelLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(manufacturerLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                            .addComponent(transmissionField, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, carDetailsPanelLayout.createSequentialGroup()
+                        .addComponent(manufacturerLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))))
         );
         carDetailsPanelLayout.setVerticalGroup(
             carDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(carDetailsPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(16, 16, 16)
                 .addComponent(manufacturerLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(modelLabel)
                 .addGap(0, 0, 0)
                 .addComponent(modelField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(manufacturerLabel)
                 .addGap(0, 0, 0)
                 .addComponent(manufacturerField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(carTypeLabel)
                 .addGap(0, 0, 0)
                 .addComponent(carTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(transmissionLabel)
                 .addGap(0, 0, 0)
                 .addComponent(transmissionField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
         manufacturerLogo.setSize(200, 90);
@@ -241,15 +246,35 @@ public class CarDetails extends javax.swing.JFrame {
             }
         });
 
-        carPreview.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        priceLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        priceLabel.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        priceLabel.setForeground(new java.awt.Color(255, 255, 255));
         priceLabel.setText("Price");
 
         priceField.setEditable(false);
-        priceField.setBackground(new java.awt.Color(255, 255, 255));
         priceField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         priceField.setFocusable(false);
+
+        carPreviewPanel.setBackground(new java.awt.Color(163, 146, 130));
+        carPreviewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout carPreviewPanelLayout = new javax.swing.GroupLayout(carPreviewPanel);
+        carPreviewPanel.setLayout(carPreviewPanelLayout);
+        carPreviewPanelLayout.setHorizontalGroup(
+            carPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, carPreviewPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(carPreview, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        carPreviewPanelLayout.setVerticalGroup(
+            carPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, carPreviewPanelLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(carPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        carPreview.setSize(500, 330);
 
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
@@ -257,7 +282,6 @@ public class CarDetails extends javax.swing.JFrame {
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(carDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgLayout.createSequentialGroup()
@@ -270,30 +294,25 @@ public class CarDetails extends javax.swing.JFrame {
                         .addGap(14, 14, 14))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(carPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(carPreviewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(bgLayout.createSequentialGroup()
-                        .addComponent(carDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(carPreview, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(carPreviewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addToCartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(priceLabel)
                             .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25))))
+                        .addGap(21, 21, 21))
+                    .addComponent(carDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-
-        carPreview.setSize(500, 330);
 
         getContentPane().add(bg);
 
@@ -373,6 +392,7 @@ public class CarDetails extends javax.swing.JFrame {
     private javax.swing.JPanel carDetailsPanel;
     private javax.swing.JLabel carDetailsTitle;
     private javax.swing.JLabel carPreview;
+    private javax.swing.JPanel carPreviewPanel;
     private javax.swing.JTextField carTypeField;
     private javax.swing.JLabel carTypeLabel;
     private javax.swing.JLabel exitClickable;

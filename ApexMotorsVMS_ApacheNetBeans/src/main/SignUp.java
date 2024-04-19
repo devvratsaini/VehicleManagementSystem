@@ -1,12 +1,14 @@
 package main;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import utils.AccountValidationUtils;
@@ -20,13 +22,23 @@ public class SignUp extends javax.swing.JFrame {
     
     public SignUp() {
         initComponents();
+        initImage();
         addDragListeners();
     }
     
     public SignUp(Home home) {
         initComponents();
+        initImage();
         addDragListeners();
         this.home = home;
+    }
+    
+    private void initImage() {
+        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/resources/bg_images/Sign Up.png"));
+        Image logoImage = logoIcon.getImage();
+        Image logoScaledimage = logoImage.getScaledInstance(signUpLogo.getWidth(), signUpLogo.getHeight(), Image.SCALE_SMOOTH);
+        ImageIcon logoScaledIcon = new ImageIcon(logoScaledimage);
+        signUpLogo.setIcon(logoScaledIcon);
     }
 
     @SuppressWarnings("unchecked")
@@ -55,14 +67,16 @@ public class SignUp extends javax.swing.JFrame {
         signInClickable = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
         confPassField = new javax.swing.JPasswordField();
+        signUpLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        bg.setBackground(new java.awt.Color(232, 232, 232));
+        bg.setBackground(new java.awt.Color(240, 230, 221));
         bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        titlePanel.setBackground(new java.awt.Color(255, 255, 255));
         titlePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         signUpTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -108,20 +122,36 @@ public class SignUp extends javax.swing.JFrame {
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
+        signUpPanel.setBackground(new java.awt.Color(191, 158, 115));
+
+        nameLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        nameLabel.setForeground(new java.awt.Color(255, 255, 255));
         nameLabel.setText("Name");
 
+        genderLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        genderLabel.setForeground(new java.awt.Color(255, 255, 255));
         genderLabel.setText("Gender");
 
         genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
+        addressLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        addressLabel.setForeground(new java.awt.Color(255, 255, 255));
         addressLabel.setText("Address");
 
+        usernameLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        usernameLabel.setForeground(new java.awt.Color(255, 255, 255));
         usernameLabel.setText("Username");
 
+        passwordLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        passwordLabel.setForeground(new java.awt.Color(255, 255, 255));
         passwordLabel.setText("Password");
 
+        confPassLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        confPassLabel.setForeground(new java.awt.Color(255, 255, 255));
         confPassLabel.setText("Confirm Password");
 
+        emailLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        emailLabel.setForeground(new java.awt.Color(255, 255, 255));
         emailLabel.setText("Email");
 
         signUpButton.setText("Sign Up");
@@ -131,9 +161,8 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
-        signInClickable.setForeground(new java.awt.Color(51, 153, 255));
-        signInClickable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/New Account.png"))); // NOI18N
-        signInClickable.setText("Already have an account? Sign In Here");
+        signInClickable.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        signInClickable.setText("<html><u>Already have an account? Sign In Here<u></html>");
         signInClickable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signInClickable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -163,12 +192,13 @@ public class SignUp extends javax.swing.JFrame {
                     .addGroup(signUpPanelLayout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addComponent(signUpButton))
-                    .addGroup(signUpPanelLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(signInClickable))
                     .addComponent(passwordField)
                     .addComponent(confPassField))
                 .addContainerGap(76, Short.MAX_VALUE))
+            .addGroup(signUpPanelLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(signInClickable)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         signUpPanelLayout.setVerticalGroup(
             signUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,17 +243,25 @@ public class SignUp extends javax.swing.JFrame {
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(bgLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(signUpLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(signUpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(signUpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(signUpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(signUpLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 157, Short.MAX_VALUE))))
         );
+
+        signUpLogo.setSize(368, 153);
 
         getContentPane().add(bg);
 
@@ -290,8 +328,12 @@ public class SignUp extends javax.swing.JFrame {
                                             "Password Mismatch", JOptionPane.ERROR_MESSAGE);
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(rootPane, 
-                                        "Password must contain\n- 1 capital letter\n- 1 small letter\n- 1 special character\n- 1 number.", 
+                                JOptionPane.showMessageDialog(rootPane, """
+                                                                        Password must be 8 characters long and must contain
+                                                                        - 1 capital letter
+                                                                        - 1 small letter
+                                                                        - 1 special character
+                                                                        - 1 number.""", 
                                         "Weak Password", JOptionPane.ERROR_MESSAGE);
                             }
                         } else {
@@ -302,7 +344,10 @@ public class SignUp extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(rootPane, "Address cannot be empty.", 
                                     "Invalid Address", JOptionPane.ERROR_MESSAGE);
                     }
-                }
+                } else {
+                        JOptionPane.showMessageDialog(rootPane, "Name cannot be empty.", 
+                                    "Invalid Name", JOptionPane.ERROR_MESSAGE);
+                    }
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -369,6 +414,7 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel signInClickable;
     private javax.swing.JButton signUpButton;
+    private javax.swing.JLabel signUpLogo;
     private javax.swing.JPanel signUpPanel;
     private javax.swing.JLabel signUpTitle;
     private javax.swing.JPanel titlePanel;

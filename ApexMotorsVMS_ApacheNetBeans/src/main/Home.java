@@ -28,7 +28,7 @@ public class Home extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         carPreviewPanel2 = new panels.CarPreviewPanel(this, "Aspire");
         carPreviewPanel1 = new panels.CarPreviewPanel(this, "EcoSport");
-        carPreviewPanel3 = new panels.CarPreviewPanel(this, "Figo");
+        carPreviewPanel3 = new panels.CarPreviewPanel(this, "Focus");
         carPreviewPanel4 = new panels.CarPreviewPanel(this, "Mustang");
         carPreviewPanel5 = new panels.CarPreviewPanel(this, "Baleno");
         carPreviewPanel6 = new panels.CarPreviewPanel(this, "Ciaz");
@@ -51,7 +51,7 @@ public class Home extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setBorder(null);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,8 +111,10 @@ public class Home extends javax.swing.JFrame {
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
         );
+
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(16);
 
         getContentPane().add(bg, java.awt.BorderLayout.CENTER);
 
