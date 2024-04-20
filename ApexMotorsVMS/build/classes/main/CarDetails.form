@@ -172,15 +172,15 @@
                       <EmptySpace pref="18" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="modelLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="modelField" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
+                                  <Component id="modelField" alignment="0" pref="240" max="32767" attributes="0"/>
                                   <Component id="manufacturerLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="carTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="transmissionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="manufacturerField" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
-                                  <Component id="carTypeField" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
-                                  <Component id="transmissionField" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
+                                  <Component id="manufacturerField" alignment="0" pref="240" max="32767" attributes="0"/>
+                                  <Component id="carTypeField" alignment="0" pref="240" max="32767" attributes="0"/>
+                                  <Component id="transmissionField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           </Group>

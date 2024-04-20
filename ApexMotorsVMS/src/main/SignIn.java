@@ -238,9 +238,8 @@ public class SignIn extends javax.swing.JFrame {
         
         // verifying connection was successful
         if (conn != null) {
-            try {
-                Statement stmt = conn.createStatement();
-                
+            
+            try (Statement stmt = conn.createStatement()) {
                 String username = usernameField.getText();
                 String userpass = String.valueOf(passwordField.getPassword());
                 String query = "select password from accounts where username = '" + username + "';";

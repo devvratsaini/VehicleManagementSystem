@@ -61,11 +61,14 @@ public class Session {
     
     public static boolean addCar(String carModel) {
         if (carList.size() < 4) {
-            carList.add(carModel);
-            return true;
+            return carList.add(carModel);
         } else {
             return false;
         }
+    }
+    
+    public static void removeCar(int index) {
+        carList.remove(index);
     }
     
     public static int getCarCount() {
