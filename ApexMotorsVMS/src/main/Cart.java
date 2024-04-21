@@ -5,8 +5,10 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -503,18 +505,52 @@ public class Cart extends javax.swing.JFrame {
 
     private void placeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderButtonActionPerformed
         
-        // verifying cart is not empty and user is signed in
-        if (Session.getCarCount() != 0 && Session.isUserSignedIn()) {
-            JOptionPane.showMessageDialog(rootPane,
-                    "Order placed successfully!\nYou can now print the receipt using the print icon.",
-                    "Success", JOptionPane.OK_OPTION);
-            printIcon.setEnabled(rootPaneCheckingEnabled);
-        } else if (Session.getCarCount() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Cart is empty!", 
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "You must Sign In to place an order!", 
-                    "Account Error", JOptionPane.ERROR_MESSAGE);
+        // confirming order placement from user
+        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to place this order?",
+                "Confirm Choice", JOptionPane.YES_NO_OPTION);
+        if (choice == 0) {
+            // verifying cart is not empty and user is signed in
+            if (Session.getCarCount() != 0 && Session.isUserSignedIn()) {
+
+                Connection conn = DatabaseConnectivity.connectDatabase();
+
+                // verifying connection was made successfully
+                if (conn != null) {
+
+                    String accountId = Session.getAccountId();
+                    ArrayList<String> carList = Session.getCarList();
+                    String odate = String.valueOf(java.time.LocalDate.now());
+
+                    String query = "INSERT INTO orders(accountid, model, odate) VALUES (?, ?, ?)";
+                    try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+                        pstmt.setString(1, accountId);
+                        pstmt.setString(3, odate);
+
+                        for (int i = 0; i < carList.size(); i++) {
+                            pstmt.setString(2, carList.get(i));
+                            int rowsUpdated = pstmt.executeUpdate();
+
+                            if (rowsUpdated > 0) {
+                                JOptionPane.showMessageDialog(rootPane,
+                                        "Order placed successfully!\nYou can now print the receipt using the print icon.",
+                                        "Success", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        }
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(rootPane, "SQL Error: " + e.getMessage(),
+                                "Database Error", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    printIcon.setEnabled(rootPaneCheckingEnabled);    
+                }
+            } else if (Session.getCarCount() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Cart is empty!", 
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "You must Sign In to place an order!", 
+                        "Account Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_placeOrderButtonActionPerformed
 

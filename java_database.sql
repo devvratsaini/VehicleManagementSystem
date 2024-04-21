@@ -23,7 +23,7 @@ create table cars (
 
 create table orders (
 	orderid int primary key auto_increment,
-	customerid int,
+	accountid int,
     model varchar(50), foreign key(model) references cars(model),
     odate date
 );
@@ -32,7 +32,7 @@ insert into accounts(name, gender, address, username, password, email) values ('
 insert into accounts(name, gender, address, username, password, email) values ('Atharv Raje', 'Male', '','atharvraje', 'Admin2@Apex', 'atharvraje@apex.com');
 insert into accounts(name, gender, address, username, password, email) values ('Rutu Bhanderi', 'Male', '','rutubhanderi', 'Admin3@Apex', 'rutubhanderi@apex.com');
 insert into accounts(name, gender, address, username, password, email) values ('Praneet Mahendrakar', 'Male', '','praneetmahendrakar', 'Admin4@Apex', 'praneetmahendrakar@apex.com');
-insert into accounts(name, gender, address, username, password, email) values ('John Doe', 'Male', 'Sample Address 1, Here','johndoe', 'JohnDoe@Apex', 'johnddoe@gmail.com');
+insert into accounts(name, gender, address, username, password, email) values ('John Doe', 'Male', 'Sample Address 1, Here','johndoe', 'JohnDoe@Apex', 'johndoe@gmail.com');
 
 select * from accounts;
 
@@ -47,3 +47,5 @@ insert into cars values ('Vitara Brezza', 'Maruti Suzuki', 'SUV', 'Automatic', 2
 insert into cars values ('Ciaz', 'Maruti Suzuki', 'Sedan', 'Manual', 20, 900000);
 
 select * from cars;
+
+select * from orders;

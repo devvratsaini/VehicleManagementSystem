@@ -8,6 +8,7 @@ import javax.swing.UIManager;
 import utils.Session;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Point;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Home extends javax.swing.JFrame {
 
@@ -202,7 +203,10 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signInOutClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInOutClickableMouseClicked
+        
+        // checking if user is signed in
         if (Session.isUserSignedIn()) {    
+            
             // confirm sign out
             int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to Sign Out?", 
                     "Confirm Log Out", JOptionPane.YES_NO_OPTION);
@@ -213,6 +217,7 @@ public class Home extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Signed Out successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             }
         } else {
+            
             // redirect to sign in / up page
             SignIn signIn = new SignIn(this);
             signIn.setVisible(true);
@@ -238,9 +243,11 @@ public class Home extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_cartClickableMouseClicked
 
+    // method to add window draggind functionality
     private void addDragListeners() {
         
         titlePanel.addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent evt) {
                 posX = evt.getX();
                 posY = evt.getY();
@@ -248,6 +255,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         titlePanel.addMouseMotionListener(new MouseAdapter() {
+            @Override
             public void mouseDragged(MouseEvent evt) {
                 // Get the current position of the mouse
                 int newX = evt.getXOnScreen();
@@ -271,7 +279,7 @@ public class Home extends javax.swing.JFrame {
         try {
             profileLabel.setCursor(Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "An error occurred: " + e.getMessage(), "Unknown Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -282,7 +290,7 @@ public class Home extends javax.swing.JFrame {
         try {
             profileLabel.setCursor(Cursor.getDefaultCursor());
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "An error occurred: " + e.getMessage(), "Unknown Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -291,12 +299,13 @@ public class Home extends javax.swing.JFrame {
         // setting FlatLaf Light theme
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-        } catch (Exception ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             System.err.println("Failed to initialize FlatLaf");
         }
         
         // creating and showing the GUI
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Home().setVisible(true);
             }
