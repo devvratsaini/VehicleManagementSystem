@@ -240,35 +240,56 @@ public class SignIn extends javax.swing.JFrame {
         if (conn != null) {
             
             try (Statement stmt = conn.createStatement()) {
+                
                 String username = usernameField.getText();
-                String userpass = String.valueOf(passwordField.getPassword());
-                String query = "select password from accounts where username = '" + username + "';";
-                
-                ResultSet rs = stmt.executeQuery(query);
-                
-                // checking if a record was found
-                while(rs.next()) {
-                    
-                    // verifying entered password is correct
-                    if(userpass.equals(rs.getString(1))) {
-                        JOptionPane.showMessageDialog(rootPane, "Logged in successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                if (username.length() != 0) {
+                    String userpass = String.valueOf(passwordField.getPassword());
+                    String query = "select password from accounts where username = '" + username + "';";
 
-                        // updating session details
-                        Session.setUserSignedIn(true);
-                        Session.setUsername(username);
-                        Session.setPassword(userpass);
+                    ResultSet rs = stmt.executeQuery(query);
 
-                        // traversing to home page and disposing this page
-                        home.setLocation(this.getFrameLocation());
-                        home.changeToSignedIn();
-                        home.setVisible(true);
-                        this.dispose();
+                    // checking if a record was found
+                    while (rs.next()) {
+
+                        // verifying entered password is correct
+                        if(userpass.equals(rs.getString(1))) {
+
+                            // fetching accountid and email from database
+                            String accountId = "";
+                            String email = "";
+
+                            query = "select accountid, email from accounts where username = '" + username + "';";
+                            rs = stmt.executeQuery(query);
+
+                            while (rs.next()) {
+                                accountId = rs.getString(1);
+                                email = rs.getString(2);
+                            }
+
+                            // setting session details
+                            Session.setSignIn(accountId, username, userpass, email);
+
+                            // showing Sign-in success message
+                            JOptionPane.showMessageDialog(rootPane, "Logged in successful",
+                                    "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                            // traversing to home page and disposing this page
+                            home.setLocation(this.getFrameLocation());
+                            home.changeToSignedIn();
+                            home.setVisible(true);
+                            this.dispose();
+                        }
                     }
-                }
-                
-                // checking if user was logged in or not
-                if(!utils.Session.isUserSignedIn()) {
-                    JOptionPane.showMessageDialog(rootPane, "Failed to Login. Please check your username and/or password.", "Input Error", JOptionPane.ERROR_MESSAGE);
+
+                    // checking if user was logged in or not
+                    if(!utils.Session.isUserSignedIn()) {
+                        JOptionPane.showMessageDialog(rootPane, 
+                                "Failed to Login. Please check your username and/or password.",
+                                "Input Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Username cannot be empty!", 
+                            "Input Error", JOptionPane.ERROR_MESSAGE);
                 }
                 
             } catch (SQLException e) {

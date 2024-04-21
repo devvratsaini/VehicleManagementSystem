@@ -35,7 +35,7 @@ public class UserProfile extends javax.swing.JFrame {
     private void initDetails() {
         usernameField.setText(Session.getUsername());
         passwordField.setText(Session.getPassword());
-        emailField.setText(Session.getAccountType());
+        emailField.setText(Session.getEmail());
         
         Connection conn = DatabaseConnectivity.connectDatabase();
         if (conn != null) {
