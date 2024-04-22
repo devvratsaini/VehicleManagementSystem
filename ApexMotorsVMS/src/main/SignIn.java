@@ -255,14 +255,14 @@ public class SignIn extends javax.swing.JFrame {
                         if(userpass.equals(rs.getString(1))) {
 
                             // fetching accountid and email from database
-                            String accountId = "";
+                            int accountId = -1;
                             String email = "";
 
                             query = "select accountid, email from accounts where username = '" + username + "';";
                             rs = stmt.executeQuery(query);
 
                             while (rs.next()) {
-                                accountId = rs.getString(1);
+                                accountId = rs.getInt(1);
                                 email = rs.getString(2);
                             }
 
@@ -298,6 +298,8 @@ public class SignIn extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "An error occurred: " + e.getMessage(), "Unknown Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+        
+        DatabaseConnectivity.closeConnection(conn);
     }//GEN-LAST:event_signInButtonActionPerformed
 
     private void forgotPasswordClickableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordClickableMouseClicked

@@ -44,7 +44,7 @@ public class Cart extends javax.swing.JFrame {
                 
                 String query = "";
                 ResultSet rs;
-                int total = 0;
+                int totalPrice = 0;
                 
                 /* initializing N fields for N cars in cart,
                    where cart can have a max. of 4 cars in a session */
@@ -52,47 +52,47 @@ public class Cart extends javax.swing.JFrame {
                     
                     case 4:
                         removeIcon4.setEnabled(true);
-                        modelLabel4.setText(Session.getModel(3));
-                        query = "select price from cars where model = '" + Session.getModel(3) + "';";
+                        modelLabel4.setText(Session.getCarModel(3));
+                        query = "select price from cars where model = '" + Session.getCarModel(3) + "';";
                         rs = stmt.executeQuery(query);
                         while (rs.next()) {
                             priceLabel4.setText(rs.getString(1));
-                            total += Integer.parseInt(rs.getString(1));
+                            totalPrice += Integer.parseInt(rs.getString(1));
                         }
                     
                     case 3:
                         removeIcon3.setEnabled(true);
-                        modelLabel3.setText(Session.getModel(2));
-                        query = "select price from cars where model = '" + Session.getModel(2) + "';";
+                        modelLabel3.setText(Session.getCarModel(2));
+                        query = "select price from cars where model = '" + Session.getCarModel(2) + "';";
                         rs = stmt.executeQuery(query);
                         while (rs.next()) {
                             priceLabel3.setText(rs.getString(1));
-                            total += Integer.parseInt(rs.getString(1));
+                            totalPrice += Integer.parseInt(rs.getString(1));
                         }
                     
                     case 2:
                         removeIcon2.setEnabled(true);
-                        modelLabel2.setText(Session.getModel(1));
-                        query = "select price from cars where model = '" + Session.getModel(1) + "';";
+                        modelLabel2.setText(Session.getCarModel(1));
+                        query = "select price from cars where model = '" + Session.getCarModel(1) + "';";
                         rs = stmt.executeQuery(query);
                         while (rs.next()) {
                             priceLabel2.setText(rs.getString(1));
-                            total += Integer.parseInt(rs.getString(1));
+                            totalPrice += Integer.parseInt(rs.getString(1));
                         }
                     
                     case 1:
                         removeIcon1.setEnabled(true);
-                        modelLabel1.setText(Session.getModel(0));
-                        query = "select price from cars where model = '" + Session.getModel(0) + "';";
+                        modelLabel1.setText(Session.getCarModel(0));
+                        query = "select price from cars where model = '" + Session.getCarModel(0) + "';";
                         rs = stmt.executeQuery(query);
                         while (rs.next()) {
                             priceLabel1.setText(rs.getString(1));
-                            total += Integer.parseInt(rs.getString(1));
+                            totalPrice += Integer.parseInt(rs.getString(1));
                         }
                         break;
                 }
                 
-                totalPriceValue.setText(String.valueOf(total));
+                totalPriceValue.setText(String.valueOf(totalPrice));
                 carCountValue.setText(String.valueOf(Session.getCarCount()));
                 
             } catch (Exception e) {
@@ -163,8 +163,10 @@ public class Cart extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
+        bg.setBackground(new java.awt.Color(255, 207, 207));
         bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        titlePanel.setBackground(new java.awt.Color(255, 255, 255));
         titlePanel.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
 
         cartTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -210,7 +212,8 @@ public class Cart extends javax.swing.JFrame {
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        modelPanel.setBackground(new java.awt.Color(232, 232, 232));
+        modelPanel.setBackground(new java.awt.Color(255, 255, 255));
+        modelPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         modelTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         modelTitle.setText("Model");
@@ -293,7 +296,8 @@ public class Cart extends javax.swing.JFrame {
                 .addGap(14, 14, 14))
         );
 
-        pricePanel.setBackground(new java.awt.Color(232, 232, 232));
+        pricePanel.setBackground(new java.awt.Color(255, 255, 255));
+        pricePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         priceTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         priceTitle.setText("Price");
@@ -367,7 +371,7 @@ public class Cart extends javax.swing.JFrame {
                             .addComponent(jSeparator2)
                             .addComponent(jSeparator4)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pricePanelLayout.createSequentialGroup()
-                        .addGap(0, 35, Short.MAX_VALUE)
+                        .addGap(0, 31, Short.MAX_VALUE)
                         .addGroup(pricePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(priceLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(priceLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -463,10 +467,10 @@ public class Cart extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(apexMotorsLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(printIcon)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(placeOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(18, 18, 18)
+                .addComponent(printIcon)
+                .addGap(35, 35, 35))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,8 +488,8 @@ public class Cart extends javax.swing.JFrame {
                             .addComponent(placeOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(bgLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(printIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(35, 35, 35))
+                        .addComponent(printIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)))
+                .addGap(34, 34, 34))
         );
 
         getContentPane().add(bg);
@@ -505,26 +509,26 @@ public class Cart extends javax.swing.JFrame {
 
     private void placeOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeOrderButtonActionPerformed
         
-        // confirming order placement from user
-        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to place this order?",
-                "Confirm Choice", JOptionPane.YES_NO_OPTION);
-        if (choice == 0) {
-            // verifying cart is not empty and user is signed in
-            if (Session.getCarCount() != 0 && Session.isUserSignedIn()) {
+        // verifying cart is not empty and user is signed in
+        if (Session.getCarCount() != 0 && Session.isUserSignedIn()) {
 
+            // confirming order placement from user
+            int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to place this order?",
+                    "Confirm Choice", JOptionPane.YES_NO_OPTION);
+            if (choice == 0) {
                 Connection conn = DatabaseConnectivity.connectDatabase();
 
                 // verifying connection was made successfully
                 if (conn != null) {
 
-                    String accountId = Session.getAccountId();
+                    int accountId = Session.getAccountId();
                     ArrayList<String> carList = Session.getCarList();
                     String odate = String.valueOf(java.time.LocalDate.now());
 
                     String query = "INSERT INTO orders(accountid, model, odate) VALUES (?, ?, ?)";
                     try (PreparedStatement pstmt = conn.prepareStatement(query)) {
 
-                        pstmt.setString(1, accountId);
+                        pstmt.setInt(1, accountId);
                         pstmt.setString(3, odate);
 
                         for (int i = 0; i < carList.size(); i++) {
@@ -544,13 +548,13 @@ public class Cart extends javax.swing.JFrame {
 
                     printIcon.setEnabled(rootPaneCheckingEnabled);    
                 }
-            } else if (Session.getCarCount() == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Cart is empty!", 
-                        "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "You must Sign In to place an order!", 
-                        "Account Error", JOptionPane.ERROR_MESSAGE);
             }
+        } else if (!Session.isUserSignedIn()) {
+            JOptionPane.showMessageDialog(rootPane, "You must Sign In to place an order!", 
+                    "Account Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Cart is empty!", 
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_placeOrderButtonActionPerformed
 

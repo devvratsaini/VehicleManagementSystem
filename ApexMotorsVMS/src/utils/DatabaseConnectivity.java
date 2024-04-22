@@ -3,7 +3,6 @@ package utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 public class DatabaseConnectivity {
     private static final String USERNAME = "root";
@@ -12,6 +11,7 @@ public class DatabaseConnectivity {
 
     // functions for database connectivity
     public static Connection connectDatabase(){
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(URL,
@@ -26,6 +26,8 @@ public class DatabaseConnectivity {
     }
     
     public static void closeConnection(Connection conn) {
+        
+        // verifying connection is still running
         if (conn != null) {
             try {
                 conn.close();

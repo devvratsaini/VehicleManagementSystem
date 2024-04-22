@@ -366,11 +366,15 @@ public class SignUp extends javax.swing.JFrame {
                                     "Input Error", JOptionPane.ERROR_MESSAGE);
                     }
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(rootPane, "SQL Error: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "SQL Error: " + e.getMessage(),
+                        "Database Error", JOptionPane.ERROR_MESSAGE);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, "An error occurred: " + e.getMessage(), "Unknown Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(rootPane, "An error occurred: " + e.getMessage(),
+                        "Unknown Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+        
+        DatabaseConnectivity.closeConnection(conn);
     }//GEN-LAST:event_signUpButtonActionPerformed
 
     // method to add window draggind functionality

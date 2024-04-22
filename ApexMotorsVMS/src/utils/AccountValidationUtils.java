@@ -20,7 +20,7 @@ public class AccountValidationUtils {
                     hasDigit=false,
                     hasSpChar=false;
 
-            Set<Character> spChars = new HashSet<Character>(
+            Set<Character> spChars = new HashSet<>(
                     Arrays.asList('!', '@', '#', '$', '%', '^', '&', '*'));
 
             // checking all characters and setting necessary flags
@@ -42,6 +42,7 @@ public class AccountValidationUtils {
     
     // returns true if email is valid
     public static boolean isEmailValid(String email) {
+        
         int atIndex = email.indexOf('@');
         int lastIndex = email.lastIndexOf('@');
 
