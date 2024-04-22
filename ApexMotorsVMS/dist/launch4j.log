@@ -1,0 +1,20 @@
+
+
+Version:	3.50
+CmdLine:	C:\Users\devvr\OneDrive\Desktop\ApexMotorsVMS\dist\Apex Motors.exe --l4j-debug
+JNI:		No
+WOW64:		Yes
+Working dir:	C:\Users\devvr\OneDrive\Desktop\ApexMotorsVMS\dist\.
+Requires JDK:	No
+Requires 64-Bit: No
+Java min ver:	
+Java max ver:	
+Substitute:	JAVA_HOME = 
+Substitute:	PATH = C:\Program Files\Java\jdk-19\bin;C:\Program Files\Java\jdk-17\bin;C:\Program Files\Java\jre-1.8;C:\Python311\Scripts\;C:\Python311\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft\jdk-11.0.16.101-hotspot\bin;C:\Program Files\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Gradle\gradle-7.6\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\flutter\bin;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\devvr\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.1\bin;C:\Users\devvr\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2022.2.2\bin;C:\Users\devvr\AppData\Roaming\npm;C:\tools\dart-sdk\bin;C:\Users\devvr\AppData\Roaming\Pub\Cache\bin;C:\Users\devvr\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\devvr\.dotnet\tools;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2\bin;;C:\Program Files\JetBrains\PyCharm Community Edition 2023.2\bin;;C:\Users\devvr\AppData\Local\GitHubDesktop\bin;C:\Program Files\Java\jdk-19\bin
+JRE paths:	;C:\Program Files\Java\jdk-19\bin;C:\Program Files\Java\jdk-17\bin;C:\Program Files\Java\jre-1.8;C:\Python311\Scripts\;C:\Python311\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft\jdk-11.0.16.101-hotspot\bin;C:\Program Files\Eclipse Adoptium\jdk-17.0.4.101-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Gradle\gradle-7.6\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\flutter\bin;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\devvr\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2.1\bin;C:\Users\devvr\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2022.2.2\bin;C:\Users\devvr\AppData\Roaming\npm;C:\tools\dart-sdk\bin;C:\Users\devvr\AppData\Roaming\Pub\Cache\bin;C:\Users\devvr\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\devvr\.dotnet\tools;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2\bin;;C:\Program Files\JetBrains\PyCharm Community Edition 2023.2\bin;;C:\Users\devvr\AppData\Local\GitHubDesktop\bin;C:\Program Files\Java\jdk-19\bin
+Check launcher:	C:\Program Files\Java\jdk-19\bin\javaw.exe (OK)
+Version string: 1.019.000_002 / 64-Bit (OK)
+Launcher:	C:\Program Files\Java\jdk-19\bin\javaw.exe
+Launcher args:	-jar "C:\Users\devvr\OneDrive\Desktop\ApexMotorsVMS\dist\Apex Motors.exe"
+Args length:	73/32768 chars
+Exit code:	0
