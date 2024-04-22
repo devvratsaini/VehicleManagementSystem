@@ -157,7 +157,6 @@ public class Cart extends javax.swing.JFrame {
         removeIcon4 = new javax.swing.JLabel();
         placeOrderButton = new javax.swing.JButton();
         apexMotorsLogo = new javax.swing.JLabel();
-        printIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -443,15 +442,6 @@ public class Cart extends javax.swing.JFrame {
         apexMotorsLogo.setText("APEX MOTORS");
         apexMotorsLogo.setToolTipText("");
 
-        printIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Print.png"))); // NOI18N
-        printIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        printIcon.setEnabled(false);
-        printIcon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                printIconMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
@@ -468,9 +458,7 @@ public class Cart extends javax.swing.JFrame {
                 .addComponent(apexMotorsLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(placeOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(printIcon)
-                .addGap(35, 35, 35))
+                .addGap(31, 31, 31))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,15 +468,10 @@ public class Cart extends javax.swing.JFrame {
                 .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pricePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(modelPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(apexMotorsLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(placeOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(printIcon, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(apexMotorsLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(placeOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34))
         );
 
@@ -531,22 +514,24 @@ public class Cart extends javax.swing.JFrame {
                         pstmt.setInt(1, accountId);
                         pstmt.setString(3, odate);
 
+                        int rowsUpdated = 0;
                         for (int i = 0; i < carList.size(); i++) {
                             pstmt.setString(2, carList.get(i));
-                            int rowsUpdated = pstmt.executeUpdate();
-
-                            if (rowsUpdated > 0) {
-                                JOptionPane.showMessageDialog(rootPane,
-                                        "Order placed successfully!\nYou can now print the receipt using the print icon.",
-                                        "Success", JOptionPane.INFORMATION_MESSAGE);
-                            }
+                            rowsUpdated = pstmt.executeUpdate();
+                        }
+                        if (rowsUpdated > 0) {
+                            JOptionPane.showMessageDialog(rootPane,
+                                    "Order placed successfully!",
+                                    "Success", JOptionPane.INFORMATION_MESSAGE);
+                            
+                            home.setLocation(this.getFrameLocation());
+                            home.setVisible(true);
+                            this.dispose();
                         }
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(rootPane, "SQL Error: " + e.getMessage(),
                                 "Database Error", JOptionPane.ERROR_MESSAGE);
                     }
-
-                    printIcon.setEnabled(rootPaneCheckingEnabled);    
                 }
             }
         } else if (!Session.isUserSignedIn()) {
@@ -626,14 +611,6 @@ public class Cart extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_removeIcon4MouseClicked
 
-    private void printIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printIconMouseClicked
-        if (printIcon.isEnabled()) {
-            Bill bill = new Bill(this);
-            bill.setVisible(true);
-            this.setVisible(false);
-        }
-    }//GEN-LAST:event_printIconMouseClicked
-
     // method to add window draggind functionality
     private void addDragListeners() {
         
@@ -705,7 +682,6 @@ public class Cart extends javax.swing.JFrame {
     private javax.swing.JLabel priceLabel4;
     private javax.swing.JPanel pricePanel;
     private javax.swing.JLabel priceTitle;
-    private javax.swing.JLabel printIcon;
     private javax.swing.JLabel removeIcon1;
     private javax.swing.JLabel removeIcon2;
     private javax.swing.JLabel removeIcon3;

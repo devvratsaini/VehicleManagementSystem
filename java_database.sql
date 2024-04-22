@@ -23,7 +23,7 @@ create table cars (
 
 create table orders (
 	orderid int primary key auto_increment,
-	accountid int,
+	accountid int, foreign key(accountid) references accounts(accountid),
     model varchar(50), foreign key(model) references cars(model),
     odate date
 );
