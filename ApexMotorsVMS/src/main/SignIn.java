@@ -122,6 +122,7 @@ public class SignIn extends javax.swing.JFrame {
         passwordLabel.setText("Password");
 
         signInButton.setText("Sign In");
+        signInButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signInButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signInButtonActionPerformed(evt);

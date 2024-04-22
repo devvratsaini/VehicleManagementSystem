@@ -430,6 +430,7 @@ public class Cart extends javax.swing.JFrame {
 
         placeOrderButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         placeOrderButton.setText("PLACE ORDER");
+        placeOrderButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         placeOrderButton.setFocusPainted(false);
         placeOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

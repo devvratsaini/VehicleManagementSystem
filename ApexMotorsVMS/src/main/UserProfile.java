@@ -152,6 +152,7 @@ public class UserProfile extends javax.swing.JFrame {
         );
 
         deleteAccountButton.setText("Delete Account");
+        deleteAccountButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deleteAccountButton.setFocusPainted(false);
         deleteAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +202,7 @@ public class UserProfile extends javax.swing.JFrame {
         addressLabel.setText("Address");
 
         editAccountDetails.setText("Edit");
+        editAccountDetails.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         editAccountDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editAccountDetailsActionPerformed(evt);
@@ -213,6 +215,7 @@ public class UserProfile extends javax.swing.JFrame {
         jScrollPane1.setViewportView(addressTextArea);
 
         genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        genderComboBox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         genderComboBox.setEnabled(false);
 
         jLabel1.setText("<html><i>For security reasons,<br>Username is not editable.</i></html>");
@@ -282,6 +285,7 @@ public class UserProfile extends javax.swing.JFrame {
         passwordLabel.setText("Password");
 
         changePasswordButton.setText("Change");
+        changePasswordButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         changePasswordButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changePasswordButtonActionPerformed(evt);
@@ -294,6 +298,7 @@ public class UserProfile extends javax.swing.JFrame {
         emailField.setEnabled(false);
 
         saveButton.setText("Save");
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         saveButton.setFocusPainted(false);
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -302,6 +307,7 @@ public class UserProfile extends javax.swing.JFrame {
         });
 
         cancelButton.setText("Cancel");
+        cancelButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cancelButton.setFocusPainted(false);
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,6 +319,7 @@ public class UserProfile extends javax.swing.JFrame {
         passwordField.setEnabled(false);
 
         changeEmailButton.setText("Change");
+        changeEmailButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         changeEmailButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 changeEmailButtonActionPerformed(evt);

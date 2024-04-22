@@ -62,6 +62,7 @@ public final class CarPreviewPanel extends javax.swing.JPanel {
         carNameLabel.setText("Car Name Here");
 
         chooseButton.setText("Choose");
+        chooseButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         chooseButton.setFocusPainted(false);
         chooseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
