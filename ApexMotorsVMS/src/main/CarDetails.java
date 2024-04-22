@@ -33,10 +33,10 @@ public class CarDetails extends javax.swing.JFrame {
         this.carModel = carModel;
         this.setLocation(home.getFrameLocation());
         initFields();
-        initImage();
+        initImages();
     }
 
-    private void initImage() {
+    private void initImages() {
         
         // setting the car preview image
         ImageIcon logoIcon = new ImageIcon(getClass().getResource("/resources/cars/" + carModel + ".png"));
@@ -248,6 +248,7 @@ public class CarDetails extends javax.swing.JFrame {
         addToCartButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         addToCartButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Cart.png"))); // NOI18N
         addToCartButton.setText("ADD TO CART");
+        addToCartButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addToCartButton.setFocusPainted(false);
         addToCartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

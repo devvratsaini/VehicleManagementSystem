@@ -141,6 +141,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         emailLabel.setText("Email");
 
         verifyButton.setText("Verify");
+        verifyButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         verifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 verifyButtonActionPerformed(evt);
@@ -200,6 +201,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         confPassField.setEnabled(false);
 
         saveButton.setText("Save");
+        saveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         saveButton.setEnabled(false);
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,6 +230,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         newPasswordField.setEnabled(false);
 
         showIcon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Shown.png"))); // NOI18N
+        showIcon2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         showIcon2.setEnabled(false);
         showIcon2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -236,6 +239,7 @@ public class ForgotPassword extends javax.swing.JFrame {
         });
 
         showIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/Shown.png"))); // NOI18N
+        showIcon1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         showIcon1.setEnabled(false);
         showIcon1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
