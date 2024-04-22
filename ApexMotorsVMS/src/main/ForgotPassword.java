@@ -402,7 +402,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                     String newPass = String.valueOf(newPasswordField.getPassword());
                     String confPass = String.valueOf(confPassField.getPassword());
                     
-                    // verifying botgh passwords are equal
+                    // verifying both passwords are equal
                     if (newPass.equals(confPass)) {
                         // SQL statement to update password
                         String query = "UPDATE accounts SET password = ? WHERE username = ?";
@@ -417,6 +417,7 @@ public class ForgotPassword extends javax.swing.JFrame {
                             if (rowsUpdated > 0) {
                                 JOptionPane.showMessageDialog(rootPane, "Password updated successfully.",
                                         "Success", JOptionPane.INFORMATION_MESSAGE);
+                                
                                 signIn.setVisible(true);
                                 this.dispose();
                             } else {

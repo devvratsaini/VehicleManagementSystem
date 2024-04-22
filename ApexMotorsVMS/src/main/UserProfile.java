@@ -2,6 +2,7 @@ package main;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class UserProfile extends javax.swing.JFrame {
 
@@ -33,6 +35,7 @@ public class UserProfile extends javax.swing.JFrame {
     }
 
     private void initDetails() {
+        
         usernameField.setText(Session.getUsername());
         passwordField.setText(Session.getPassword());
         emailField.setText(Session.getEmail());
@@ -50,10 +53,12 @@ public class UserProfile extends javax.swing.JFrame {
                     addressTextArea.setText(rs.getString(3));
                     emailField.setText(rs.getString(4));
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(rootPane, "SQL Error: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+        
+        DatabaseConnectivity.closeConnection(conn);
     }
     
     @SuppressWarnings("unchecked")
@@ -88,7 +93,7 @@ public class UserProfile extends javax.swing.JFrame {
         emailLabel = new javax.swing.JLabel();
         emailField = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
-        resetButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
         passwordField = new javax.swing.JPasswordField();
         changeEmailButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -297,11 +302,11 @@ public class UserProfile extends javax.swing.JFrame {
             }
         });
 
-        resetButton.setText("Cancel");
-        resetButton.setFocusPainted(false);
-        resetButton.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setText("Cancel");
+        cancelButton.setFocusPainted(false);
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetButtonActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
 
@@ -326,26 +331,25 @@ public class UserProfile extends javax.swing.JFrame {
                         .addComponent(warningIcon)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(warningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                        .addComponent(saveButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancelButton))
                     .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountDetailsPanel2Layout.createSequentialGroup()
-                            .addComponent(saveButton)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(resetButton))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emailLabel)
-                            .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
-                                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(changeEmailButton))
-                            .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
-                                .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
-                                        .addComponent(passwordLabel)
-                                        .addGap(168, 168, 168))
-                                    .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
-                                        .addComponent(passwordField)
-                                        .addGap(18, 18, 18)))
-                                .addComponent(changePasswordButton)))))
+                        .addComponent(emailLabel)
+                        .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(changeEmailButton))
+                        .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                            .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                                    .addComponent(passwordLabel)
+                                    .addGap(168, 168, 168))
+                                .addGroup(accountDetailsPanel2Layout.createSequentialGroup()
+                                    .addComponent(passwordField)
+                                    .addGap(18, 18, 18)))
+                            .addComponent(changePasswordButton))))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
         accountDetailsPanel2Layout.setVerticalGroup(
@@ -370,7 +374,7 @@ public class UserProfile extends javax.swing.JFrame {
                 .addGap(63, 63, 63)
                 .addGroup(accountDetailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
-                    .addComponent(resetButton))
+                    .addComponent(cancelButton))
                 .addGap(37, 37, 37))
         );
 
@@ -432,27 +436,39 @@ public class UserProfile extends javax.swing.JFrame {
         // getting confirmation from user
         int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to delete your account?", "Confirm Choice", JOptionPane.YES_NO_OPTION);
         if (choice == 0) {
-            String confirmPassword = JOptionPane.showInputDialog(rootPane, "Enter your password", "Confirm Password", JOptionPane.YES_NO_OPTION);
+            String confirmPassword = JOptionPane.showInputDialog(rootPane, 
+                    "Enter your password", 
+                    "Confirm Password", JOptionPane.YES_NO_OPTION);
+            
             if (confirmPassword.equals(Session.getPassword())) {
+                
                 Connection conn = DatabaseConnectivity.connectDatabase();
                 if (conn != null) {
                     try {
                         Statement stmt = conn.createStatement();
                         String query = "delete from accounts where username = '" + Session.getUsername() + "';";
-                        stmt.executeUpdate(query);
+                        int rowsUpdated = stmt.executeUpdate(query);
                         
-                        // updating session details
-                        Session.setSignOut();
-                        JOptionPane.showMessageDialog(rootPane, "Account Deleted Successfully!", 
-                                "Success", JOptionPane.INFORMATION_MESSAGE);
+                        if (rowsUpdated > 0) {
+                            // updating session details
+                            Session.setSignOut();
+                            JOptionPane.showMessageDialog(rootPane, "Account Deleted Successfully!", 
+                                    "Success", JOptionPane.INFORMATION_MESSAGE);
+                            
+                            // redirecting to Home page and disposing this page
+                            home.changeToSignedOut();
+                            home.setLocation(this.getFrameLocation());
+                            home.setVisible(true);
+                            this.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane,
+                                        "Failed to delete account. Please try again.",
+                                        "Unknown Error", JOptionPane.ERROR_MESSAGE);
+                        }
                         
-                        // redirecting to Home page and disposing this page
-                        home.changeToSignedOut();
-                        home.setLocation(this.getFrameLocation());
-                        home.setVisible(true);
-                        this.dispose();
                     } catch (SQLException e) {
-                        
+                        JOptionPane.showMessageDialog(rootPane, "SQL Error: " + e.getMessage(),
+                                "Database Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -471,9 +487,13 @@ public class UserProfile extends javax.swing.JFrame {
     }//GEN-LAST:event_editAccountDetailsActionPerformed
 
     private void changePasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordButtonActionPerformed
-        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to change your password?", "Confirm Choice", JOptionPane.YES_NO_OPTION);
+        int choice = JOptionPane.showConfirmDialog(rootPane,
+                "Are you sure you want to change your password?",
+                "Confirm Choice", JOptionPane.YES_NO_OPTION);
         if (choice == 0) {
-            String confirmPassword = JOptionPane.showInputDialog(rootPane, "Enter your password", "Confirm Password", JOptionPane.YES_NO_OPTION);
+            String confirmPassword = JOptionPane.showInputDialog(rootPane,
+                    "Enter your old password",
+                    "Confirm Password", JOptionPane.YES_NO_OPTION);
             if (confirmPassword.equals(Session.getPassword())) {
                 passwordField.setEnabled(true);
                 passwordField.setBackground(new Color(255,255,255));
@@ -500,13 +520,14 @@ public class UserProfile extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_changeEmailButtonActionPerformed
 
-    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         home.setLocation(this.getFrameLocation());
         home.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_resetButtonActionPerformed
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        
         Connection conn = DatabaseConnectivity.connectDatabase();
         if (conn != null) {
             try {
@@ -529,8 +550,12 @@ public class UserProfile extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "Failed to update profile. Please try again.",
                             "Error", JOptionPane.ERROR_MESSAGE);
                 }                
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(rootPane, "SQL Error: " + e.getMessage(),
+                        "Database Error", JOptionPane.ERROR_MESSAGE);
             } catch (Exception e) {
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane, "An error occurred: " + e.getMessage(),
+                        "Unknown Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_saveButtonActionPerformed
@@ -538,6 +563,7 @@ public class UserProfile extends javax.swing.JFrame {
     private void addDragListeners() {
         
         titlePanel.addMouseListener(new MouseAdapter() {
+            @Override
             public void mousePressed(MouseEvent evt) {
                 posX = evt.getX();
                 posY = evt.getY();
@@ -545,6 +571,7 @@ public class UserProfile extends javax.swing.JFrame {
         });
 
         titlePanel.addMouseMotionListener(new MouseAdapter() {
+            @Override
             public void mouseDragged(MouseEvent evt) {
                 // Get the current position of the mouse
                 int newX = evt.getXOnScreen();
@@ -566,11 +593,12 @@ public class UserProfile extends javax.swing.JFrame {
         // setting FlatLaf Light theme
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-        } catch (Exception ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             System.err.println("Failed to initialize FlatLaf");
         }
         
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new UserProfile().setVisible(true);
             }
@@ -585,6 +613,7 @@ public class UserProfile extends javax.swing.JFrame {
     private javax.swing.JLabel backClickable;
     private javax.swing.JPanel bg;
     private javax.swing.JPanel bgColorPanel;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JButton changeEmailButton;
     private javax.swing.JButton changePasswordButton;
     private javax.swing.JButton deleteAccountButton;
@@ -603,7 +632,6 @@ public class UserProfile extends javax.swing.JFrame {
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPanel profileHeaderPanel;
     private javax.swing.JLabel profileIcon;
-    private javax.swing.JButton resetButton;
     private javax.swing.JButton saveButton;
     private javax.swing.JPanel titlePanel;
     private javax.swing.JLabel userProfileTitle;

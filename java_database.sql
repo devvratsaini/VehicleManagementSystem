@@ -32,7 +32,7 @@ insert into accounts(name, gender, address, username, password, email) values ('
 insert into accounts(name, gender, address, username, password, email) values ('Atharv Raje', 'Male', '','atharvraje', 'Admin2@Apex', 'atharvraje@apex.com');
 insert into accounts(name, gender, address, username, password, email) values ('Rutu Bhanderi', 'Male', '','rutubhanderi', 'Admin3@Apex', 'rutubhanderi@apex.com');
 insert into accounts(name, gender, address, username, password, email) values ('Praneet Mahendrakar', 'Male', '','praneetmahendrakar', 'Admin4@Apex', 'praneetmahendrakar@apex.com');
-insert into accounts(name, gender, address, username, password, email) values ('John Doe', 'Male', 'Sample Address 1, Here','johndoe', 'JohnDoe@Apex', 'johndoe@gmail.com');
+insert into accounts(name, gender, address, username, password, email) values ('John Doe', 'Male', 'Sample Address 1, Here','johndoe', 'JohnDoe1@Apex', 'johndoe@gmail.com');
 
 select * from accounts;
 

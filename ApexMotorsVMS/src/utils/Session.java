@@ -6,7 +6,7 @@ public class Session {
     
     // static data members
     private static boolean userSignedIn = false;
-    private static String accountId = null;
+    private static int accountId = -1;
     private static String username = null;
     private static String password = null;
     private static String email = null;
@@ -37,11 +37,11 @@ public class Session {
         Session.password = password;
     }
     
-    public static String getAccountId() {
+    public static int getAccountId() {
         return accountId;
     }
     
-    public static void setAccountId(String accountId) {
+    public static void setAccountId(int accountId) {
         Session.accountId = accountId;
     }
     
@@ -54,7 +54,7 @@ public class Session {
     }
     
     // custom methods
-    public static void setSignIn(String accountId, String username, String password, String email) {
+    public static void setSignIn(int accountId, String username, String password, String email) {
         Session.userSignedIn = true;
         Session.accountId = accountId;
         Session.username = username;
@@ -64,7 +64,7 @@ public class Session {
     
     public static void setSignOut() {
         Session.userSignedIn = false;
-        Session.accountId = null;
+        Session.accountId = -1;
         Session.username = null;
         Session.password = null;
         Session.email = null;
@@ -86,7 +86,7 @@ public class Session {
         return carList.size();
     }
     
-    public static String getModel(int index) {
+    public static String getCarModel(int index) {
         return carList.get(index);
     }
     
