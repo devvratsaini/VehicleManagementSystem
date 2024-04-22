@@ -2,7 +2,6 @@ package main;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Color;
-import java.awt.HeadlessException;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -434,7 +433,8 @@ public class UserProfile extends javax.swing.JFrame {
     private void deleteAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountButtonActionPerformed
         
         // getting confirmation from user
-        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to delete your account?", "Confirm Choice", JOptionPane.YES_NO_OPTION);
+        int choice = JOptionPane.showConfirmDialog(rootPane, "Are you sure you want to delete your account?",
+                "Confirm Choice", JOptionPane.YES_NO_OPTION);
         if (choice == 0) {
             String confirmPassword = JOptionPane.showInputDialog(rootPane, 
                     "Enter your password", 
@@ -497,6 +497,9 @@ public class UserProfile extends javax.swing.JFrame {
             if (confirmPassword.equals(Session.getPassword())) {
                 passwordField.setEnabled(true);
                 passwordField.setBackground(new Color(255,255,255));
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Incorrect password.",
+                            "Input Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_changePasswordButtonActionPerformed

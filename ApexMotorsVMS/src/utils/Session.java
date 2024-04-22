@@ -68,6 +68,7 @@ public class Session {
         Session.username = null;
         Session.password = null;
         Session.email = null;
+        Session.carList.clear();
     }
     
     public static boolean addCar(String carModel) {
