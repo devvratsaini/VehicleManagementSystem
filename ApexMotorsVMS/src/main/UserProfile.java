@@ -453,24 +453,38 @@ public class UserProfile extends javax.swing.JFrame {
                 if (conn != null) {
                     try {
                         Statement stmt = conn.createStatement();
-                        String query = "delete from accounts where username = '" + Session.getUsername() + "';";
+                        
+                        String query = "delete from orders where accountid = '" + Session.getAccountId()+ "';";
                         int rowsUpdated = stmt.executeUpdate(query);
                         
                         if (rowsUpdated > 0) {
-                            // updating session details
-                            Session.setSignOut();
-                            JOptionPane.showMessageDialog(rootPane, "Account Deleted Successfully!", 
-                                    "Success", JOptionPane.INFORMATION_MESSAGE);
                             
-                            // redirecting to Home page and disposing this page
-                            home.changeToSignedOut();
-                            home.setLocation(this.getFrameLocation());
-                            home.setVisible(true);
-                            this.dispose();
-                        } else {
-                            JOptionPane.showMessageDialog(rootPane,
+                            query = "delete from accounts where username = '" + Session.getUsername() + "';";
+                            rowsUpdated = stmt.executeUpdate(query);
+                        
+                            if (rowsUpdated > 0) {
+                                
+                                // updating session details
+                                Session.setSignOut();
+                                JOptionPane.showMessageDialog(rootPane, "Account Deleted Successfully!", 
+                                        "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                                // redirecting to Home page and disposing this page
+                                home.changeToSignedOut();
+                                home.setLocation(this.getFrameLocation());
+                                home.setVisible(true);
+                                this.dispose();
+                                
+                            } else {
+                                JOptionPane.showMessageDialog(rootPane,
                                         "Failed to delete account. Please try again.",
                                         "Unknown Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                            
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane,
+                                    "Failed to delete account. Please try again.",
+                                    "Unknown Error", JOptionPane.ERROR_MESSAGE);
                         }
                         
                     } catch (SQLException e) {
